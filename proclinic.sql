@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 07/07/2020 09:28:04
+ Date: 07/07/2020 16:03:39
 */
 
 SET NAMES utf8mb4;
@@ -41,6 +41,10 @@ CREATE TABLE `appointment`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of appointment
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for authorities
 -- ----------------------------
 DROP TABLE IF EXISTS `authorities`;
@@ -54,6 +58,10 @@ CREATE TABLE `authorities`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of authorities
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for department
 -- ----------------------------
 DROP TABLE IF EXISTS `department`;
@@ -62,6 +70,10 @@ CREATE TABLE `department`  (
   `department` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '科室名',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of department
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for patient
@@ -76,12 +88,13 @@ CREATE TABLE `patient`  (
   `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电子邮箱',
   `gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地址',
-  `user_id` int(11) NULL DEFAULT NULL COMMENT '用户ID',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '等待' COMMENT '状态（等待；治疗中；已治愈）',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_patient_id`(`user_id`) USING BTREE,
-  CONSTRAINT `user_patient_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of patient
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for payment
@@ -93,8 +106,7 @@ CREATE TABLE `payment`  (
   `user_id` int(11) NULL DEFAULT NULL COMMENT '用户ID',
   `department_id` int(11) NULL DEFAULT NULL COMMENT '科室ID',
   `charges` decimal(10, 0) NULL DEFAULT NULL COMMENT '费用',
-  `admission_date` date NULL DEFAULT NULL COMMENT '入院日期',
-  `discharge_date` date NULL DEFAULT NULL COMMENT '出院日期',
+  `charges_date` date NULL DEFAULT NULL COMMENT '支付日期',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '等待' COMMENT '支付状态（等待；已支付）',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_payment_id`(`user_id`) USING BTREE,
@@ -104,6 +116,10 @@ CREATE TABLE `payment`  (
   CONSTRAINT `patient_payment_id` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_payment_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of payment
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for room
@@ -116,6 +132,10 @@ CREATE TABLE `room`  (
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '未满' COMMENT '状态（满；未满)',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of room
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for room_desc
@@ -138,6 +158,10 @@ CREATE TABLE `room_desc`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of room_desc
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for service
 -- ----------------------------
 DROP TABLE IF EXISTS `service`;
@@ -152,6 +176,10 @@ CREATE TABLE `service`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of service
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -162,6 +190,10 @@ CREATE TABLE `user`  (
   `enabled` tinyint(4) NOT NULL DEFAULT 1 COMMENT '是否可用(1：可用；0：不可用)',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_desc
@@ -187,5 +219,9 @@ CREATE TABLE `user_desc`  (
   CONSTRAINT `department_user_desc_id` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_user_desc_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_desc
+-- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;
