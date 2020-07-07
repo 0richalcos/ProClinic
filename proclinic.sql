@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 07/07/2020 16:03:39
+ Date: 07/07/2020 16:34:15
 */
 
 SET NAMES utf8mb4;
@@ -129,7 +129,7 @@ CREATE TABLE `room`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '病房ID',
   `type` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '病房类型（常规；ICU；监护室）',
   `size` tinyint(4) NULL DEFAULT NULL COMMENT '容量',
-  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '未满' COMMENT '状态（满；未满)',
+  `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '未满' COMMENT '状态（满；未满)',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
