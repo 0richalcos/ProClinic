@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
 
 	<script src="js/modernizr.min.js"></script>
+	<script src="js/jquery-3.2.1.min.js4" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
@@ -51,190 +52,12 @@
 	<div class="wrapper">
 		<!-- Page Content -->
 		<div id="content">
-				<!-- Top Navigation -->
-				<div class="container top-brand">
-					<nav class="navbar navbar-default">			
-						<div class="navbar-header">
-							<div class="sidebar-header"> <a href="index.html"><img src="images/logo-dark.png" class="logo" alt="logo"></a>
-							</div>
-						</div>
-						<ul class="nav justify-content-end">
-							<li class="nav-item">
-								<a class="nav-link">
-									<span title="Fullscreen" class="ti-fullscreen fullscreen"></span>
-								</a>							
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" data-toggle="modal" data-target=".lochana-modal-lg">
-									<span class="ti-search"></span>
-								</a>
-								<div class="modal fade lochana-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-									<div class="modal-dialog modal-lorvens">
-										<div class="modal-content lochana-box-shadow2">
-											<div class="modal-header">
-												<h5 class="modal-title">Search Patient/医生:</h5>
-												<span class="ti-close" data-dismiss="modal" aria-label="Close">
-												</span>
-											</div>
-											<div class="modal-body">
-												<form>
-													<div class="form-group">
-														<input type="text" class="form-control" id="search-term" placeholder="Type text here">
-														<button type="button" class="btn btn-lorvens lochana-bg">
-															<span class="ti-location-arrow"></span> Search</button>
-													</div>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-								 aria-expanded="false">
-									<span class="ti-announcement"></span>
-								</a>
-								<div class="dropdown-menu lochana-box-shadow2 notifications animated flipInY">
-									<h5>Notifications</h5>
-									<a class="dropdown-item" href="#">
-										<span class="ti-wheelchair"></span> New Patient Added</a>
-									<a class="dropdown-item" href="#">
-										<span class="ti-money"></span> Patient payment done</a>
-									<a class="dropdown-item" href="#">
-										<span class="ti-time"></span>Patient Appointment booked</a>
-									<a class="dropdown-item" href="#">
-										<span class="ti-wheelchair"></span> New Patient Added</a>
-								</div>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-								 aria-expanded="false">
-									<span class="ti-user"></span>
-								</a>
-								<div class="dropdown-menu lochana-box-shadow2 profile animated flipInY">
-									<h5>John Willing</h5>
-									<a class="dropdown-item" href="#">
-										<span class="ti-settings"></span> Settings</a>
-									<a class="dropdown-item" href="#">
-										<span class="ti-help-alt"></span> Help</a>
-									<a class="dropdown-item" href="#">
-										<span class="ti-power-off"></span> Logout</a>
-								</div>
-							</li>
-						</ul>
-				
-					</nav>
-				</div>
-				<!-- /Top Navigation -->
-				<!-- Menu -->
-				<div class="container menu-nav">
-					<nav class="navbar navbar-expand-lg lochana-bg text-white">
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-						 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="ti-menu text-white"></span>
-						</button>
-				
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav mr-auto">
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-									 aria-expanded="false"><span class="ti-home"></span> 控制面板</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="index.html">默认</a>
-									</div>
-								</li>
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-									 aria-expanded="false"><span class="ti-wheelchair"></span> 病人管理</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="add-patient.html">添加病人信息</a>
-										<a class="dropdown-item" href="patients.html">查看病人信息</a>
-										<a class="dropdown-item" href="about-patient.html">病人详情</a>
-										<a class="dropdown-item" href="edit-patient.html">编辑病人信息</a>
-									</div>
-								</li>
-								<li class="nav-item dropdown active">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-									 aria-expanded="false"><span class="ti-user"></span> 医生管理</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="add-doctor.html">添加医生信息</a>
-										<a class="dropdown-item" href="doctors.html">查询医生信息</a>
-										<a class="dropdown-item" href="about-doctor.html">医生信息详情</a>
-										<a class="dropdown-item" href="edit-doctor.html">编辑医生信息</a>
-									</div>
-								</li>
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-									 aria-expanded="false"><span class="ti-pencil-alt"></span> 出诊管理</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="add-appointment.html">添加出诊信息</a>
-										<a class="dropdown-item" href="appointments.html">查询出诊信息</a>
-										<a class="dropdown-item" href="about-appointment.html">出诊信息详情</a>
-										<a class="dropdown-item" href="edit-appointment.html">编辑出诊信息</a>
-									</div>
-								</li>
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-									 aria-expanded="false"><span class="ti-money"></span> 支付管理</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="add-payment.html">添加支付</a>
-										<a class="dropdown-item" href="payments.html">所有支付</a>
-										<a class="dropdown-item" href="about-payment.html">发票</a>
-									</div>
-								</li>
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-									 aria-expanded="false"><span class="ti-key"></span> 病房分配</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="add-room.html">添加病房</a>
-										<a class="dropdown-item" href="rooms.html">查询病房</a>
-										<a class="dropdown-item" href="edit-room.html">编辑病房信息</a>
-									</div>
-								</li>
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-									 aria-expanded="false"><span class="ti-layout-tab"></span> UI框架</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="typography.html">排版</a>
-										<a class="dropdown-item" href="buttons.html">按钮</a>
-										<a class="dropdown-item" href="cards.html">卡片</a>
-										<a class="dropdown-item" href="tabs.html">选项卡</a>
-										<a class="dropdown-item" href="accordions.html">手风琴</a>
-										<a class="dropdown-item" href="modals.html">模态窗口</a>
-										<a class="dropdown-item" href="lists.html">媒体和列表</a>
-										<a class="dropdown-item" href="grid.html">网格</a>
-										<a class="dropdown-item" href="progress-bars.html">进度条</a>
-										<a class="dropdown-item" href="notifications-alerts.html">预警和提示</a>
-										<a class="dropdown-item" href="pagination.html">分页</a>
-										<a class="dropdown-item" href="carousel.html">滑块</a>
-										<a class="dropdown-item" href="tables.html">表格</a>
-										<a class="dropdown-item" href="charts-1.html">Morris图表</a>
-										<a class="dropdown-item" href="charts-2.html">Flot图表</a>
-										<a class="dropdown-item" href="map-1.html">谷歌地图</a>
-										<a class="dropdown-item" href="map-2.html">Vector地图</a>
-										<a class="dropdown-item" href="forms.html">表单</a>
-										<a class="dropdown-item" href="font-awesome.html">Font Awesome </a>
-										<a class="dropdown-item" href="themify.html">Themify图标</a>
-									</div>
-								</li>
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-									 aria-expanded="false"><span class="ti-file"></span> 其它页面</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="login.html">登录</a>
-										<a class="dropdown-item" href="sign-up.html">注册</a>
-										<a class="dropdown-item" href="404.html">404</a>
-										<a class="dropdown-item" href="blank-page.html">空白页</a>
-										<a class="dropdown-item" href="pricing.html">价格表</a>
-										<a class="dropdown-item" href="faq.html">FAQ</a>
-										<a class="dropdown-item" href="invoice.html">发票</a>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-				<!-- /Menu -->
+			<!-- header -->
+			<div id="header"></div>
+			<script>
+				$("#header").load("header.html")
+			</script>
+			<!-- header -->
 				<!-- Breadcrumb -->
 				<!-- Page Title -->
 				<div class="container mt-0">
