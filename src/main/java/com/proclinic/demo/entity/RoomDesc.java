@@ -43,5 +43,4 @@ public class RoomDesc {
 
     @Column(name = "discharge_date")
     private Date dischargeDate;
-
 }
