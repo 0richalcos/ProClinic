@@ -2,23 +2,25 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
-	<!-- Fav  Icon Link -->
-	<link rel="shortcut icon" type="image/png" href="images/fav.png">
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- themify icons CSS -->
-	<link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Main CSS -->
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/green.css" id="style_theme">
-	<link rel="stylesheet" href="css/responsive.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
+<!-- Fav  Icon Link -->
+<link rel="shortcut icon" type="image/png" href="images/fav.png">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- themify icons CSS -->
+<link rel="stylesheet" href="css/themify-icons.css">
+<!-- Main CSS -->
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/green.css" id="style_theme">
+<link rel="stylesheet" href="css/responsive.css">
 
-	<script src="js/modernizr.min.js"></script>
-	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript"
+	charset="utf-8"></script>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body class="auth-bg">
@@ -32,60 +34,67 @@
 	<!--/Pre Loader -->
 	<!-- Color Changer -->
 	<div class="theme-settings" id="switcher">
-		<span class="theme-click">
-			<span class="ti-settings"></span>
-		</span>
-		<span class="theme-color theme-default theme-active" data-color="green"></span>
-		<span class="theme-color theme-blue" data-color="blue"></span>
-		<span class="theme-color theme-red" data-color="red"></span>
-		<span class="theme-color theme-violet" data-color="violet"></span>
-		<span class="theme-color theme-yellow" data-color="yellow"></span>
+		<span class="theme-click"> <span class="ti-settings"></span>
+		</span> <span class="theme-color theme-default theme-active"
+			data-color="green"></span> <span class="theme-color theme-blue"
+			data-color="blue"></span> <span class="theme-color theme-red"
+			data-color="red"></span> <span class="theme-color theme-violet"
+			data-color="violet"></span> <span class="theme-color theme-yellow"
+			data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
 	<div class="wrapper">
 		<!-- Page Content  -->
 		<div id="content">
 			<div class="container">
-				<div class="row">
+				<div class="row" id="app">
 					<div class="col-sm-6 auth-box">
 						<div class="lochana-box-shadow">
 							<h3 class="widget-title">Login</h3>
-							<form class="widget-form">
+							<div class="alert alert-danger" role="alert" v-if="flag">用户名或密码错误</div>
+							<form class="widget-form" action="/login" method="post">
 								<!-- form-group -->
 								<div class="form-group row">
 									<div class="col-sm-12">
-										<input name="user" placeholder="Username" class="form-control" required="" data-validation="length alphanumeric" data-validation-length="3-12"
-										 data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)" data-validation-has-keyup-event="true">
+										<input name="username" placeholder="Username"
+											class="form-control" required
+											data-validation="length alphanumeric"
+											data-validation-length="3-12"
+											data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)"
+											data-validation-has-keyup-event="true">
 									</div>
 								</div>
 								<!-- /.form-group -->
 								<!-- form-group -->
 								<div class="form-group row">
 									<div class="col-sm-12">
-										<input type="password" placeholder="Password" name="pass_confirmation" class="form-control" data-validation="strength" data-validation-strength="2"
-										 data-validation-has-keyup-event="true">
+										<input type="password" placeholder="Password" name="password"
+											class="form-control" data-validation="strength"
+											data-validation-strength="2"
+											data-validation-has-keyup-event="true">
 									</div>
 								</div>
 								<!-- /.form-group -->
-								<!-- Check Box -->		
+								<!-- Check Box -->
 								<div class="form-check row">
 									<div class="col-sm-12 text-left">
 										<div class="custom-control custom-checkbox">
-											<input class="custom-control-input" type="checkbox" id="ex-check-2">
-											<label class="custom-control-label" for="ex-check-2">Remember Me</label>
+											<input class="custom-control-input" type="checkbox"
+												id="ex-check-2"> <label class="custom-control-label"
+												for="ex-check-2">Remember Me</label>
 										</div>
 									</div>
 								</div>
-								<!-- /Check Box -->	
-								<!-- Login Button -->			
+								<!-- /Check Box -->
+								<!-- Login Button -->
 								<div class="button-btn-block">
-									<button type="button" class="btn btn-primary btn-lg btn-block">Login</button>
+									<button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
 								</div>
-								<!-- /Login Button -->	
-								<!-- Links -->	
+								<!-- /Login Button -->
+								<!-- Links -->
 								<div class="auth-footer-text">
-									<small>New User,
-										<a href="sign-up.html">注册</a> Here</small>
+									<small>New User, <a href="sign-up.html">注册</a> Here
+									</small>
 								</div>
 								<!-- /Links -->
 							</form>
@@ -96,6 +105,20 @@
 		</div>
 		<!-- /Page Content  -->
 	</div>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				flag:false
+			},
+			created() {
+				let path=window.location.href.split("?");
+				if(path[path.length-1]=="error"){
+					this.flag=true;
+				}
+			}
+		})
+	</script>
 	<!-- Jquery Library-->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<!-- Popper Library-->

@@ -43,10 +43,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 	http
 		.authorizeRequests()
-		.antMatchers("/login.html", "/sign-up.html").permitAll()
-		.antMatchers("/", "/user", "/user/*").hasRole("USER")
-		.antMatchers("/admin", "/admin/*").hasRole("ADMIN")
+		.antMatchers("/login", "/log.html", "/login.html", "/sign-up.html", "/charts/*", "/css/*",
+			"/datatable/*",
+			"/fonts/*",
+			"/images/*", "/js/*")
+		.permitAll()
+		.anyRequest().authenticated()
 		.and()
-		.formLogin().loginPage("/login.html");
+		.formLogin()
+		.loginPage("/login.html")
+		.loginProcessingUrl("/login")
+		.failureUrl("/login.html?error")
+		.and()
+		.rememberMe()
+		.and()
+		.csrf().disable();
     }
 }
