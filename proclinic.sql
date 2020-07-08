@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 07/07/2020 23:18:35
+ Date: 08/07/2020 10:10:21
 */
 
 SET NAMES utf8mb4;
@@ -55,11 +55,13 @@ CREATE TABLE `authorities`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_authorities_id`(`user_id`) USING BTREE,
   CONSTRAINT `user_authorities_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of authorities
 -- ----------------------------
+INSERT INTO `authorities` VALUES (1, 1, 'ROLE_ADMIN');
+INSERT INTO `authorities` VALUES (2, 1, 'ROLE_USER');
 
 -- ----------------------------
 -- Table structure for department
@@ -189,11 +191,12 @@ CREATE TABLE `user`  (
   `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `enabled` tinyint(4) NOT NULL DEFAULT 1 COMMENT '是否可用(1：可用；0：不可用)',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES (1, 'admin', '$2a$10$kO1tB6pccLKdBgJUV52FauWEhv2gfZF49fuaLsC5WBtsCTNnwH7sO', 1);
 
 -- ----------------------------
 -- Table structure for user_desc
