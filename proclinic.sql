@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 07/07/2020 16:34:15
+ Date: 07/07/2020 23:18:35
 */
 
 SET NAMES utf8mb4;
@@ -67,7 +67,7 @@ CREATE TABLE `authorities`  (
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '科室ID',
-  `department` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '科室名',
+  `name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '科室名',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -83,7 +83,7 @@ CREATE TABLE `patient`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '病人ID',
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '姓名 ',
   `birthday` date NULL DEFAULT NULL COMMENT '出生日期',
-  `age` int(11) NULL DEFAULT NULL COMMENT '年龄',
+  `age` int(3) NULL DEFAULT NULL COMMENT '年龄',
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话',
   `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电子邮箱',
   `gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
