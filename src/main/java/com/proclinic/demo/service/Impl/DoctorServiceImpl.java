@@ -1,4 +1,4 @@
-package com.proclinic.demo.servce;
+package com.proclinic.demo.service.Impl;
 
 import java.util.List;
 
@@ -9,9 +9,10 @@ import com.proclinic.demo.entity.Department;
 import com.proclinic.demo.entity.User;
 import com.proclinic.demo.entity.UserDesc;
 import com.proclinic.demo.mapper.DoctorMapper;
+import com.proclinic.demo.service.DoctorService;
 
 @Service
-public class DoctorServceImpl implements DoctorServce{
+public class DoctorServiceImpl implements DoctorService{
 	@Autowired
 	DoctorMapper doctormapper;
 	@Override
