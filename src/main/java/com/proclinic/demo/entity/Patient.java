@@ -34,8 +34,8 @@ public class Patient {
     @Column(name = "email", length = 20)
     private String email;
 
-    @Column(name = "gener", length = 10)
-    private String gener;
+    @Column(name = "gender", length = 10)
+    private String gender;
 
     @Column(name = "address", length = 255)
     private String address;
@@ -51,6 +51,7 @@ public class Patient {
     @JoinColumn(name = "patient_id")
     private List<Appointment> appointments;
 
+    
     public Patient() {
     }
 
@@ -102,12 +103,12 @@ public class Patient {
 	this.email = email;
     }
 
-    public String getGener() {
-	return gener;
+    public String getGender() {
+	return gender;
     }
 
-    public void setGener(String gener) {
-	this.gener = gener;
+    public void setGener(String gender) {
+	this.gender = gender;
     }
 
     public String getAddress() {
@@ -141,5 +142,6 @@ public class Patient {
     public void setAppointments(List<Appointment> appointments) {
 	this.appointments = appointments;
     }
+
 
 }
