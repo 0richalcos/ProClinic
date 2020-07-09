@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proclinic.demo.entity.UserDesc;
 import com.proclinic.demo.repository.DoctorRepository;
-import com.proclinic.demo.servce.DoctorServce;
+import com.proclinic.demo.service.DoctorService;
 
 @RestController
 public class DoctorContorller {
 	@Autowired
 	DoctorRepository doctorrepository;
 	@Autowired
-	DoctorServce doctorservce;
+	DoctorService doctorservce;
 	@GetMapping("/user/doctor")
 	public Page<UserDesc> list(@RequestParam(name="p",defaultValue = "0") int page,@RequestParam(name="s",defaultValue = "2") int size) {
 		return doctorrepository.findAll(PageRequest.of(page, size,Sort.by("id").descending()));

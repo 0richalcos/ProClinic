@@ -1,11 +1,11 @@
-package com.proclinic.demo.servce;
+package com.proclinic.demo.service;
 
 import java.util.List;
 
 
 import com.proclinic.demo.entity.UserDesc;
 
-public interface DoctorServce {
+public interface DoctorService {
 	//查询医生详情
 	UserDesc findAllBy(int id);
 	//添加医生信息
