@@ -19,7 +19,7 @@ public interface DoctorMapper {
 	@Update("UPDATE user_desc SET specialization=#{specialization},experience=#{experience},gender=#{gender},birthday=#{birthday},age=#{age},email=#{email},details=#{details},address=#{address},phone=#{phone},user_id=#{user.id},department_id=#{department.id} WHERE id=#{id}")
 	void Doctorup(UserDesc userdesc);
 	//查询医生管理员信息	
-	@Select("select * from user where name=#{name}")
+	@Select("select * from user where username=#{name}")
 	User Doctorid(String name);
 	//查询医生部门信息
 	@Select("select * from department where name=#{department}")
