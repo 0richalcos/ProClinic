@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
+	<title>ProClinic-医院管理系统</title>
 	<!-- Fav  Icon Link -->
 	<link rel="shortcut icon" type="image/png" href="images/fav.png">
 	<!-- Bootstrap core CSS -->
@@ -63,7 +63,7 @@
 				<div class="container mt-0">
 					<div class="row breadcrumb-bar">
 						<div class="col-md-6">
-							<h3 class="block-title">Allotments</h3>
+							
 						</div>
 						<div class="col-md-6">
 							<ol class="breadcrumb">
@@ -72,8 +72,8 @@
 										<span class="ti-home"></span>
 									</a>
 								</li>
-								<li class="breadcrumb-item">Allotments</li>
-								<li class="breadcrumb-item active">All Allotments</li>
+								<li class="breadcrumb-item">分配</li>
+								<li class="breadcrumb-item active">所有分配</li>
 							</ol>
 						</div>
 					</div>
@@ -88,9 +88,9 @@
 					<!-- Widget Item -->
 					<div class="col-md-12">
 						<div class="widget-area-2 lochana-box-shadow">
-							<h3 class="widget-title">Allotments List</h3>
-							<div class="table-responsive mb-3">
-								<table id="tableId" class="table table-bordered table-striped">
+							<h3 class="widget-title">分配清单</h3>
+							<div class="table-responsive mb-3" id="cx">
+								<table id="tableId" class="table table-bordered table-striped" >
 									<thead>
 										<tr>
 											<th class="no-sort">
@@ -99,101 +99,16 @@
 													<label class="custom-control-label" for="select-all"></label>
 												</div>
 											</th>
-											<th>Room</th>
-											<th>Room Type</th>
-											<th>名人姓名</th>
-											<th>Allotment Date</th>
-                                            <th>Discharge Date</th>
-                                            <th>医生 Name</th>
+											<th>房间号</th>
+											<th>房间类型</th>
+											<th>病人姓名</th>
+											<th>入院时间</th>
+                                            <th>住院时间</th>
+                                            <th>医生姓名</th>
 											<th>状态</th>
 										</tr>
 									</thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="1">
-                                                    <label class="custom-control-label" for="1"></label>
-                                                </div>
-                                            </td>
-                                            <td>10</td>
-                                            <td>Icu</td>
-                                            <td>Manoj Kumar</td>
-                                            <td>12-11-2018</td>
-                                            <td>16-11-2018</td>
-                                            <td>Dr Daniel Smith</td>
-                                            <td>
-                                                <span class="badge badge-success">可出诊</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="2">
-                                                    <label class="custom-control-label" for="2"></label>
-                                                </div>
-                                            </td>
-                                            <td>4</td>
-                                            <td>Ac Room</td>
-                                            <td>Susan</td>
-                                            <td>10-11-2018</td>
-                                            <td>-</td>
-                                            <td>Dr Daniel Smith</td>
-                                            <td>
-                                                <span class="badge badge-danger">Not Discharged</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="3">
-                                                    <label class="custom-control-label" for="3"></label>
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>Ac Room</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>
-                                                <span class="badge badge-warning">Not Alloted</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="4">
-                                                    <label class="custom-control-label" for="4"></label>
-                                                </div>
-                                            </td>
-                                            <td>3</td>
-                                            <td>General</td>
-                                            <td>Raj kiran</td>
-                                            <td>10-11-2018</td>
-                                            <td>12-11-2018</td>
-                                            <td>Dr Wilsson</td>
-                                            <td>
-                                                <span class="badge badge-success">可出诊</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="5">
-                                                    <label class="custom-control-label" for="5"></label>
-                                                </div>
-                                            </td>
-                                            <td>10</td>
-                                            <td>Icu</td>
-                                            <td>Manoj Kumar</td>
-                                            <td>12-11-2018</td>
-                                            <td>16-11-2018</td>
-                                            <td>Dr Daniel Smith</td>
-                                            <td>
-                                                <span class="badge badge-success">可出诊</span>
-                                            </td>
-                                        </tr>
                                         <tr>
                                             <td>
                                                 <div class="custom-control custom-checkbox">
@@ -245,74 +160,8 @@
                                                 <span class="badge badge-success">可出诊</span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="9">
-                                                    <label class="custom-control-label" for="9"></label>
-                                                </div>
-                                            </td>
-                                            <td>10</td>
-                                            <td>Icu</td>
-                                            <td>Manoj Kumar</td>
-                                            <td>12-11-2018</td>
-                                            <td>16-11-2018</td>
-                                            <td>Dr Daniel Smith</td>
-                                            <td>
-                                                <span class="badge badge-success">可出诊</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="10">
-                                                    <label class="custom-control-label" for="10"></label>
-                                                </div>
-                                            </td>
-                                            <td>4</td>
-                                            <td>Ac Room</td>
-                                            <td>Susan</td>
-                                            <td>10-11-2018</td>
-                                            <td>-</td>
-                                            <td>Dr Daniel Smith</td>
-                                            <td>
-                                                <span class="badge badge-danger">Not Discharged</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="11">
-                                                    <label class="custom-control-label" for="11"></label>
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>Ac Room</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>
-                                                <span class="badge badge-warning">Not Alloted</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="12">
-                                                    <label class="custom-control-label" for="12"></label>
-                                                </div>
-                                            </td>
-                                            <td>3</td>
-                                            <td>General</td>
-                                            <td>Raj kiran</td>
-                                            <td>10-11-2018</td>
-                                            <td>12-11-2018</td>
-                                            <td>Dr Wilsson</td>
-                                            <td>
-                                                <span class="badge badge-success">可出诊</span>
-                                            </td>
-                                        </tr>
+                                 
+                             
                                     </tbody>
                                 </table>
                                 
@@ -371,7 +220,36 @@
     
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
-	<script src="js/custom-datatables.js"></script>
+    <script src="js/custom-datatables.js"></script>
+    <script src="js/vue.min.js"></script>
+	<script src="js/axios.js"></script>
+
+    <script>
+   new Vue({
+  el:"#cx",
+  data:{
+
+  },
+  //加载函数
+  mounted(){
+
+methods:{
+axios.get()
+
+
+}
+
+
+  }
+
+
+   })
+
+
+
+    </script>
+
+
 </body>
 
 </html>

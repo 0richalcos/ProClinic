@@ -37,4 +37,45 @@ public class Room {
     @OneToMany
     @JoinColumn(name = "room_id")
     private List<RoomDesc> roomDescs;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public List<RoomDesc> getRoomDescs() {
+		return roomDescs;
+	}
+
+	public void setRoomDescs(List<RoomDesc> roomDescs) {
+		this.roomDescs = roomDescs;
+	}
+    
 }
