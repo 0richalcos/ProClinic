@@ -12,13 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "patient")
 public class Patient {
@@ -57,4 +50,96 @@ public class Patient {
     @OneToMany
     @JoinColumn(name = "patient_id")
     private List<Appointment> appointments;
+
+    public Patient() {
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    public Date getBirthday() {
+	return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+	this.birthday = birthday;
+    }
+
+    public int getAge() {
+	return age;
+    }
+
+    public void setAge(int age) {
+	this.age = age;
+    }
+
+    public String getPhone() {
+	return phone;
+    }
+
+    public void setPhone(String phone) {
+	this.phone = phone;
+    }
+
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
+    }
+
+    public String getGener() {
+	return gener;
+    }
+
+    public void setGener(String gener) {
+	this.gener = gener;
+    }
+
+    public String getAddress() {
+	return address;
+    }
+
+    public void setAddress(String address) {
+	this.address = address;
+    }
+
+    public String getStatus() {
+	return status;
+    }
+
+    public void setStatus(String status) {
+	this.status = status;
+    }
+
+    public List<Payment> getPayments() {
+	return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+	this.payments = payments;
+    }
+
+    public List<Appointment> getAppointments() {
+	return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+	this.appointments = appointments;
+    }
+
 }

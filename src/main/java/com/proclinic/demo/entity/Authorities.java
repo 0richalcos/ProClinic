@@ -9,13 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table
 public class Authorities {
@@ -29,4 +22,32 @@ public class Authorities {
 
     @Column(name = "authority", length = 20)
     private String authority;
+
+    public Authorities() {
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    public User getUser() {
+	return user;
+    }
+
+    public void setUser(User user) {
+	this.user = user;
+    }
+
+    public String getAuthority() {
+	return authority;
+    }
+
+    public void setAuthority(String authority) {
+	this.authority = authority;
+    }
+
 }

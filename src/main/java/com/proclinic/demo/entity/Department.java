@@ -11,13 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "department")
 public class Department {
@@ -39,4 +32,48 @@ public class Department {
     @OneToMany
     @JoinColumn(name = "department_id")
     private List<Appointment> appointments;
+
+    public Department() {
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    public List<UserDesc> getUserDescs() {
+	return userDescs;
+    }
+
+    public void setUserDescs(List<UserDesc> userDescs) {
+	this.userDescs = userDescs;
+    }
+
+    public List<Payment> getPayments() {
+	return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+	this.payments = payments;
+    }
+
+    public List<Appointment> getAppointments() {
+	return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+	this.appointments = appointments;
+    }
+
 }

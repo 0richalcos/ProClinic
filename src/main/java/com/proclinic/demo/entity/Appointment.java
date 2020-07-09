@@ -12,13 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "appointment")
 public class Appointment {
@@ -52,4 +45,80 @@ public class Appointment {
 
     @Column(name = "status", length = 10)
     private String status;
+
+    public Appointment() {
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    public User getUser() {
+	return user;
+    }
+
+    public void setUser(User user) {
+	this.user = user;
+    }
+
+    public Patient getPatient() {
+	return patient;
+    }
+
+    public void setPatient(Patient patient) {
+	this.patient = patient;
+    }
+
+    public Department getDepartment() {
+	return department;
+    }
+
+    public void setDepartment(Department department) {
+	this.department = department;
+    }
+
+    public Date getAppointmentDate() {
+	return appointmentDate;
+    }
+
+    public void setAppointmentDate(Date appointmentDate) {
+	this.appointmentDate = appointmentDate;
+    }
+
+    public String getTimeSlot() {
+	return timeSlot;
+    }
+
+    public void setTimeSlot(String timeSlot) {
+	this.timeSlot = timeSlot;
+    }
+
+    public String getProblem() {
+	return problem;
+    }
+
+    public void setProblem(String problem) {
+	this.problem = problem;
+    }
+
+    public BigDecimal getCharges() {
+	return charges;
+    }
+
+    public void setCharges(BigDecimal charges) {
+	this.charges = charges;
+    }
+
+    public String getStatus() {
+	return status;
+    }
+
+    public void setStatus(String status) {
+	this.status = status;
+    }
+
 }

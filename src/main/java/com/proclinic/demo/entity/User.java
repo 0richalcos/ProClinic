@@ -11,13 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "user")
 public class User {
@@ -49,4 +42,72 @@ public class User {
     @OneToMany
     @JoinColumn(name = "user_id")
     private List<Appointment> appointments;
+
+    public User() {
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    public String getUsername() {
+	return username;
+    }
+
+    public void setUsername(String username) {
+	this.username = username;
+    }
+
+    public String getPassword() {
+	return password;
+    }
+
+    public void setPassword(String password) {
+	this.password = password;
+    }
+
+    public int getEnabled() {
+	return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+	this.enabled = enabled;
+    }
+
+    public List<RoomDesc> getRoomDescs() {
+	return roomDescs;
+    }
+
+    public void setRoomDescs(List<RoomDesc> roomDescs) {
+	this.roomDescs = roomDescs;
+    }
+
+    public List<Authorities> getAuthorities() {
+	return authorities;
+    }
+
+    public void setAuthorities(List<Authorities> authorities) {
+	this.authorities = authorities;
+    }
+
+    public List<Payment> getPayments() {
+	return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+	this.payments = payments;
+    }
+
+    public List<Appointment> getAppointments() {
+	return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+	this.appointments = appointments;
+    }
+
 }
