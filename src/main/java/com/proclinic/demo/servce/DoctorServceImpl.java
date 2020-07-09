@@ -60,7 +60,7 @@ public class DoctorServceImpl implements DoctorServce{
 	@Override
 	public Boolean deletedoctor(List<String> list) {
 		for(String  i:list) {
-			
+			doctormapper.Doctordelete(Integer.parseInt(i));
 		}
 		return null;
 	}
