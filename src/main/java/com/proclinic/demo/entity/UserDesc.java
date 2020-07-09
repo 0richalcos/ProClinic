@@ -12,13 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
 @Entity
 @Table(name = "user_desc")
 public class UserDesc {
@@ -64,109 +57,111 @@ public class UserDesc {
     @JoinColumn(name = "department_id")
     private Department department;
 
-	public int getId() {
-		return id;
-	}
+    public UserDesc() {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+	return id;
+    }
 
-	public String getSpecialization() {
-		return specialization;
-	}
+    public void setId(int id) {
+	this.id = id;
+    }
 
-	public void setSpecialization(String specialization) {
-		this.specialization = specialization;
-	}
+    public String getSpecialization() {
+	return specialization;
+    }
 
-	public String getExperience() {
-		return experience;
-	}
+    public void setSpecialization(String specialization) {
+	this.specialization = specialization;
+    }
 
-	public void setExperience(String experience) {
-		this.experience = experience;
-	}
+    public String getExperience() {
+	return experience;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public void setExperience(String experience) {
+	this.experience = experience;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public String getGender() {
+	return gender;
+    }
 
-	public Date getBirthday() {
-		return birthday;
-	}
+    public void setGender(String gender) {
+	this.gender = gender;
+    }
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+    public Date getBirthday() {
+	return birthday;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public void setBirthday(Date birthday) {
+	this.birthday = birthday;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public int getAge() {
+	return age;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setAge(int age) {
+	this.age = age;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+	return email;
+    }
 
-	public String getDetails() {
-		return details;
-	}
+    public void setEmail(String email) {
+	this.email = email;
+    }
 
-	public void setDetails(String details) {
-		this.details = details;
-	}
+    public String getDetails() {
+	return details;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setDetails(String details) {
+	this.details = details;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getAddress() {
+	return address;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setAddress(String address) {
+	this.address = address;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public String getPhone() {
+	return phone;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setPhone(String phone) {
+	this.phone = phone;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getStatus() {
+	return status;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public void setStatus(String status) {
+	this.status = status;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public User getUser() {
+	return user;
+    }
 
-	public Department getDepartment() {
-		return department;
-	}
+    public void setUser(User user) {
+	this.user = user;
+    }
 
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-    
-    
+    public Department getDepartment() {
+	return department;
+    }
+
+    public void setDepartment(Department department) {
+	this.department = department;
+    }
+
 }

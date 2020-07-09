@@ -11,13 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "service")
 public class Service {
@@ -34,4 +27,41 @@ public class Service {
     @ManyToOne
     @JoinColumn(name = "payment_id")
     private Payment payment;
+
+    public Service() {
+
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    public BigDecimal getMoney() {
+	return money;
+    }
+
+    public void setMoney(BigDecimal money) {
+	this.money = money;
+    }
+
+    public Payment getPayment() {
+	return payment;
+    }
+
+    public void setPayment(Payment payment) {
+	this.payment = payment;
+    }
+
 }

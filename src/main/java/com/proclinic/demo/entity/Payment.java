@@ -14,13 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "payment")
 public class Payment {
@@ -52,4 +45,72 @@ public class Payment {
     @OneToMany
     @JoinColumn(name = "payment_id")
     private List<Service> services;
+
+    public Payment() {
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    public Patient getPatient() {
+	return patient;
+    }
+
+    public void setPatient(Patient patient) {
+	this.patient = patient;
+    }
+
+    public User getUser() {
+	return user;
+    }
+
+    public void setUser(User user) {
+	this.user = user;
+    }
+
+    public Department getDepartment() {
+	return department;
+    }
+
+    public void setDepartment(Department department) {
+	this.department = department;
+    }
+
+    public BigDecimal getCharges() {
+	return charges;
+    }
+
+    public void setCharges(BigDecimal charges) {
+	this.charges = charges;
+    }
+
+    public Date getChargesDate() {
+	return chargesDate;
+    }
+
+    public void setChargesDate(Date chargesDate) {
+	this.chargesDate = chargesDate;
+    }
+
+    public String getStatus() {
+	return status;
+    }
+
+    public void setStatus(String status) {
+	this.status = status;
+    }
+
+    public List<Service> getServices() {
+	return services;
+    }
+
+    public void setServices(List<Service> services) {
+	this.services = services;
+    }
+
 }
