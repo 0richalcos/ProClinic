@@ -86,13 +86,13 @@
 			<!-- Main Content -->
 			<div class="container">
 
-				<div class="row">
+				<div class="row" >
 					<!-- Widget Item -->
-					<div class="col-md-12">
+					<div class="col-md-12" id="table">
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">医生s List</h3>
-							<div class="table-responsive mb-3">
-								<table id="tableId" class="table table-bordered table-striped">
+							<div class="table-responsive mb-3" >
+								<table class="table table-bordered table-striped">
 									<thead>
 										<tr>
 											<th class="no-sort">
@@ -130,8 +130,8 @@
 							  		<tr v-for="(con,index) in conllection">
 											<td>
 												<div class="custom-control custom-checkbox">
-													<input  class="custom-control-input" type="checkbox" :id="index">
-													<label class="custom-control-label" :for="index+1"></label>
+													<input v-model="list" :value="con.id" class="custom-control-input" type="checkbox" :id="con.id">
+													<label class="custom-control-label" :for="con.id"></label>
 												</div>
 											</td>
 											<td>{{con.id}}</td>
@@ -141,38 +141,12 @@
 											<td>
 												<span class="badge badge-success">{{con.status}}</span>
 											</td>
-											<td><a :href="'about-doctor.html?id='+con.id"><button>详情</button></a><button>删除</button></td>
+											<td><a :href="'about-doctor.html?id='+con.id"><button>详情</button></a><a :href="'edit-doctor.html?id='+con.id"><button>修改</button></a></td>
 										</tr>
 										 
 									</tbody>
                                 </table>
-								<script type="text/javascript">
-									let v=new Vue({
-										el:"#tableId",
-										data:{
-											conllection:[]
-										},
-										methods:{
-											getAll(){
-												axios.get('/doctor').then(res => {
-													console.log(res);
-													this.conllection=res.data;
-												}).catch(err=>{
-													console.error(err);
-												});
-											},
-											deleAll(){
-												axios.get('/doctor').then(res => {
-													console.log(res);
-													this.conllection=res.data;
-												});
-											}
-										},
-										mounted(){
-											this.getAll();
-										}
-									})
-								</script>
+							
 								<!--Export links-->
 								<nav aria-label="Page navigation example">
 									<ul class="pagination justify-content-center export-pagination">
@@ -191,11 +165,42 @@
 									</ul>
 								</nav>
 								<!-- /Export links-->
-								<button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
+								<button type="button" class="btn btn-danger mt-3 mb-0" @click="deleAll()"><span class="ti-trash"></span> DELETE</button>
 								<button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
 							</div>
 						</div>
 					</div>
+					<script type="text/javascript">
+						let v=new Vue({
+							el:"#table",
+							data:{
+								conllection:[],
+								list:[]
+							},
+							methods:{
+								getAll(){
+									axios.get('/doctor').then(res => {
+										console.log(res);
+										this.conllection=res.data;
+									}).catch(err=>{
+										console.error(err);
+									});
+								},
+								deleAll(){
+									axios.delete('/doctor',{
+										data:this.list
+									}).then(res => {
+										console.log(res);
+										this.conllection=res.data;
+									}),
+									this.getAll();
+								}
+							},
+							mounted(){
+								this.getAll();
+							}
+						})
+					</script>
 					<!-- /Widget Item -->
 				</div>
 			</div>
