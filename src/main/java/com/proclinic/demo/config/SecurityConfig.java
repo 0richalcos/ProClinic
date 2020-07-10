@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 	http
 		.authorizeRequests()
-		.antMatchers("/login", "/log.html", "/login.html", "/sign-up.html", "/charts/*", "/css/*",
+		.antMatchers("/login", "/register", "/log.html", "/login.html", "/sign-up.html", "/charts/*", "/css/*",
 			"/datatable/*",
 			"/fonts/*",
 			"/images/*", "/js/*")

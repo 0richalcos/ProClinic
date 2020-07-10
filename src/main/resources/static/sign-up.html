@@ -34,14 +34,10 @@
 		<!--/Pre Loader -->
 		<!-- Color Changer -->
 		<div class="theme-settings" id="switcher">
-			<span class="theme-click">
-				<span class="ti-settings"></span>
-			</span>
-			<span class="theme-color theme-default theme-active" data-color="green"></span>
-			<span class="theme-color theme-blue" data-color="blue"></span>
-			<span class="theme-color theme-red" data-color="red"></span>
-			<span class="theme-color theme-violet" data-color="violet"></span>
-			<span class="theme-color theme-yellow" data-color="yellow"></span>
+			<span class="theme-click"> <span class="ti-settings"></span>
+			</span> <span class="theme-color theme-default theme-active" data-color="green"></span> <span class="theme-color theme-blue"
+			 data-color="blue"></span> <span class="theme-color theme-red" data-color="red"></span> <span class="theme-color theme-violet"
+			 data-color="violet"></span> <span class="theme-color theme-yellow" data-color="yellow"></span>
 		</div>
 		<!-- /Color Changer -->
 		<div class="wrapper" id="app">
@@ -81,28 +77,29 @@
 
 									<div class="form-group row">
 										<div class="col-sm-12">
-											<input v-model="repassword" @blur="checkPassword" type="password" placeholder="Confirm Password" name="pass_confirmation"
-											 class="form-control" data-validation="strength" data-validation-strength="2"
-											 data-validation-has-keyup-event="true">
+											<input v-model="repassword" @blur="checkPassword" type="password" placeholder="Confirm Password" class="form-control"
+											 data-validation="strength" data-validation-strength="2" data-validation-has-keyup-event="true">
 										</div>
 									</div>
 									<div class="form-check row">
 										<div class="col-sm-12 text-left">
 											<div class="custom-control custom-checkbox">
-												<input v-model="deal" class="custom-control-input" type="checkbox" id="ex-check-2">
-												<label class="custom-control-label" for="ex-check-2">I agree to Terms & Conditions</label>
+												<input v-model="deal" class="custom-control-input" type="checkbox" id="ex-check-2"> <label class="custom-control-label"
+												 for="ex-check-2">I
+													agree to Terms & Conditions</label>
 											</div>
 										</div>
 									</div>
 									<!-- Button -->
 									<div class="button-btn-block">
-										<button type="button" class="btn btn-primary btn-lg btn-block">注册</button>
+										<button type="button" @click="register" class="btn btn-primary btn-lg btn-block">注册</button>
 									</div>
 									<!-- /Button -->
 									<!-- Linsk -->
 									<div class="auth-footer-text">
-										<small>Alredy Sign Up,
-											<a href="login.html">Login</a> Here</small>
+										<small>Alredy Sign Up, <a href="login.html">Login</a>
+											Here
+										</small>
 									</div>
 									<!-- /Links -->
 								</form>
@@ -129,17 +126,17 @@
 					register: function() {
 						if (this.password == this.repassword && this.deal != undefined) {
 							axios.post(`/register`, {
-								params: {
-									email: this.email,
-									username: this.username,
-									password: this.password,
-								},
+								email: this.email,
+								username: this.username,
+								password: this.password
 							}).then(res => {
 								if (res.data == "OK") {
 									window.location.href = "login.html";
 								} else {
 									this.flag = res.data;
 								}
+							}).catch(err => {
+								confirm("注册错误")
 							})
 						}
 					},

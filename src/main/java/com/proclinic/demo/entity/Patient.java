@@ -12,8 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "patient")
+@JsonIgnoreProperties({ "payments", "appointments" })
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

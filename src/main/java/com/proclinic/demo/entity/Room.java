@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "room")
 public class Room {
@@ -29,47 +31,47 @@ public class Room {
 
     @OneToMany
     @JoinColumn(name = "room_id")
+    @JsonIgnore
     private List<RoomDesc> roomDescs;
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+	return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+	this.id = id;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public String getType() {
+	return type;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setType(String type) {
+	this.type = type;
+    }
 
-	public int getSize() {
-		return size;
-	}
+    public int getSize() {
+	return size;
+    }
 
-	public void setSize(int size) {
-		this.size = size;
-	}
+    public void setSize(int size) {
+	this.size = size;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getStatus() {
+	return status;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setStatus(String status) {
+	this.status = status;
+    }
 
-	public List<RoomDesc> getRoomDescs() {
-		return roomDescs;
-	}
+    public List<RoomDesc> getRoomDescs() {
+	return roomDescs;
+    }
 
-	public void setRoomDescs(List<RoomDesc> roomDescs) {
-		this.roomDescs = roomDescs;
-	}
-
+    public void setRoomDescs(List<RoomDesc> roomDescs) {
+	this.roomDescs = roomDescs;
+    }
 
 }
