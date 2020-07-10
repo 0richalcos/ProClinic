@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,10 +36,8 @@ public class DoctorContorller {
 		return doctorrepository.findAll();
 	}
 	@GetMapping("/doctor/{id}")
-	public ModelAndView save(ModelAndView mva,@PathVariable int id) {
-		mva.addObject("finby",doctorservce.findAllBy(id));
-		mva.setViewName("");
-		return mva;
+	public UserDesc save(@PathVariable int id) {
+		return doctorservce.findAllBy(id);
 	}
 	//X_X
 	@CrossOrigin

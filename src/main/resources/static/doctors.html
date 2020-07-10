@@ -104,9 +104,9 @@
 											<th>医生 ID</th>
 											<th>医生 Name</th>
 											<th>Experience <small>(in Years)</small></th>
-											<th>Phone</th>
 											<th>Specialization</th>
 											<th>情况</th>
+											<th>Phone</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -127,22 +127,21 @@
 											</td>
 										</tr>--> 
 										
-										
 							  		<tr v-for="(con,index) in conllection">
 											<td>
 												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" :id="index+1">
+													<input  class="custom-control-input" type="checkbox" :id="index">
 													<label class="custom-control-label" :for="index+1"></label>
 												</div>
 											</td>
 											<td>{{con.id}}</td>
 											<td>{{con.user.username}}</td>
 											<td>{{con.experience}}</td>
-											<td>{{con.phone}}</td>
 											<td>{{con.department.name}}</td>
 											<td>
 												<span class="badge badge-success">{{con.status}}</span>
 											</td>
+											<td><a :href="'about-doctor.html?id='+con.id"><button>详情</button></a><button>删除</button></td>
 										</tr>
 										 
 									</tbody>
@@ -160,6 +159,12 @@
 													this.conllection=res.data;
 												}).catch(err=>{
 													console.error(err);
+												});
+											},
+											deleAll(){
+												axios.get('/doctor').then(res => {
+													console.log(res);
+													this.conllection=res.data;
 												});
 											}
 										},

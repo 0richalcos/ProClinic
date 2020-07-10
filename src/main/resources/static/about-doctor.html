@@ -26,6 +26,8 @@
 
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
 </head>
 
 <body>
@@ -49,7 +51,7 @@
 		<span class="theme-color theme-yellow" data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
-	<div class="wrapper">
+	<div class="wrapper" id="ad">
 		<!-- Page Content -->
 		<div id="content">
 			<!-- header -->
@@ -112,32 +114,31 @@
                                             <tbody>
                                                 <tr>
                                                     <td><strong>Specialization</strong></td>
-                                                    <td>General Physician</td>
+                                                    <td>{{gaa.specialization}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Experience</strong></td>
-                                                    <td>14 Years</td>
+                                                    <td>{{gaa.experience}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Gender</strong></td>
-                                                    <td>Male</td>
+                                                    <td>{{gaa.gender}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Address</strong></td>
-                                                    <td>Koramangala
-                                                        Banglore, India</td>
+                                                    <td>{{gaa.address}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Phone</strong> </td>
-                                                    <td>+91 11111 11111</td>
+                                                    <td>{{gaa.phone}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Date Of Birth</strong> </td>
-                                                    <td>26-10-1989</td>
+                                                    <td>{{gaa.birthday}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><strong>Email</strong></td>
-                                                    <td>your@email.com</td>
+                                                    <td>{{gaa.user.email}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -264,6 +265,25 @@
 				</div>
 			</div>
 			<!-- /Copy Rights-->
+			<script type="text/javascript">
+				let vue=new Vue({
+					el:"#ad",
+					data:{
+						gaa:[]
+					},
+					methods:{
+						getid(id){
+							axios.get(`/doctor/${id}`).then(res=>{
+								this.gaa=res.data;
+							})
+						}
+					},
+					mounted(){
+						this.getid(window.location.search.split('=')[1]);
+						console.log(window.location.search.split('=')[1])
+					}
+				})
+			</script>
 		</div>
 		<!-- /Page Content -->
 	</div>
