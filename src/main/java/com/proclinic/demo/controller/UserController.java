@@ -16,8 +16,6 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@RequestBody User user) {
-	System.out.println("控制器启动");
-	System.out.println(user.getPassword());
 	user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 	return userService.register(user);
     }

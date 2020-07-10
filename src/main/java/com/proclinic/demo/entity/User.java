@@ -30,6 +30,9 @@ public class User {
     @Column(name = "enabled", length = 4)
     private int enabled = 1;
 
+    @Column(name = "email", length = 20)
+    private String email;
+
     @OneToMany
     @JoinColumn(name = "user_id")
     private List<RoomDesc> roomDescs;
@@ -79,6 +82,14 @@ public class User {
 
     public void setEnabled(int enabled) {
 	this.enabled = enabled;
+    }
+
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
     }
 
     public List<RoomDesc> getRoomDescs() {
