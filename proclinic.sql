@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 08/07/2020 17:59:06
+ Date: 10/07/2020 14:23:40
 */
 
 SET NAMES utf8mb4;
@@ -55,13 +55,14 @@ CREATE TABLE `authorities`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_authorities_id`(`user_id`) USING BTREE,
   CONSTRAINT `user_authorities_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of authorities
 -- ----------------------------
 INSERT INTO `authorities` VALUES (1, 1, 'ROLE_ADMIN');
 INSERT INTO `authorities` VALUES (2, 1, 'ROLE_USER');
+INSERT INTO `authorities` VALUES (4, 5, 'ROLE_USER');
 
 -- ----------------------------
 -- Table structure for department
@@ -190,13 +191,16 @@ CREATE TABLE `user`  (
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',
   `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `enabled` tinyint(4) NOT NULL DEFAULT 1 COMMENT '是否可用(1：可用；0：不可用)',
+  `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '邮箱',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'admin', '$2a$10$kO1tB6pccLKdBgJUV52FauWEhv2gfZF49fuaLsC5WBtsCTNnwH7sO', 1);
+INSERT INTO `user` VALUES (1, 'admin', '$2a$10$kO1tB6pccLKdBgJUV52FauWEhv2gfZF49fuaLsC5WBtsCTNnwH7sO', 1, '');
+INSERT INTO `user` VALUES (2, 'user', '$2a$10$kO1tB6pccLKdBgJUV52FauWEhv2gfZF49fuaLsC5WBtsCTNnwH7sO', 1, '');
+INSERT INTO `user` VALUES (5, 'root', '$2a$10$A9MOgmWxarE49KVNFJgpse/ueby/KQ3.iVId73y28VtwJOdv/lGmy', 1, '1943097043@qq.com');
 
 -- ----------------------------
 -- Table structure for user_desc
@@ -209,7 +213,6 @@ CREATE TABLE `user_desc`  (
   `gender` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
   `birthday` date NULL DEFAULT NULL COMMENT '生日',
   `age` int(11) NULL DEFAULT NULL COMMENT '年龄',
-  `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
   `details` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '医生详情',
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地址',
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话号码',
