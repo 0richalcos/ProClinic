@@ -31,8 +31,8 @@ public class DoctorContorller {
 
 
 	@GetMapping("/doctor")
-	public Page<UserDesc> list(@RequestParam(name="p",defaultValue = "0") int page,@RequestParam(name="s",defaultValue = "2") int size) {
-		return doctorrepository.findAll(PageRequest.of(page, size,Sort.by("id").descending()));
+	public List<UserDesc> list() {
+		return doctorrepository.findAll();
 	}
 	@GetMapping("/doctor/{id}")
 	public ModelAndView save(ModelAndView mva,@PathVariable int id) {
