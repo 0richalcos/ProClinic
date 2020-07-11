@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "user_desc")
 public class UserDesc {
@@ -29,13 +33,12 @@ public class UserDesc {
     private String gender;
 
     @Column(name = "birthday")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     @Column(name = "age", length = 11)
     private int age;
-
-    @Column(name = "email", length = 20)
-    private String email;
 
     @Column(name = "details", length = 255)
     private String details;
@@ -107,14 +110,6 @@ public class UserDesc {
 
     public void setAge(int age) {
 	this.age = age;
-    }
-
-    public String getEmail() {
-	return email;
-    }
-
-    public void setEmail(String email) {
-	this.email = email;
     }
 
     public String getDetails() {

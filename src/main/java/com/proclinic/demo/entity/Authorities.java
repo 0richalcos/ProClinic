@@ -50,4 +50,10 @@ public class Authorities {
 	this.authority = authority;
     }
 
+    public Authorities(User user, String authority) {
+	super();
+	this.user = user;
+	this.authority = authority;
+    }
+
 }

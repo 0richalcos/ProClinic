@@ -26,6 +26,8 @@
 
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
 </head>
 
 <body>
@@ -87,14 +89,14 @@
 
 				<div class="row">
 					<!-- Widget Item -->
-					<div class="col-md-12">
+					<div class="col-md-12" >
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">Edit 医生</h3>
-							<form>
+							<form id="ad">
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="医生-name">医生 Name</label>
-										<input type="text" value="Dr Daniel Smith" class="form-control" placeholder="医生 name" id="医生-name">
+										<input type="text" :value="gaa.user.username" class="form-control" placeholder="医生 name" id="医生-name">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="dob">Date Of Birth</label>
@@ -170,6 +172,25 @@
 							<!-- /Alerts-->
 						</div>
 					</div>
+					<script type="text/javascript">
+						let vue=new Vue({
+							el:"#ad",
+							data:{
+								gaa:[]
+							},
+							methods:{
+								getid(id){
+									axios.get(`/doctor/${id}`).then(res=>{
+										this.gaa=res.data;
+									})
+								}
+							},
+							mounted(){
+								this.getid(window.location.search.split('=')[1]);
+								console.log(window.location.search.split('=')[1])
+							}
+						})
+					</script>
 					<!-- /Widget Item -->
 				</div>
 			</div>
