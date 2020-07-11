@@ -26,6 +26,8 @@
 
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
 </head>
 
 <body>
@@ -52,50 +54,51 @@
 	<div class="wrapper">
 		<!-- Page Content -->
 		<div id="content">
-				<!-- header -->
-								<div id="header"></div>
-								<script>
-									$("#header").load("header.html")
-								</script>
-								<!-- header -->
-				<!-- Breadcrumb -->
-				<!-- Page Title -->
-				<div class="container mt-0">
-					<div class="row breadcrumb-bar">
-						<div class="col-md-6">
-							<h3 class="block-title">病人管理</h3>
-						</div>
-						<div class="col-md-6">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">
-									<a href="index.html">
-										<span class="ti-home"></span>
-									</a>
-								</li>
-								<li class="breadcrumb-item">病人管理</li>
-								<li class="breadcrumb-item active">All 病人管理</li>
-							</ol>
-						</div>
+			<!-- header -->
+			<div id="header"></div>
+			<script>
+				$("#header").load("header.html")
+			</script>
+			<!-- header -->
+			<!-- Breadcrumb -->
+			<!-- Page Title -->
+			<div class="container mt-0">
+				<div class="row breadcrumb-bar">
+					<div class="col-md-6">
+						<h3 class="block-title">病人管理</h3>
+					</div>
+					<div class="col-md-6">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="index.html">
+									<span class="ti-home"></span>
+								</a>
+							</li>
+							<li class="breadcrumb-item">病人管理</li>
+							<li class="breadcrumb-item active">All 病人管理</li>
+						</ol>
 					</div>
 				</div>
+			</div>
 			<!-- /Page Title -->
 
 			<!-- /Breadcrumb -->
 			<!-- Main Content -->
-			<div class="container">
+			<div class="container" id="app">
 
 				<div class="row">
 					<!-- Widget Item -->
 					<div class="col-md-12">
 						<div class="widget-area-2 lochana-box-shadow">
-							<h3 class="widget-title">病人管理 List</h3>							
+							<h3 class="widget-title">病人管理 List</h3>
 							<div class="table-responsive mb-3">
 								<table id="tableId" class="table table-bordered table-striped">
 									<thead>
 										<tr>
 											<th class="no-sort">
 												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="select-all">
+													<input value="p.id" class="custom-control-input" type="checkbox"
+														id="select-all">
 													<label class="custom-control-label" for="select-all"></label>
 												</div>
 											</th>
@@ -108,200 +111,26 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
+										<tr v-for="(p,index) in patientList">
 											<td>
 												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="1">
-													<label class="custom-control-label" for="1"></label>
+													<input v-model="deleteList" :value="p.id"
+														class="custom-control-input" type="checkbox" :id="p.id">
+													<label class="custom-control-label" :for="p.id"></label>
 												</div>
 											</td>
-											<td>1</td>
-											<td>Manoj Kumar</td>
-											<td>30</td>
-											<td>333-444-7777</td>
-											<td>12-03-2018</td>
+											<td>{{p.id}}</td>
+											<td>{{p.name}}</td>
+											<td>{{p.age}}</td>
+											<td>{{p.phone}}</td>
+											<td>{{p.birthday}}</td>
 											<td>
-												<span class="badge badge-success">Completed</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="2">
-													<label class="custom-control-label" for="2"></label>
-												</div>
-											</td>
-											<td>2</td>
-											<td>Riya </td>
-											<td>26</td>
-											<td>3423-232-987</td>
-											<td>12-10-2018</td>
-											<td>
-												<span class="badge badge-warning">Pending</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="3">
-													<label class="custom-control-label" for="3"></label>
-												</div>
-											</td>
-											<td>3</td>
-											<td>Paul</td>
-											<td>46</td>
-											<td>3423-132-987</td>
-											<td>45-10-2018</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="4">
-													<label class="custom-control-label" for="4"></label>
-												</div>
-											</td>
-											<td>4</td>
-											<td>Manoj Kumar</td>
-											<td>30</td>
-											<td>333-444-7777</td>
-											<td>12-03-2018</td>
-											<td>
-												<span class="badge badge-success">Completed</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="5">
-													<label class="custom-control-label" for="5"></label>
-												</div>
-											</td>
-											<td>5</td>
-											<td>Riya </td>
-											<td>26</td>
-											<td>3423-232-987</td>
-											<td>12-10-2018</td>
-											<td>
-												<span class="badge badge-warning">Pending</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="6">
-													<label class="custom-control-label" for="6"></label>
-												</div>
-											</td>
-											<td>6</td>
-											<td>Paul</td>
-											<td>46</td>
-											<td>3423-132-987</td>
-											<td>45-10-2018</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="7">
-													<label class="custom-control-label" for="7"></label>
-												</div>
-											</td>
-											<td>7</td>
-											<td>Manoj Kumar</td>
-											<td>30</td>
-											<td>333-444-7777</td>
-											<td>12-03-2018</td>
-											<td>
-												<span class="badge badge-success">Completed</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="8">
-													<label class="custom-control-label" for="8"></label>
-												</div>
-											</td>
-											<td>8</td>
-											<td>Riya </td>
-											<td>26</td>
-											<td>3423-232-987</td>
-											<td>12-10-2018</td>
-											<td>
-												<span class="badge badge-warning">Pending</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="9">
-													<label class="custom-control-label" for="9"></label>
-												</div>
-											</td>
-											<td>9</td>
-											<td>Paul</td>
-											<td>46</td>
-											<td>3423-132-987</td>
-											<td>45-10-2018</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="10">
-													<label class="custom-control-label" for="10"></label>
-												</div>
-											</td>
-											<td>10</td>
-											<td>Manoj Kumar</td>
-											<td>30</td>
-											<td>333-444-7777</td>
-											<td>12-03-2018</td>
-											<td>
-												<span class="badge badge-success">Completed</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="11">
-													<label class="custom-control-label" for="11"></label>
-												</div>
-											</td>
-											<td>11</td>
-											<td>Riya </td>
-											<td>26</td>
-											<td>3423-232-987</td>
-											<td>12-10-2018</td>
-											<td>
-												<span class="badge badge-warning">Pending</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="12">
-													<label class="custom-control-label" for="12"></label>
-												</div>
-											</td>
-											<td>12</td>
-											<td>Paul</td>
-											<td>46</td>
-											<td>3423-132-987</td>
-											<td>45-10-2018</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
+												<span class="badge badge-success">{{p.status}}</span>
 											</td>
 										</tr>
 									</tbody>
 								</table>
+
 								<!--Export links-->
 								<nav aria-label="Page navigation example">
 									<ul class="pagination justify-content-center export-pagination">
@@ -309,19 +138,23 @@
 											<a class="page-link" href="#"><span class="ti-download"></span> csv</a>
 										</li>
 										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-printer"></span>  print</a>
+											<a class="page-link" href="#"><span class="ti-printer"></span> print</a>
 										</li>
 										<li class="page-item">
 											<a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
 										</li>
 										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
+											<a class="page-link" href="#"><span class="ti-align-justify"></span>
+												Excel</a>
 										</li>
 									</ul>
 								</nav>
 								<!-- /Export links-->
-								<button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
-								<button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
+								<button @click="del" type="button" class="btn btn-danger mt-3 mb-0"><span
+										class="ti-trash"></span>
+									DELETE</button>
+								<button type="button" class="btn btn-primary mt-3 mb-0"><span
+										class="ti-pencil-alt"></span> EDIT</button>
 							</div>
 						</div>
 					</div>
@@ -332,7 +165,9 @@
 			<!--Copy Rights-->
 			<div class="container">
 				<div class="d-sm-flex justify-content-center">
-				  <span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights reserved.</span>
+					<span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a
+							href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights
+						reserved.</span>
 				</div>
 			</div>
 			<!-- /Copy Rights-->
@@ -343,18 +178,52 @@
 	<a id="back-to-top" href="#" class="back-to-top">
 		<span class="ti-angle-up"></span>
 	</a>
+
+	<script type="text/javascript">
+		new Vue({
+			el: "#app",
+			data: {
+				patientList: [],
+				deleteList: []
+			},
+			methods: {
+				getAll() {
+					axios.get('/patient').then(res => {
+						console.log(res);
+						this.patientList = res.data;
+					}).catch(err => {
+						console.error(err);
+					});
+				},
+				del: function () {
+					axios.delete(`/delete`, { data: this.deleteList })
+						.then(res => {
+							console.log(res);
+							this.deleteList = res.data;
+							this.getAll();
+						})
+						.catch(err => {
+							console.log(err);
+						})
+				},
+			},
+			mounted() {
+				this.getAll();
+			}
+		})
+	</script>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<!-- Popper Library-->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap Library-->
-    <script src="js/bootstrap.min.js"></script>
-    
-    <!-- Datatable  -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Datatable  -->
 	<script src="datatable/jquery.dataTables.min.js"></script>
 	<script src="datatable/dataTables.bootstrap4.min.js"></script>
-    
+
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
 	<script src="js/custom-datatables.js"></script>
