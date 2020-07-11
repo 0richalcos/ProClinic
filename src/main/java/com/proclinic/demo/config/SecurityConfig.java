@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/fonts/*",
 			"/images/*", "/js/*")
 		.permitAll()
-//		.anyRequest().authenticated()
+		.anyRequest().authenticated()
 		.and()
 		.formLogin()
 		.loginPage("/login.html")

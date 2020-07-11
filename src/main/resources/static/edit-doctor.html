@@ -96,47 +96,46 @@
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="医生-name">医生 Name</label>
-										<input type="text" :value="gaa.user.username" class="form-control" placeholder="医生 name" id="医生-name">
+										<input type="text" v-model="gaa.user.username"  class="form-control" placeholder="医生 name" id="医生-name">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="dob">Date Of Birth</label>
-										<input type="date" value="1989-12-12" placeholder="Date of Birth" class="form-control" id="dob">
+										<label for="dob">出生日期</label>
+										<input type="date" v-model="gaa.birthday"  placeholder="Date of Birth" class="form-control" id="dob">
                                     </div>
                                     <div class="form-group col-md-6">
-										<label for="specialization">Specialization</label>
-										<input type="text" value="Dentist" placeholder="Specialization" class="form-control" id="specialization">
+										<label for="specialization">专业化</label>
+										<input type="text" v-model="gaa.specialization"  placeholder="Specialization" class="form-control" id="specialization">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="experience">Experience</label>
-										<input type="text" value="10 years"  placeholder="Experience" class="form-control" id="experience">
+										<label for="experience">工作年龄</label>
+										<input type="text" v-model="gaa.experience"  placeholder="Experience" class="form-control" id="experience">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="age">Age</label>
-										<input type="text" value="29" placeholder="Age" class="form-control" id="age">
+										<label for="age">年龄</label>
+										<input type="text" v-model="gaa.age"  placeholder="Age" class="form-control" id="age">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="phone">Phone</label>
-										<input type="text" value="+91 12345 67890" placeholder="Phone" class="form-control" id="phone">
+										<label for="phone">电话</label>
+										<input type="text" v-model="gaa.phone" placeholder="Phone" class="form-control" id="phone">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="email">Email</label>
-										<input type="email" value="email@yourdomain.com"  placeholder="email" class="form-control" id="Email">
+										<label for="phone">科室</label>
+										<input type="text" v-model="gaa.department.name" placeholder="科室" class="form-control" id="phone">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="gender">Gender</label>
-										<select class="form-control" id="gender">
-											<option selected>Male</option>
-											<option>Female</option>
-											<option>Other</option>
+										<label for="gender">性别</label>
+										<select class="form-control" v-model="gaa.gender" id="gender">
+											<option value="男">男</option>
+											<option value="女">女</option>
 										</select>
 									</div>
 									<div class="form-group col-md-6">
-										<label for="about-doctor">医生 Details</label>
-										<textarea placeholder="医生 Details" class="form-control" id="about-doctor" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mauris odio, malesuada non rhoncus et, ultricies at turpis. Sed eget lectus nec magna bibendum ornare. </textarea>
+										<label for="about-doctor">医生简介</label>
+										<textarea placeholder="医生 Details" class="form-control" id="about-doctor" rows="3">{{gaa.details}}</textarea>
                                     </div>
                                     <div class="form-group col-md-6">
-										<label for="address">Address</label>
-										<textarea placeholder="Address" class="form-control" id="address" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mauris odio, malesuada non rhoncus et, ultricies at turpis.</textarea>
+										<label for="address">地址</label>
+										<textarea placeholder="Address" class="form-control" id="address" rows="3">{{gaa.address}}</textarea>
 									</div>
 									<div class="form-group col-md-12">
 										<label for="file">File</label>
@@ -152,7 +151,7 @@
 										</div>
 									</div>
 									<div class="form-group col-md-6 mb-3">
-										<button type="submit" class="btn btn-primary btn-lg">Update</button>
+										<button type="button" class="btn btn-primary btn-lg" @click="putid()">Update</button>
 									</div>
 								</div>
 							</form>
@@ -176,13 +175,46 @@
 						let vue=new Vue({
 							el:"#ad",
 							data:{
-								gaa:[]
+								gaa:{
+									id:"",
+									specialization:"",
+									experience:"",
+									gender: "",
+									birthday: "",
+									age: "",
+									details: "",
+									address: "",
+									phone: "",
+									department: {
+											name: ""
+									    },
+									user: {
+									        username: ""
+									    }
+								}
 							},
 							methods:{
 								getid(id){
 									axios.get(`/doctor/${id}`).then(res=>{
-										this.gaa=res.data;
+										this.gaa.id=res.data.id;
+										this.gaa.specialization=res.data.specialization;
+										this.gaa.experience=res.data.experience;
+										this.gaa.gender=res.data.gender;
+										this.gaa.birthday=res.data.birthday;
+										this.gaa.age=res.data.age;
+										this.gaa.details=res.data.details;
+										this.gaa.address=res.data.address;
+										this.gaa.phone=res.data.phone;
+										this.gaa.department.name=res.data.department.name;
+										this.gaa.user.username=res.data.user.username;
 									})
+								},
+								putid(){
+									axios.put(`/doctor/${this.gaa.id}`,this.gaa).then(res=>{
+										alert(res.data);
+										window.location="doctors.html"; 
+									})
+									
 								}
 							},
 							mounted(){
