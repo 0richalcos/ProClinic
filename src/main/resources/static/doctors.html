@@ -26,6 +26,8 @@
 
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
 </head>
 
 <body>
@@ -84,13 +86,13 @@
 			<!-- Main Content -->
 			<div class="container">
 
-				<div class="row">
+				<div class="row" >
 					<!-- Widget Item -->
-					<div class="col-md-12">
+					<div class="col-md-12" id="table">
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">医生s List</h3>
-							<div class="table-responsive mb-3">
-								<table id="tableId" class="table table-bordered table-striped">
+							<div class="table-responsive mb-3" >
+								<table class="table table-bordered table-striped">
 									<thead>
 										<tr>
 											<th class="no-sort">
@@ -102,239 +104,49 @@
 											<th>医生 ID</th>
 											<th>医生 Name</th>
 											<th>Experience <small>(in Years)</small></th>
-											<th>Phone</th>
 											<th>Specialization</th>
 											<th>情况</th>
+											<th>Phone</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
+									<!--    <tr>
 											<td>
 												<div class="custom-control custom-checkbox">
 													<input class="custom-control-input" type="checkbox" id="1">
 													<label class="custom-control-label" for="1"></label>
 												</div>
 											</td>
-											<td>1</td>
-											<td>Manoj Kumar</td>
-											<td>10</td>
-											<td>333-444-7777</td>
-											<td>牙科</td>
+											<td>123</td>
+											<td>123</td>
+											<td>123</td>
+											<td>123</td>
+											<td>123</td>
 											<td>
-												<span class="badge badge-success">可出诊</span>
+												<span class="badge badge-success">123</span>
 											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="2">
-													<label class="custom-control-label" for="2"></label>
-												</div>
-											</td>
-											<td>2</td>
-											<td>Riya </td>
-											<td>6</td>
-											<td>3423-232-987</td>
-											<td>皮肤科</td>
-											<td>
-												<span class="badge badge-warning">休假</span>
-											</td>
-										</tr>
-										<tr>
+										</tr>--> 
+										
+							  		<tr v-for="(con,index) in conllection">
 											<td>
 												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="3">
-													<label class="custom-control-label" for="3"></label>
+													<input v-model="list" :value="con.id" class="custom-control-input" type="checkbox" :id="con.id">
+													<label class="custom-control-label" :for="con.id"></label>
 												</div>
 											</td>
-											<td>3</td>
-											<td>Paul</td>
-											<td>15</td>
-											<td>3423-132-987</td>
-											<td>General Physician</td>
+											<td>{{con.id}}</td>
+											<td>{{con.user.username}}</td>
+											<td>{{con.experience}}</td>
+											<td>{{con.department.name}}</td>
 											<td>
-												<span class="badge badge-danger">Not 可出诊</span>
+												<span class="badge badge-success">{{con.status}}</span>
 											</td>
+											<td><a :href="'about-doctor.html?id='+con.id"><button>详情</button></a><a :href="'edit-doctor.html?id='+con.id"><button>修改</button></a></td>
 										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="4">
-													<label class="custom-control-label" for="4"></label>
-												</div>
-											</td>
-											<td>4</td>
-											<td>Manoj Kumar</td>
-											<td>20</td>
-											<td>333-444-7777</td>
-											<td>ENT</td>
-											<td>
-												<span class="badge badge-success">可出诊</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="5">
-													<label class="custom-control-label" for="5"></label>
-												</div>
-											</td>
-											<td>5</td>
-											<td>Riya </td>
-											<td>16</td>
-											<td>3423-232-987</td>
-											<td>General Physician</td>
-											<td>
-												<span class="badge badge-warning">休假</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="6">
-													<label class="custom-control-label" for="6"></label>
-												</div>
-											</td>
-											<td>6</td>
-											<td>Paul</td>
-											<td>12</td>
-											<td>3423-132-987</td>
-											<td>皮肤科</td>
-											<td>
-												<span class="badge badge-danger">Not 可出诊</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="7">
-													<label class="custom-control-label" for="7"></label>
-												</div>
-											</td>
-											<td>7</td>
-											<td>Manoj Kumar</td>
-											<td>19</td>
-											<td>333-444-7777</td>
-											<td>Nuero Surgen</td>
-											<td>
-												<span class="badge badge-success">可出诊</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="1">
-													<label class="custom-control-label" for="1"></label>
-												</div>
-											</td>
-											<td>1</td>
-											<td>Manoj Kumar</td>
-											<td>10</td>
-											<td>333-444-7777</td>
-											<td>牙科</td>
-											<td>
-												<span class="badge badge-success">可出诊</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="2">
-													<label class="custom-control-label" for="2"></label>
-												</div>
-											</td>
-											<td>2</td>
-											<td>Riya </td>
-											<td>6</td>
-											<td>3423-232-987</td>
-											<td>皮肤科</td>
-											<td>
-												<span class="badge badge-warning">休假</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="3">
-													<label class="custom-control-label" for="3"></label>
-												</div>
-											</td>
-											<td>3</td>
-											<td>Paul</td>
-											<td>15</td>
-											<td>3423-132-987</td>
-											<td>General Physician</td>
-											<td>
-												<span class="badge badge-danger">Not 可出诊</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="4">
-													<label class="custom-control-label" for="4"></label>
-												</div>
-											</td>
-											<td>4</td>
-											<td>Manoj Kumar</td>
-											<td>20</td>
-											<td>333-444-7777</td>
-											<td>ENT</td>
-											<td>
-												<span class="badge badge-success">可出诊</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="5">
-													<label class="custom-control-label" for="5"></label>
-												</div>
-											</td>
-											<td>5</td>
-											<td>Riya </td>
-											<td>16</td>
-											<td>3423-232-987</td>
-											<td>General Physician</td>
-											<td>
-												<span class="badge badge-warning">休假</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="6">
-													<label class="custom-control-label" for="6"></label>
-												</div>
-											</td>
-											<td>6</td>
-											<td>Paul</td>
-											<td>12</td>
-											<td>3423-132-987</td>
-											<td>皮肤科</td>
-											<td>
-												<span class="badge badge-danger">Not 可出诊</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="7">
-													<label class="custom-control-label" for="7"></label>
-												</div>
-											</td>
-											<td>7</td>
-											<td>Manoj Kumar</td>
-											<td>19</td>
-											<td>333-444-7777</td>
-											<td>Nuero Surgen</td>
-											<td>
-												<span class="badge badge-success">可出诊</span>
-											</td>
-										</tr>
+										 
 									</tbody>
                                 </table>
-                                
+							
 								<!--Export links-->
 								<nav aria-label="Page navigation example">
 									<ul class="pagination justify-content-center export-pagination">
@@ -353,11 +165,42 @@
 									</ul>
 								</nav>
 								<!-- /Export links-->
-								<button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
-								<button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
+								<button type="button" class="btn btn-danger mt-3 mb-0" @click="deleAll()"><span class="ti-trash"></span> DELETE</button>
+								<a href="add-doctor.html"><button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> 添加</button></a>
 							</div>
 						</div>
 					</div>
+					<script type="text/javascript">
+						let v=new Vue({
+							el:"#table",
+							data:{
+								conllection:[],
+								list:[]
+							},
+							methods:{
+								getAll(){
+									axios.get('/doctor').then(res => {
+										console.log(res);
+										this.conllection=res.data;
+									}).catch(err=>{
+										console.error(err);
+									});
+								},
+								deleAll(){
+									axios.delete('/doctor',{
+										data:this.list
+									}).then(res => {
+										console.log(res);
+										this.conllection=res.data;
+									}),
+									this.getAll();
+								}
+							},
+							mounted(){
+								this.getAll();
+							}
+						})
+					</script>
 					<!-- /Widget Item -->
 				</div>
 			</div>

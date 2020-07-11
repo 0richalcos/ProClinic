@@ -2,31 +2,33 @@
 <html>
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
-<!-- Fav  Icon Link -->
-<link rel="shortcut icon" type="image/png" href="images/fav.png">
-<!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<!-- themify icons CSS -->
-<link rel="stylesheet" href="css/themify-icons.css">
-<!-- Animations CSS -->
-<link rel="stylesheet" href="css/animate.css">
-<!-- Main CSS -->
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/green.css" id="style_theme">
-<link rel="stylesheet" href="css/responsive.css">
-<!-- morris charts -->
-<link rel="stylesheet" href="charts/css/morris.css">
-<!-- jvectormap -->
-<link rel="stylesheet" href="css/jquery-jvectormap.css">
-<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
+	<!-- Fav  Icon Link -->
+	<link rel="shortcut icon" type="image/png" href="images/fav.png">
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- themify icons CSS -->
+	<link rel="stylesheet" href="css/themify-icons.css">
+	<!-- Animations CSS -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/green.css" id="style_theme">
+	<link rel="stylesheet" href="css/responsive.css">
+	<!-- morris charts -->
+	<link rel="stylesheet" href="charts/css/morris.css">
+	<!-- jvectormap -->
+	<link rel="stylesheet" href="css/jquery-jvectormap.css">
+	<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
 
 <script src="js/modernizr.min.js"></script>
 <script src="js/jquery-3.2.1.min.js" type="text/javascript"
 	charset="utf-8"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
 </head>
 
 <body>
@@ -49,7 +51,7 @@
 			data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
-	<div class="wrapper">
+	<div class="wrapper" id="ad">
 		<!-- Page Content -->
 		<div id="content">
 			<!-- header -->
@@ -258,6 +260,25 @@
 				</div>
 			</div>
 			<!-- /Copy Rights-->
+			<script type="text/javascript">
+				let vue=new Vue({
+					el:"#ad",
+					data:{
+						gaa:[]
+					},
+					methods:{
+						getid(id){
+							axios.get(`/doctor/${id}`).then(res=>{
+								this.gaa=res.data;
+							})
+						}
+					},
+					mounted(){
+						this.getid(window.location.search.split('=')[1]);
+						console.log(window.location.search.split('=')[1])
+					}
+				})
+			</script>
 		</div>
 		<!-- /Page Content -->
 	</div>

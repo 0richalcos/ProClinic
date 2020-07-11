@@ -1,6 +1,6 @@
 package com.proclinic.demo.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +36,17 @@ public class RoomDesc {
 
     @Column(name = "discharge_date")
     private Date dischargeDate;
+
+    public RoomDesc() {
+		// TODO Auto-generated constructor stub
+	}
+	public RoomDesc(Patient patient, User user, Room room, Date allotmentDate, Date dischargeDate) {
+		this.patient = patient;
+		this.user = user;
+		this.room = room;
+		this.allotmentDate = allotmentDate;
+		this.dischargeDate = dischargeDate;
+	}
 
 	public int getId() {
 		return id;

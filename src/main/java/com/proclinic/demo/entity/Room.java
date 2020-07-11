@@ -34,6 +34,9 @@ public class Room {
     @JsonIgnore
     private List<RoomDesc> roomDescs;
 
+    public Room() {
+		// TODO Auto-generated constructor stub
+	}
     public int getId() {
 	return id;
     }

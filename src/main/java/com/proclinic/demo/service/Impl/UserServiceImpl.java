@@ -31,4 +31,12 @@ public class UserServiceImpl implements UserService {
 	return "用户名已存在，请登录";
     }
 
+    
+	@Override
+	public String selname(int id) {
+	User user =userRepository.findUserByid(id);
+	String name=user.getUsername();
+		return name;
+	}
+
 }

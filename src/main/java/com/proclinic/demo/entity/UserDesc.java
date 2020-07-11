@@ -52,6 +52,7 @@ public class UserDesc {
     @Column(name = "status", length = 10)
     private String status;
 
+    
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
