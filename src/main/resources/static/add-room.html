@@ -409,13 +409,30 @@ axios.get("/room/User/"+this.uid).then(res=>{
 
 },
 
-tj:function(h){
-if(this.qr==true){
 
+tj:function(){
+if(this.qr==true){
+if(this.id!=""&& this.pid!="" && this.uid!=""  && this.allotmentDate!="" && this.dischargeDate!=""){
+axios.post("/room/add",
+"id="+this.id+"&pid="+this.pid+"&allotmentDate="+this.allotmentDate+"&dischargeDate="+this.dischargeDate+"&uid="+this.uid
+).then(res=>{
+let count=res.data;
+if(count==1){
+this.succeed=true;
+}else{
+this.failure=true;	
+}
+
+
+})
+}else{
+alert("请填写完数据")
+}
 }else{
 alert("请确认")	
 }
 }
+
 
 },
 
