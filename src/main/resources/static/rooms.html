@@ -52,32 +52,32 @@
 	<div class="wrapper">
 		<!-- Page Content -->
 		<div id="content">
-				<!-- header -->
-								<div id="header"></div>
-								<script>
-									$("#header").load("header.html")
-								</script>
-								<!-- header -->
-				<!-- Breadcrumb -->
-				<!-- Page Title -->
-				<div class="container mt-0">
-					<div class="row breadcrumb-bar">
-						<div class="col-md-6">
-							
-						</div>
-						<div class="col-md-6">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">
-									<a href="index.html">
-										<span class="ti-home"></span>
-									</a>
-								</li>
-								<li class="breadcrumb-item">分配</li>
-								<li class="breadcrumb-item active">所有分配</li>
-							</ol>
-						</div>
+			<!-- header -->
+			<div id="header"></div>
+			<script>
+				$("#header").load("header.html")
+			</script>
+			<!-- header -->
+			<!-- Breadcrumb -->
+			<!-- Page Title -->
+			<div class="container mt-0">
+				<div class="row breadcrumb-bar">
+					<div class="col-md-6">
+
+					</div>
+					<div class="col-md-6">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="index.html">
+									<span class="ti-home"></span>
+								</a>
+							</li>
+							<li class="breadcrumb-item">分配</li>
+							<li class="breadcrumb-item active">所有分配</li>
+						</ol>
 					</div>
 				</div>
+			</div>
 			<!-- /Page Title -->
 
 			<!-- /Breadcrumb -->
@@ -90,7 +90,7 @@
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">分配清单</h3>
 							<div class="table-responsive mb-3" id="cx">
-								<table id="tableId" class="table table-bordered table-striped" >
+								<table id="tableId" class="table table-bordered table-striped">
 									<thead>
 										<tr>
 											<th class="no-sort">
@@ -103,88 +103,74 @@
 											<th>房间类型</th>
 											<th>病人姓名</th>
 											<th>入院时间</th>
-                                            <th>住院时间</th>
-                                            <th>医生姓名</th>
+											<th>住院时间</th>
+											<th>医生姓名</th>
 											<th>状态</th>
 										</tr>
 									</thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="6">
-                                                    <label class="custom-control-label" for="6"></label>
-                                                </div>
-                                            </td>
-                                            <td>4</td>
-                                            <td>Ac Room</td>
-                                            <td>Susan</td>
-                                            <td>10-11-2018</td>
-                                            <td>-</td>
-                                            <td>Dr Daniel Smith</td>
-                                            <td>
-                                                <span class="badge badge-danger">Not Discharged</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="7">
-                                                    <label class="custom-control-label" for="7"></label>
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>Ac Room</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>
-                                                <span class="badge badge-warning">Not Alloted</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" id="8">
-                                                    <label class="custom-control-label" for="8"></label>
-                                                </div>
-                                            </td>
-                                            <td>3</td>
-                                            <td>General</td>
-                                            <td>Raj kiran</td>
-                                            <td>10-11-2018</td>
-                                            <td>12-11-2018</td>
-                                            <td>Dr Wilsson</td>
-                                            <td>
-                                                <span class="badge badge-success">可出诊</span>
-                                            </td>
-                                        </tr>
-                                 
-                             
-                                    </tbody>
-                                </table>
-                                
+									<tbody>
+										<tr v-for="(r, index) in roomdescList" :key="index">
+											<td>
+												<div class="custom-control custom-checkbox">
+													<input class="custom-control-input" type="checkbox" id="6">
+													<label class="custom-control-label" for="6"></label>
+												</div>
+											</td>
+											<td>{{r.room.id}}</td>
+											<td>{{r.room.type}}</td>
+											<td>{{r.patient.name}}</td>
+											<td>{{r.allotmentDate}}</td>
+											<td>{{r.dischargeDate}}</td>
+											<td>{{r.user.username}}</td>
+											<td>
+												<span class="badge badge-danger">{{r.room.status}</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="custom-control custom-checkbox">
+													<input class="custom-control-input" type="checkbox" id="7">
+													<label class="custom-control-label" for="7"></label>
+												</div>
+											</td>
+											<td>2</td>
+											<td>Ac Room</td>
+											<td>-</td>
+											<td>-</td>
+											<td>-</td>
+											<td>-</td>
+											<td>
+												<span class="badge badge-warning">Not Alloted</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="custom-control custom-checkbox">
+													<input class="custom-control-input" type="checkbox" id="8">
+													<label class="custom-control-label" for="8"></label>
+												</div>
+											</td>
+											<td>3</td>
+											<td>General</td>
+											<td>Raj kiran</td>
+											<td>10-11-2018</td>
+											<td>12-11-2018</td>
+											<td>Dr Wilsson</td>
+											<td>
+												<span class="badge badge-success">可出诊</span>
+											</td>
+										</tr>
+
+
+									</tbody>
+								</table>
+
 								<!--Export links-->
-								<nav aria-label="Page navigation example">
-									<ul class="pagination justify-content-center export-pagination">
-										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-download"></span> csv</a>
-										</li>
-										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-printer"></span>  print</a>
-										</li>
-										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
-										</li>
-										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
-										</li>
-									</ul>
-								</nav>
+
 								<!-- /Export links-->
-								<button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
-								<button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
+								<button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span>
+									删除</button>
+
 							</div>
 						</div>
 					</div>
@@ -193,11 +179,7 @@
 			</div>
 			<!-- /Main Content -->
 			<!--Copy Rights-->
-			<div class="container">
-				<div class="d-sm-flex justify-content-center">
-				  <span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights reserved.</span>
-				</div>
-			</div>
+
 			<!-- /Copy Rights-->
 		</div>
 		<!-- /Page Content -->
@@ -212,42 +194,35 @@
 	<!-- Popper Library-->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap Library-->
-    <script src="js/bootstrap.min.js"></script>
-    
-    <!-- Datatable  -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Datatable  -->
 	<script src="datatable/jquery.dataTables.min.js"></script>
 	<script src="datatable/dataTables.bootstrap4.min.js"></script>
-    
+
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
-    <script src="js/custom-datatables.js"></script>
-    <script src="js/vue.min.js"></script>
+	<script src="js/custom-datatables.js"></script>
+	<script src="js/vue.min.js"></script>
 	<script src="js/axios.js"></script>
 
-    <script>
-   new Vue({
-  el:"#cx",
-  data:{
+	<script>
+		new Vue({
+			el: "#cx",
+			data: {
+				roomdescList: []
+			},
+			//加载函数
+			mounted() {
+				axios.get("/room/all").then(res => {
+					console.log(this.roomdescList);
+					console.log(res.data)
+					this.roomdescList = res.data;
 
-  },
-  //加载函数
-  mounted(){
-
-methods:{
-axios.get()
-
-
-}
-
-
-  }
-
-
-   })
-
-
-
-    </script>
+				})
+			}
+		})
+	</script>
 
 
 </body>
