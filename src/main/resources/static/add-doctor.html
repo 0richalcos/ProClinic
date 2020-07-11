@@ -26,6 +26,9 @@
 
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
+
 </head>
 
 <body>
@@ -86,54 +89,53 @@
 
 				<div class="row">
 					<!-- Widget Item -->
-					<div class="col-md-12">
+					<div class="col-md-12" id="rt">
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">Add 医生</h3>
-							<form>
+							<form >
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="医生-name">医生 Name</label>
-										<input type="text" class="form-control" placeholder="医生 name" id="医生-name">
+										<input type="text" v-model="gaa.user.username" class="form-control" placeholder="医生 name" id="医生-name">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="dob">Date Of Birth</label>
-										<input type="date" placeholder="Date of Birth" class="form-control" id="dob">
+										<input type="date" v-model="gaa.birthday" placeholder="Date of Birth" class="form-control" id="dob">
                                     </div>
                                     <div class="form-group col-md-6">
 										<label for="specialization">Specialization</label>
-										<input type="text" placeholder="Specialization" class="form-control" id="specialization">
+										<input type="text" v-model="gaa.specialization"  placeholder="Specialization" class="form-control" id="specialization">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="experience">Experience</label>
-										<input type="text" placeholder="Experience" class="form-control" id="experience">
+										<input type="text" v-model="gaa.experience" placeholder="Experience" class="form-control" id="experience">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="age">Age</label>
-										<input type="text" placeholder="Age" class="form-control" id="age">
+										<input type="text" v-model="gaa.age" placeholder="Age" class="form-control" id="age">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="phone">Phone</label>
-										<input type="text" placeholder="Phone" class="form-control" id="phone">
+										<input type="text" v-model="gaa.phone"  placeholder="Phone" class="form-control" id="phone">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="email">Email</label>
-										<input type="email" placeholder="email" class="form-control" id="Email">
+										<label for="phone">科室</label>
+										<input type="text" v-model="gaa.department.name" placeholder="Phone" class="form-control" id="keshi">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="gender">Gender</label>
-										<select class="form-control" id="gender">
-											<option>Male</option>
-											<option>Female</option>
-											<option>Other</option>
+										<label for="gender">性别</label>
+										<select class="form-control" v-model="gaa.gender" id="gender">
+											<option value="男">男</option>
+											<option value="女">女</option>
 										</select>
 									</div>
 									<div class="form-group col-md-6">
 										<label for="about-doctor">医生 Details</label>
-										<textarea placeholder="医生 Details" class="form-control" id="about-doctor" rows="3"></textarea>
+										<textarea placeholder="医生 Details" v-model="gaa.details" class="form-control" id="about-doctor" rows="3"></textarea>
                                     </div>
                                     <div class="form-group col-md-6">
 										<label for="address">Address</label>
-										<textarea placeholder="Address" class="form-control" id="address" rows="3"></textarea>
+										<textarea placeholder="Address" v-model="gaa.address" class="form-control" id="address" rows="3"></textarea>
 									</div>
 									<div class="form-group col-md-12">
 										<label for="file">File</label>
@@ -149,7 +151,7 @@
 										</div>
 									</div>
 									<div class="form-group col-md-6 mb-3">
-										<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+										<button type="button" @click="add()" class="btn btn-primary btn-lg">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -173,7 +175,35 @@
 				</div>
 			</div>
 			<script type="text/javascript">
-				
+				let v=new Vue({
+					el:"#rt",
+					data:{
+						gaa:{
+							id:"",
+							specialization:"",
+							experience:"",
+							gender: "",
+							birthday: "",
+							age: "",
+							details: "",
+							address: "",
+							phone: "",
+							department: {
+									name: ""
+							    },
+							user: {
+							        username: ""
+							    }
+						}
+					},
+					methods:{
+						add(){
+							axios.post('/doctor',this.gaa).then(res=>{
+								console.log(this.gaa);
+							})
+						}
+					}
+				})
 			</script>
 			<!-- /Main Content -->
 			<!--Copy Rights-->
