@@ -139,7 +139,9 @@
 											<td>{{con.experience}}</td>
 											<td>{{con.department.name}}</td>
 											<td>
-												<span class="badge badge-success">{{con.status}}</span>
+												<span v-if="con.status=='可出诊'" class="badge badge-success">{{con.status}}</span>
+												<span v-if="con.status=='休假'" class="badge badge-warning">{{con.status}}</span>
+												<span v-if="con.status=='Not 可出诊'" class="badge badge-danger">{{con.status}}</span>
 											</td>
 											<td><a :href="'about-doctor.html?id='+con.id"><button>详情</button></a><a :href="'edit-doctor.html?id='+con.id"><button>修改</button></a></td>
 										</tr>
@@ -192,12 +194,13 @@
 									}).then(res => {
 										console.log(res);
 										this.conllection=res.data;
-									}),
 									this.getAll();
+									});
 								}
 							},
 							mounted(){
 								this.getAll();
+								//window.location="doctors.html";
 							}
 						})
 					</script>
