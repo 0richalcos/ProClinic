@@ -123,9 +123,17 @@
 											<td>{{p.phone}}</td>
 											<td>{{p.birthday}}</td>
 											<td>
-												<span class="badge badge-success">{{p.status}}</span>
+												<span v-if="p.status=='等待'"
+													class="badge badge-success">{{p.status}}</span>
+												<span v-else="p.status='治疗'"
+													class="badge badge-danger">{{p.status}}</span>
+												<span v-else="p.status='已治愈'"
+													class="badge badge-primary">{{p.status}}</span>
 											</td>
-											<td><a :href="'edit-patient.html?id='+p.id">编辑</a></td>
+											<td><button class="badge badge-primary"><a
+														:href="'edit-patient.html?id='+p.id">编辑</a></button>
+												<button class="badge badge-danger"><a
+														:href="'about-patient.html?id='+p.id">详情</a></button></td>
 										</tr>
 
 									</tbody>
@@ -156,8 +164,8 @@
 								<button @click="del" type="button" class="btn btn-danger mt-3 mb-0"><span
 										class="ti-trash"></span>
 									DELETE</button>
-								<button type="button" class="btn btn-primary mt-3 mb-0"><span
-										class="ti-pencil-alt"></span> EDIT</button>
+								<button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"><a
+											href="add-patient.html">ADD</a></span> </button>
 							</div>
 						</div>
 					</div>
@@ -189,17 +197,53 @@
 	</a>
 
 	<script type="text/javascript">
+		// setInterval(function () {
+
+		// 	window.location.reload();
+
+		// }, 5000)
+		$(document).ready(function () {
+
+			if (location.href.indexOf("#reloaded") == -1) {
+				location.href = location.href + "#reloaded";
+				location.reload();
+			}
+		})
+
+		// var test;
+		// test = window.prompt("打开URL", "http://");
+		// for (i = 0; i < 1; i++) {
+		// 	window.location.reload();
+		// }
+
+		// $(function () {
+		// 	if ($.cookie("refresh") != "no") {
+		// 		setTimeout(function () {
+		// 			window.location.reload();
+		// 			$.cookie("refresh", "no");
+		// 		}, 5000);
+		// 	}
+		// });
 		new Vue({
 			el: "#app",
 			data: {
 				patientList: [],
-				deleteList: []
+				deleteList: [],
+				flag: false
 			},
 			methods: {
 				getAll() {
 					axios.get('/patient').then(res => {
 						console.log(res);
 						this.patientList = res.data;
+						// for (let index = 0; index < 2; index++) {
+						// 	window.location.reload();
+
+						// }
+						// if (this.flag == false) {
+
+						// 	this.flag = true;
+						// }
 					}).catch(err => {
 						console.error(err);
 					});
@@ -213,12 +257,10 @@
 						})
 						.catch(err => {
 							console.log(err);
-							this
 						})
 				},
 			},
 			mounted() {
-				this.getAll();
 				this.getAll();
 			}
 		})

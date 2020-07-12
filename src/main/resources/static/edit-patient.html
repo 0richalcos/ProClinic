@@ -86,33 +86,33 @@
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="patient-name">名人姓名</label> <input type="text" value="Daniel Smith"
+										<label for="patient-name">姓名</label> <input type="text" value="Daniel Smith"
 											v-model="patient.name" class="form-control" placeholder="Patient name"
 											id="patient-name">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="dob">Date Of Birth</label> <input type="date" value="1989-10-10"
+										<label for="dob">生日</label> <input type="date" value="1989-10-10"
 											v-model="patient.birthday" placeholder="Date of Birth" class="form-control"
 											id="dob">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="age">Age</label> <input v-model="patient.age" type="text" value="30"
+										<label for="age">年龄</label> <input v-model="patient.age" type="text" value="30"
 											placeholder="Age" class="form-control" id="age">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="phone">Phone</label> <input v-model="patient.phone" type="text"
+										<label for="phone">电话</label> <input v-model="patient.phone" type="text"
 											value="12345 67890" placeholder="Phone" class="form-control" id="phone">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="email">Email</label> <input v-model="patient.email" type="email"
+										<label for="email">邮箱</label> <input v-model="patient.email" type="email"
 											value="email@email.com" placeholder="email" class="form-control" id="Email">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="gender">Gender</label> <select v-model="patient.gender"
+										<label for="gender">性别</label> <select v-model="patient.gender"
 											class="form-control" id="gender">
-											<option selected>Male</option>
-											<option>Female</option>
-											<option>Other</option>
+											<option selected>男</option>
+											<option>女</option>
+											<option>不详</option>
 										</select>
 									</div>
 									<div class="form-group col-md-12">
@@ -120,10 +120,6 @@
 										<textarea v-model="patient.address" placeholder="Address" class="form-control"
 											id="exampleFormControlTextarea1"
 											rows="3">Koramangala Banglore, India</textarea>
-									</div>
-									<div class="form-group col-md-12">
-										<label for="file">File</label> <input type="file" class="form-control"
-											id="file">
 									</div>
 
 									<div class="form-check col-md-12 mb-2">
@@ -227,6 +223,7 @@
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap Library-->
 	<script src="js/bootstrap.min.js"></script>
+
 
 	<!-- Datatable  -->
 	<script src="datatable/jquery.dataTables.min.js"></script>

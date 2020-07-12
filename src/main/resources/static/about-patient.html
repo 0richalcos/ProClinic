@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +27,8 @@
 
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
 </head>
 
 <body>
@@ -52,34 +55,34 @@
 	<div class="wrapper">
 		<!-- Page Content -->
 		<div id="content">
-				<!-- header -->
-				<div th:replace="index::header"></div>
-				<!-- header -->
-				<!-- Breadcrumb -->
-				<!-- Page Title -->
-				<div class="container mt-0">
-					<div class="row breadcrumb-bar">
-				<div class="col-md-6">
-					<h3 class="block-title">Patient Details</h3>
+			<!-- header -->
+			<div th:replace="index::header"></div>
+			<!-- header -->
+			<!-- Breadcrumb -->
+			<!-- Page Title -->
+			<div class="container mt-0">
+				<div class="row breadcrumb-bar">
+					<div class="col-md-6">
+						<h3 class="block-title">Patient Details</h3>
+					</div>
+					<div class="col-md-6">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">
+								<a href="index.html">
+									<span class="ti-home"></span>
+								</a>
+							</li>
+							<li class="breadcrumb-item">病人管理</li>
+							<li class="breadcrumb-item active">Patient Details</li>
+						</ol>
+					</div>
 				</div>
-				<div class="col-md-6">
-					<ol class="breadcrumb">						
-						<li class="breadcrumb-item">
-							<a href="index.html">
-								<span class="ti-home"></span>
-							</a>
-                        </li>
-                        <li class="breadcrumb-item">病人管理</li>
-						<li class="breadcrumb-item active">Patient Details</li>
-					</ol>
-				</div>
-			</div>
 			</div>
 			<!-- /Page Title -->
 
 			<!-- /Breadcrumb -->
 			<!-- Main Content -->
-			<div class="container">
+			<div class="container" id="app">
 
 				<div class="row">
 					<!-- Widget Item -->
@@ -89,67 +92,75 @@
 							<div class="table-responsive">
 								<table class="table table-bordered">
 									<tbody>
-										<tr>											
+										<tr>
 											<td><strong>Name</strong></td>
-											<td>Daniel Smith</td>
+											<td><input style="background-color:transparent;border:0;"
+													v-model="patient.name"></td>
 										</tr>
 										<tr>
 											<td><strong>Date Of Birth</strong> </td>
-											<td>26-10-1989</td>
+											<td><input style="background-color:transparent;border:0;"
+													v-model="patient.birthday"></td>
 										</tr>
 										<tr>
 											<td><strong>Gender</strong></td>
-											<td>Male</td>
+											<td><input style="background-color:transparent;border:0;"
+													v-model="patient.gender"></td>
 										</tr>
 										<tr>
 											<td><strong>Address</strong></td>
-											<td>Koramangala 
-                                                Banglore, India</td>
+											<td><input style="background-color:transparent;border:0;"
+													v-model="patient.address"></td>
 										</tr>
 										<tr>
 											<td><strong>Phone </strong></td>
-											<td>+91 11111 11111</td>
+											<td><input style="background-color:transparent;border:0;"
+													v-model="patient.phone"></td>
 										</tr>
 										<tr>
 											<td><strong>Email</strong></td>
-											<td>your@email.com</td>
-                                        </tr>									
+											<td><input style="background-color:transparent;border:0;"
+													v-model="patient.email"></td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
-							
-								<!--Export links-->
-								<nav aria-label="Page navigation example">
-									<ul class="pagination justify-content-center export-pagination">
-										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-download"></span> csv</a>
-										</li>
-										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-printer"></span>  print</a>
-										</li>
-										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
-										</li>
-										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
-										</li>
-									</ul>
-								</nav>
-								<!-- /Export links-->
-                            <button type="button" class="btn btn-success mb-3"><span class="ti-pencil-alt"></span> Edit Patient</button>
-                            <button type="button" class="btn btn-danger mb-3"><span class="ti-trash"></span> Delete Patient</button>
-                            <button type="button" class="btn btn-info mb-3"><span class="ti-arrow-down"></span> Download File</button>
+
+							<!--Export links-->
+							<nav aria-label="Page navigation example">
+								<ul class="pagination justify-content-center export-pagination">
+									<li class="page-item">
+										<a class="page-link" href="#"><span class="ti-download"></span> csv</a>
+									</li>
+									<li class="page-item">
+										<a class="page-link" href="#"><span class="ti-printer"></span> print</a>
+									</li>
+									<li class="page-item">
+										<a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
+									</li>
+									<li class="page-item">
+										<a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
+									</li>
+								</ul>
+							</nav>
+							<!-- /Export links-->
+							<button type="button" class="btn btn-success mb-3"><span class="ti-pencil-alt"></span> Edit
+								Patient</button>
+							<button type="button" class="btn btn-danger mb-3"><span class="ti-trash"></span> Delete
+								Patient</button>
+							<button type="button" class="btn btn-info mb-3"><span class="ti-arrow-down"></span> Download
+								File</button>
 						</div>
 					</div>
-                    <!-- /Widget Item -->
-                    <!-- Widget Item -->
+					<!-- /Widget Item -->
+					<!-- Widget Item -->
 					<div class="col-md-6">
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">Patient Visits</h3>
 							<div class="table-responsive">
 								<table class="table table-bordered table-striped">
 									<thead>
-										<tr>										
+										<tr>
 											<th>医生 Name</th>
 											<th>Cost</th>
 											<th>Visit Date</th>
@@ -157,7 +168,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>											
+										<tr>
 											<td>Manoj Kumar</td>
 											<td>$30</td>
 											<td>12-03-2018</td>
@@ -192,10 +203,10 @@
 											<td>46</td>
 											<td>45-10-2018</td>
 											<td>Injury</td>
-										</tr>										
+										</tr>
 									</tbody>
 								</table>
-								
+
 								<!--Export links-->
 								<nav aria-label="Page navigation example">
 									<ul class="pagination justify-content-center export-pagination">
@@ -203,13 +214,14 @@
 											<a class="page-link" href="#"><span class="ti-download"></span> csv</a>
 										</li>
 										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-printer"></span>  print</a>
+											<a class="page-link" href="#"><span class="ti-printer"></span> print</a>
 										</li>
 										<li class="page-item">
 											<a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
 										</li>
 										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
+											<a class="page-link" href="#"><span class="ti-align-justify"></span>
+												Excel</a>
 										</li>
 									</ul>
 								</nav>
@@ -217,15 +229,15 @@
 							</div>
 						</div>
 					</div>
-                    <!-- /Widget Item -->
-                     <!-- Widget Item -->
+					<!-- /Widget Item -->
+					<!-- Widget Item -->
 					<div class="col-md-12">
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">Patient Payment Transactions</h3>
 							<div class="table-responsive">
 								<table class="table table-bordered table-striped">
 									<thead>
-										<tr>										
+										<tr>
 											<th>日期</th>
 											<th>Cost</th>
 											<th>Discount</th>
@@ -235,65 +247,72 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>											
+										<tr>
 											<td>12-03-2018</td>
 											<td>$300</td>
 											<td>15%</td>
 											<td>Check</td>
-											<td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
+											<td><button type="button" class="btn btn-outline-info mb-0"><span
+														class="ti-arrow-down"></span> Invoice</button></td>
 											<td><span class="badge badge-warning">Pending</span></td>
-                                        </tr>
-                                        <tr>											
+										</tr>
+										<tr>
 											<td>12-03-2018</td>
 											<td>$130</td>
 											<td>5%</td>
 											<td>Credit Card</td>
-											<td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
+											<td><button type="button" class="btn btn-outline-info mb-0"><span
+														class="ti-arrow-down"></span> Invoice</button></td>
 											<td><span class="badge badge-success">Completed</span></td>
-                                        </tr>
-                                        <tr>											
+										</tr>
+										<tr>
 											<td>12-03-2018</td>
 											<td>$30</td>
 											<td>5%</td>
 											<td>Credit Card</td>
-											<td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
+											<td><button type="button" class="btn btn-outline-info mb-0"><span
+														class="ti-arrow-down"></span> Invoice</button></td>
 											<td><span class="badge badge-danger">Cancelled</span></td>
-                                        </tr>
-                                        <tr>											
+										</tr>
+										<tr>
 											<td>12-03-2018</td>
 											<td>$30</td>
 											<td>5%</td>
 											<td>Cash</td>
-											<td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
+											<td><button type="button" class="btn btn-outline-info mb-0"><span
+														class="ti-arrow-down"></span> Invoice</button></td>
 											<td><span class="badge badge-success">Completed</span></td>
-                                        </tr>
-                                        <tr>											
+										</tr>
+										<tr>
 											<td>12-03-2018</td>
 											<td>$30</td>
 											<td>5%</td>
 											<td>Credit Card</td>
-											<td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
+											<td><button type="button" class="btn btn-outline-info mb-0"><span
+														class="ti-arrow-down"></span> Invoice</button></td>
 											<td><span class="badge badge-success">Completed</span></td>
-                                        </tr>
-                                        <tr>											
+										</tr>
+										<tr>
 											<td>12-03-2018</td>
 											<td>$30</td>
 											<td>5%</td>
 											<td>Insurance</td>
-											<td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
+											<td><button type="button" class="btn btn-outline-info mb-0"><span
+														class="ti-arrow-down"></span> Invoice</button></td>
 											<td><span class="badge badge-success">Completed</span></td>
-                                        </tr>
-                                        <tr>											
+										</tr>
+										<tr>
 											<td>12-03-2018</td>
 											<td>$30</td>
 											<td>5%</td>
 											<td>Credit Card</td>
-											<td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
+											<td><button type="button" class="btn btn-outline-info mb-0"><span
+														class="ti-arrow-down"></span> Invoice</button></td>
 											<td><span class="badge badge-success">Completed</span></td>
-										</tr>									
+										</tr>
 									</tbody>
 								</table>
-								
+
 								<!--Export links-->
 								<nav aria-label="Page navigation example">
 									<ul class="pagination justify-content-center export-pagination">
@@ -301,13 +320,14 @@
 											<a class="page-link" href="#"><span class="ti-download"></span> csv</a>
 										</li>
 										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-printer"></span>  print</a>
+											<a class="page-link" href="#"><span class="ti-printer"></span> print</a>
 										</li>
 										<li class="page-item">
 											<a class="page-link" href="#"><span class="ti-file"></span> PDF</a>
 										</li>
 										<li class="page-item">
-											<a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
+											<a class="page-link" href="#"><span class="ti-align-justify"></span>
+												Excel</a>
 										</li>
 									</ul>
 								</nav>
@@ -322,7 +342,9 @@
 			<!--Copy Rights-->
 			<div class="container">
 				<div class="d-sm-flex justify-content-center">
-				  <span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights reserved.</span>
+					<span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a
+							href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights
+						reserved.</span>
 				</div>
 			</div>
 			<!-- /Copy Rights-->
@@ -333,18 +355,53 @@
 	<a id="back-to-top" href="#" class="back-to-top">
 		<span class="ti-angle-up"></span>
 	</a>
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+				patient: {
+					id: "",
+					name: "",
+					birthday: "",
+					gender: "",
+					age: "",
+					address: "",
+					phone: "",
+					email: ""
+				}
+			},
+			methods: {
+				getid(id) {
+					axios.get(`/patient/${id}`).then(res => {
+						this.patient.id = res.data.id;
+						this.patient.name = res.data.name;
+						this.patient.gender = res.data.gender;
+						this.patient.birthday = res.data.birthday;
+						this.patient.age = res.data.age;
+						this.patient.address = res.data.address;
+						this.patient.phone = res.data.phone;
+						this.patient.email = res.data.email;
+					})
+				}
+			},
+			mounted() {
+				this.getid(window.location.search.split('=')[1]);
+				console.log(window.location.search.split('=')[1])
+			}
+		})
+	</script>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<!-- Popper Library-->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap Library-->
-    <script src="js/bootstrap.min.js"></script>
-    
-    <!-- Datatable  -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Datatable  -->
 	<script src="datatable/jquery.dataTables.min.js"></script>
 	<script src="datatable/dataTables.bootstrap4.min.js"></script>
-    
+
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
 
