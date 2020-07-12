@@ -48,8 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/fonts/*",
 			"/images/*", "/js/*")
 		.permitAll()
-		.antMatchers("/doctor", "/doctor/*").hasRole("DOCTOR")
-		.antMatchers("/admin", "/admin/*").hasRole("ADMIN")
+		.antMatchers("/doctor","/doctor/*").hasRole("DOCTOR")
+		.antMatchers("/admin","/admin/*").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
