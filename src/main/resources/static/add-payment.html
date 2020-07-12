@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
-	<!-- Fav  Icon Link -->
-	<link rel="shortcut icon" type="image/png" href="images/fav.png">
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- themify icons CSS -->
-	<link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Animations CSS -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Main CSS -->
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/green.css" id="style_theme">
-	<link rel="stylesheet" href="css/responsive.css">
-	<!-- morris charts -->
-	<link rel="stylesheet" href="charts/css/morris.css">
-	<!-- jvectormap -->
-	<link rel="stylesheet" href="css/jquery-jvectormap.css">
-	<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
+<!-- Fav  Icon Link -->
+<link rel="shortcut icon" type="image/png" href="images/fav.png">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- themify icons CSS -->
+<link rel="stylesheet" href="css/themify-icons.css">
+<!-- Animations CSS -->
+<link rel="stylesheet" href="css/animate.css">
+<!-- Main CSS -->
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/green.css" id="style_theme">
+<link rel="stylesheet" href="css/responsive.css">
+<!-- morris charts -->
+<link rel="stylesheet" href="charts/css/morris.css">
+<!-- jvectormap -->
+<link rel="stylesheet" href="css/jquery-jvectormap.css">
+<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
 
-	<script src="js/modernizr.min.js"></script>
-	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript"
+	charset="utf-8"></script>
 </head>
 
 <body>
@@ -39,45 +40,39 @@
 	<!--/Pre Loader -->
 	<!-- Color Changer -->
 	<div class="theme-settings" id="switcher">
-		<span class="theme-click">
-			<span class="ti-settings"></span>
-		</span>
-		<span class="theme-color theme-default theme-active" data-color="green"></span>
-		<span class="theme-color theme-blue" data-color="blue"></span>
-		<span class="theme-color theme-red" data-color="red"></span>
-		<span class="theme-color theme-violet" data-color="violet"></span>
-		<span class="theme-color theme-yellow" data-color="yellow"></span>
+		<span class="theme-click"> <span class="ti-settings"></span>
+		</span> <span class="theme-color theme-default theme-active"
+			data-color="green"></span> <span class="theme-color theme-blue"
+			data-color="blue"></span> <span class="theme-color theme-red"
+			data-color="red"></span> <span class="theme-color theme-violet"
+			data-color="violet"></span> <span class="theme-color theme-yellow"
+			data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
 	<div class="wrapper">
 		<!-- Page Content -->
 		<div id="content">
-				<!-- header -->
-								<div id="header"></div>
-								<script>
-									$("#header").load("header.html")
-								</script>
-								<!-- header -->
-				<!-- Breadcrumb -->
-				<!-- Page Title -->
-				<div class="container mt-0">
-					<div class="row breadcrumb-bar">
-						<div class="col-md-6">
-							<h3 class="block-title">Add Payment</h3>
-						</div>
-						<div class="col-md-6">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">
-									<a href="index.html">
-										<span class="ti-home"></span>
-									</a>
-								</li>
-								<li class="breadcrumb-item">Payments</li>
-								<li class="breadcrumb-item active">Add Payment</li>
-							</ol>
-						</div>
+			<!-- header -->
+			<div th:replace="index::header"></div>
+			<!-- header -->
+			<!-- Breadcrumb -->
+			<!-- Page Title -->
+			<div class="container mt-0">
+				<div class="row breadcrumb-bar">
+					<div class="col-md-6">
+						<h3 class="block-title">Add Payment</h3>
+					</div>
+					<div class="col-md-6">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="index.html"> <span
+									class="ti-home"></span>
+							</a></li>
+							<li class="breadcrumb-item">Payments</li>
+							<li class="breadcrumb-item active">Add Payment</li>
+						</ol>
 					</div>
 				</div>
+			</div>
 			<!-- /Page Title -->
 
 			<!-- /Breadcrumb -->
@@ -92,75 +87,85 @@
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="patient-id">Patient ID</label>
-										<input type="text" class="form-control" placeholder="Patient ID" id="patient-id">
-                                    </div>
-                                    <div class="form-group col-md-6">
-										<label for="patient-name">名人姓名</label>
-										<input type="text" class="form-control" placeholder="名人姓名" id="patient-name">
+										<label for="patient-id">Patient ID</label> <input type="text"
+											class="form-control" placeholder="Patient ID" id="patient-id">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="department">Department</label>
-										<select class="form-control" id="department">
+										<label for="patient-name">名人姓名</label> <input type="text"
+											class="form-control" placeholder="名人姓名" id="patient-name">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="department">Department</label> <select
+											class="form-control" id="department">
 											<option>Neuro</option>
 											<option>皮肤科</option>
 											<option>General</option>
 										</select>
 									</div>
 									<div class="form-group col-md-6">
-										<label for="doctor-name">医生 Name</label>
-										<input type="text" placeholder="医生 Name" class="form-control" id="doctor-name">
+										<label for="doctor-name">医生 Name</label> <input type="text"
+											placeholder="医生 Name" class="form-control" id="doctor-name">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="adminssion-date">Admission Date</label>
-										<input type="date" placeholder="Adminssion Date" class="form-control" id="adminssion-date">
-                                    </div>	
-                                    <div class="form-group col-md-6">
-										<label for="discharge-date">Discharge Date</label>
-										<input type="date" placeholder="Discharge Date" class="form-control" id="discharge-date">
-                                    </div>	
-                                    <div class="form-group col-md-12">
-										<h4>Services</h4>										
-                                    </div>
-                                    <div class="form-group col-md-6">
-										<label for="service-name">Service Name</label>
-										<input type="text" placeholder="Service Name" class="form-control" id="service-name">
-                                    </div>	
-                                    <div class="form-group col-md-6">
-										<label for="treatment-cost">Cost of Treatment</label>
-										<input type="text" placeholder="Cost of Treatment" class="form-control" id="treatment-cost">
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <button type="button" class="btn btn-outline-success"><span class="ti-plus"></span> Add Service</button>										
-                                    </div>
-                                    <div class="form-group col-md-12">
-										<h4>Payment</h4>										
-                                    </div>
-                                    <div class="form-group col-md-3">
-										<label for="discount">Discount (%)</label>
-										<input type="text" placeholder="Discount" class="form-control" id="discount">
-                                    </div>	
-                                    <div class="form-group col-md-3">
-										<label for="advance-paid">Advance Paid</label>
-										<input type="text" placeholder="Advance Paid" class="form-control" id="advance-paid">
-                                    </div>
-                                    <div class="form-group col-md-3">
-										<label for="payment-type">Payment Type</label>
-										<select class="form-control" id="payment-type">
+										<label for="adminssion-date">Admission Date</label> <input
+											type="date" placeholder="Adminssion Date"
+											class="form-control" id="adminssion-date">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="discharge-date">Discharge Date</label> <input
+											type="date" placeholder="Discharge Date" class="form-control"
+											id="discharge-date">
+									</div>
+									<div class="form-group col-md-12">
+										<h4>Services</h4>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="service-name">Service Name</label> <input
+											type="text" placeholder="Service Name" class="form-control"
+											id="service-name">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="treatment-cost">Cost of Treatment</label> <input
+											type="text" placeholder="Cost of Treatment"
+											class="form-control" id="treatment-cost">
+									</div>
+									<div class="form-group col-md-12">
+										<button type="button" class="btn btn-outline-success">
+											<span class="ti-plus"></span> Add Service
+										</button>
+									</div>
+									<div class="form-group col-md-12">
+										<h4>Payment</h4>
+									</div>
+									<div class="form-group col-md-3">
+										<label for="discount">Discount (%)</label> <input type="text"
+											placeholder="Discount" class="form-control" id="discount">
+									</div>
+									<div class="form-group col-md-3">
+										<label for="advance-paid">Advance Paid</label> <input
+											type="text" placeholder="Advance Paid" class="form-control"
+											id="advance-paid">
+									</div>
+									<div class="form-group col-md-3">
+										<label for="payment-type">Payment Type</label> <select
+											class="form-control" id="payment-type">
 											<option>Check</option>
 											<option>Card</option>
 											<option>Cash</option>
 										</select>
-                                    </div>	
-                                    <div class="form-group col-md-3">
-										<label for="card-check">Card/Check No</label>
-										<input type="text" placeholder="Card/Check No" class="form-control" id="card-check">
-									</div>																	
+									</div>
+									<div class="form-group col-md-3">
+										<label for="card-check">Card/Check No</label> <input
+											type="text" placeholder="Card/Check No" class="form-control"
+											id="card-check">
+									</div>
 									<div class="form-check col-md-12 mb-2">
 										<div class="text-left">
 											<div class="custom-control custom-checkbox">
-												<input class="custom-control-input" type="checkbox" id="ex-check-2">
-												<label class="custom-control-label" for="ex-check-2">Please Confirm</label>
+												<input class="custom-control-input" type="checkbox"
+													id="ex-check-2"> <label
+													class="custom-control-label" for="ex-check-2">Please
+													Confirm</label>
 											</div>
 										</div>
 									</div>
@@ -170,15 +175,20 @@
 								</div>
 							</form>
 							<!-- Alerts-->
-							<div class="alert alert-success alert-dismissible fade show" role="alert">
+							<div class="alert alert-success alert-dismissible fade show"
+								role="alert">
 								<strong>Successfully Done!</strong> Payment added
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
 							</div>
-							<div class="alert alert-warning alert-dismissible fade show" role="alert">
-								<strong>Holy guacamole!</strong> You should check in on some of those fields below.
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<div class="alert alert-warning alert-dismissible fade show"
+								role="alert">
+								<strong>Holy guacamole!</strong> You should check in on some of
+								those fields below.
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
 							</div>
@@ -192,7 +202,10 @@
 			<!--Copy Rights-->
 			<div class="container">
 				<div class="d-sm-flex justify-content-center">
-				  <span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights reserved.</span>
+					<span class="text-muted text-center d-block d-sm-inline-block">Copyright
+						© 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>.
+						All rights reserved.
+					</span>
 				</div>
 			</div>
 			<!-- /Copy Rights-->
@@ -200,8 +213,8 @@
 		<!-- /Page Content -->
 	</div>
 	<!-- Back to Top -->
-	<a id="back-to-top" href="#" class="back-to-top">
-		<span class="ti-angle-up"></span>
+	<a id="back-to-top" href="#" class="back-to-top"> <span
+		class="ti-angle-up"></span>
 	</a>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->
@@ -209,12 +222,12 @@
 	<!-- Popper Library-->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap Library-->
-    <script src="js/bootstrap.min.js"></script>
-    
-    <!-- Datatable  -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Datatable  -->
 	<script src="datatable/jquery.dataTables.min.js"></script>
 	<script src="datatable/dataTables.bootstrap4.min.js"></script>
-    
+
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
 
