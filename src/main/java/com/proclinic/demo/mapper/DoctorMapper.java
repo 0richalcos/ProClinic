@@ -34,4 +34,7 @@ public interface DoctorMapper {
 		//删除医生
 		@Delete("delete from user_desc where id=#{id}")
 		void Doctordelete(int id);
+		//添加权限
+		@Insert("insert into authorities(user_id,authority) values(#{id},#{authority})")
+		void addqx(int id,String authority);
 }

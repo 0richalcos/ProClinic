@@ -41,9 +41,10 @@ public class DoctorContorller {
 	}
 	//X_X
 	@CrossOrigin
-	@PostMapping("/doctor")
-	public String add(@RequestBody UserDesc userdesc) {
-		return doctorservce.adddoctor(userdesc);
+	@PostMapping("/doctor/{str}")
+	public String add(@RequestBody UserDesc userdesc,@PathVariable String str) {
+		System.out.println(userdesc.getUser().getUsername());
+		return doctorservce.adddoctor(userdesc,str);
 	}
 	//X_X
 	@DeleteMapping("/doctor")     
