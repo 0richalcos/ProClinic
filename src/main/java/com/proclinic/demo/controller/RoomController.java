@@ -146,7 +146,7 @@ public class RoomController {
 	room.setId(id);
 	Patient patient=new Patient();
 	patient.setId(pid);
-	User user=new User();
+	User user=new User(); 
 	user.setId(uid);
 	Date date = new SimpleDateFormat("yyyy-MM-dd").parse(allotmentDate); 
 	Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(dischargeDate); 
