@@ -93,12 +93,7 @@
 								<table id="tableId" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th class="no-sort">
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input"  v-model='checked' v-on:click='checkedAll' type="checkbox"  id="select-all">
-													<label class="custom-control-label" for="select-all"></label>
-												</div>
-											</th>
+											
 											<th>房间号</th>
 											<th>房间类型</th>
 											<th>病人姓名</th>
@@ -110,12 +105,7 @@
 									</thead>
 									<tbody>
 										<tr v-for="(r, index) in roomdescList" :key="index">
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="select-all" v-model="checkList" :value="[r.id]" >
-													<label class="custom-control-label" :for="[r.id]"></label>
-												</div>
-											</td>
+											
 											<td>{{r.room.id}}</td>
 											<td>{{r.room.type}}</td>
 											<td>{{r.patient.name}}</td>
