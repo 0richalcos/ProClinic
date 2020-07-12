@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
-<!-- Fav  Icon Link -->
-<link rel="shortcut icon" type="image/png" href="images/fav.png">
-<!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<!-- themify icons CSS -->
-<link rel="stylesheet" href="css/themify-icons.css">
-<!-- Animations CSS -->
-<link rel="stylesheet" href="css/animate.css">
-<!-- Main CSS -->
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/green.css" id="style_theme">
-<link rel="stylesheet" href="css/responsive.css">
-<!-- morris charts -->
-<link rel="stylesheet" href="charts/css/morris.css">
-<!-- jvectormap -->
-<link rel="stylesheet" href="css/jquery-jvectormap.css">
-<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
 
-<script src="js/modernizr.min.js"></script>
-<script src="js/jquery-3.2.1.min.js" type="text/javascript"
-	charset="utf-8"></script>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
+	<!-- Fav  Icon Link -->
+	<link rel="shortcut icon" type="image/png" href="images/fav.png">
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- themify icons CSS -->
+	<link rel="stylesheet" href="css/themify-icons.css">
+	<!-- Animations CSS -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/green.css" id="style_theme">
+	<link rel="stylesheet" href="css/responsive.css">
+	<!-- morris charts -->
+	<link rel="stylesheet" href="charts/css/morris.css">
+	<!-- jvectormap -->
+	<link rel="stylesheet" href="css/jquery-jvectormap.css">
+	<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
+
+	<script src="js/modernizr.min.js"></script>
+	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
+
 </head>
 
 <body>
@@ -40,13 +43,14 @@
 	<!--/Pre Loader -->
 	<!-- Color Changer -->
 	<div class="theme-settings" id="switcher">
-		<span class="theme-click"> <span class="ti-settings"></span>
-		</span> <span class="theme-color theme-default theme-active"
-			data-color="green"></span> <span class="theme-color theme-blue"
-			data-color="blue"></span> <span class="theme-color theme-red"
-			data-color="red"></span> <span class="theme-color theme-violet"
-			data-color="violet"></span> <span class="theme-color theme-yellow"
-			data-color="yellow"></span>
+		<span class="theme-click">
+			<span class="ti-settings"></span>
+		</span>
+		<span class="theme-color theme-default theme-active" data-color="green"></span>
+		<span class="theme-color theme-blue" data-color="blue"></span>
+		<span class="theme-color theme-red" data-color="red"></span>
+		<span class="theme-color theme-violet" data-color="violet"></span>
+		<span class="theme-color theme-yellow" data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
 	<div class="wrapper">
@@ -60,15 +64,14 @@
 			<div class="container mt-0">
 				<div class="row breadcrumb-bar">
 					<div class="col-md-6">
-						<h3 class="block-title">添加病人信息</h3>
+						<h3 class="block-title">Add 病人</h3>
 					</div>
 					<div class="col-md-6">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index.html"> <span
-									class="ti-home"></span>
-							</a></li>
-							<li class="breadcrumb-item">病人管理</li>
-							<li class="breadcrumb-item active">添加病人信息</li>
+							<li class="breadcrumb-item"><a href="index.html"> <span class="ti-home"></span>
+								</a></li>
+							<li class="breadcrumb-item">病人</li>
+							<li class="breadcrumb-item active">Add 病人</li>
 						</ol>
 					</div>
 				</div>
@@ -77,7 +80,7 @@
 
 			<!-- /Breadcrumb -->
 			<!-- Main Content -->
-			<div class="container">
+			<div class="container" id="app">
 
 				<div class="row">
 					<!-- Widget Item -->
@@ -87,74 +90,121 @@
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="patient-name">名人姓名</label> <input type="text"
-											class="form-control" placeholder="Patient name"
-											id="patient-name">
+
+										<label for="patient-name">姓名</label>
+										<input type="text" v-model="name" class="form-control"
+											placeholder="Patient name" id="patient-name">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="dob">Date Of Birth</label> <input type="date"
-											placeholder="Date of Birth" class="form-control" id="dob">
+
+										<label for="dob">生日</label>
+										<input type="date" v-model="birthday" placeholder="Date of Birth"
+											class="form-control" id="dob">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="age">Age</label> <input type="text"
-											placeholder="Age" class="form-control" id="age">
+
+										<label for="age">年龄</label>
+										<input type="text" v-model="age" placeholder="Age" class="form-control"
+											id="age">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="phone">Phone</label> <input type="text"
-											placeholder="Phone" class="form-control" id="phone">
+
+										<label for="phone">电话</label>
+										<input type="text" v-model="phone" placeholder="Phone" class="form-control"
+											id="phone">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="email">Email</label> <input type="email"
-											placeholder="email" class="form-control" id="Email">
+
+										<label for="email">邮箱</label>
+										<input type="email" v-model="email" placeholder="email" class="form-control"
+											id="Email">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="gender">Gender</label> <select
-											class="form-control" id="gender">
+
+										<label for="gender">性别</label>
+										<select class="form-control" v-model="gender" id="gender">
+
 											<option>Male</option>
 											<option>Female</option>
 											<option>Other</option>
 										</select>
 									</div>
 									<div class="form-group col-md-12">
-										<label for="exampleFormControlTextarea1">Address</label>
-										<textarea placeholder="Address" class="form-control"
-											id="exampleFormControlTextarea1" rows="3"></textarea>
+										<label for="exampleFormControlTextarea1">住址</label>
+
+										<textarea v-model="address" placeholder="Address"
+											class="form-control"></textarea>
 									</div>
 									<div class="form-group col-md-12">
-										<label for="file">File</label> <input type="file"
-											class="form-control" id="file">
+										<label for="file">附件</label> <input type="file" class="form-control"
+											id="file">
 									</div>
 
 									<div class="form-check col-md-12 mb-2">
 										<div class="text-left">
 											<div class="custom-control custom-checkbox">
-												<input class="custom-control-input" type="checkbox"
-													id="ex-check-2"> <label
-													class="custom-control-label" for="ex-check-2">Please
+
+												<input class="custom-control-input" type="checkbox" id="ex-check-2">
+												<label class="custom-control-label" for="ex-check-2">Please
+
 													Confirm</label>
 											</div>
 										</div>
 									</div>
 									<div class="form-group col-md-6 mb-3">
-										<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+										<button @click="add" type="button"
+											class="btn btn-primary btn-lg">Submit</button>
 									</div>
 								</div>
 							</form>
+							<script type="text/javascript">
+								let v = new Vue({
+									el: "#app",
+									data: {
+										patientList: [],
+										name: undefined,
+										phone: undefined,
+										age: undefined,
+										birthday: undefined,
+										address: undefined,
+										email: undefined,
+										gender: undefined
+									},
+									methods: {
+										add: function () {
+											axios.post(`/add`, {
+												name: this.name,
+												phone: this.phone,
+												age: this.age,
+												birthday: this.birthday,
+												address: this.address,
+												email: this.email,
+												gender: this.gender,
+											}).then(res => {
+												console.log(res)
+												window.location = "patients.html"
+											}).catch(error => {
+												console.error(error)
+											})
+										},
+									}
+								})
+							</script>
 							<!-- Alerts-->
-							<div class="alert alert-success alert-dismissible fade show"
-								role="alert">
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
 								<strong>Successfully Done!</strong> Please add payment now
-								<button type="button" class="close" data-dismiss="alert"
-									aria-label="Close">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
 							</div>
-							<div class="alert alert-warning alert-dismissible fade show"
-								role="alert">
+							<div class="alert alert-warning alert-dismissible fade show" role="alert">
 								<strong>Holy guacamole!</strong> You should check in on some of
 								those fields below.
-								<button type="button" class="close" data-dismiss="alert"
-									aria-label="Close">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
 							</div>
@@ -168,10 +218,17 @@
 			<!--Copy Rights-->
 			<div class="container">
 				<div class="d-sm-flex justify-content-center">
+
+					<span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a
+							href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All
+						rights
+						reserved.</span>
+
 					<span class="text-muted text-center d-block d-sm-inline-block">Copyright
 						© 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>.
 						All rights reserved.
 					</span>
+
 				</div>
 			</div>
 			<!-- /Copy Rights-->
@@ -179,8 +236,7 @@
 		<!-- /Page Content -->
 	</div>
 	<!-- Back to Top -->
-	<a id="back-to-top" href="#" class="back-to-top"> <span
-		class="ti-angle-up"></span>
+	<a id="back-to-top" href="#" class="back-to-top"> <span class="ti-angle-up"></span>
 	</a>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->
