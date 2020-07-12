@@ -174,16 +174,11 @@
 			methods:{
 				del: function(id) {
                 axios.delete("/room/del/"+id).then(res=>{
-
+                	setTimeout(window.location.href='rooms.html',5);
 				})
 
-				axios.get("/room/all").then(res => {
 
-			
-this.roomdescList = res.data;
-
-})
-            }
+            }，
 			
 
 			},
