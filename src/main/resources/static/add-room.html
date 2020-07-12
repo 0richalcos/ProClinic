@@ -281,6 +281,7 @@
 									<div class="form-group col-md-6">
 										<label for="room-type">房间类型:</label>
 										<input type="text" placeholder="房间类型" v-model="fjtype" class="form-control" id="patient-name" disabled>
+										<span :class="[fjstatue== '已满' ? 'badge  badge-danger ': 'badge badge-success'] "  >{{fjstatue}}</span>
 									</div>
 									<div class="form-group col-md-6">
 										<label for="patient-name">病人编号:</label>
@@ -380,13 +381,17 @@ data:{
 	allotmentDate:"",
 	dischargeDate:"",
 	qr:"",
-	fjtype:""
+	fjtype:"",
+	fjstatue:""
 },
 methods:{
 fjh:function(){
 	this.fjtype="";
 axios.get("/room/"+this.id).then(res=>{
 		this.fjtype=res.data;
+})
+axios.get("/room/selstatue/"+this.id).then(res=>{
+		this.fjstatue=res.data;
 })
 
 },
@@ -411,8 +416,15 @@ axios.get("/room/User/"+this.uid).then(res=>{
 
 
 tj:function(){
+
+if(this.fjstatue=="已满"){
+alert("该房间已满")
+}else{
+
 if(this.qr==true){
+
 if(this.id!=""&& this.pid!="" && this.uid!=""  && this.allotmentDate!="" && this.dischargeDate!=""){
+
 axios.post("/room/add",
 "id="+this.id+"&pid="+this.pid+"&allotmentDate="+this.allotmentDate+"&dischargeDate="+this.dischargeDate+"&uid="+this.uid
 ).then(res=>{
@@ -422,9 +434,9 @@ this.succeed=true;
 }else{
 this.failure=true;	
 }
-
-
 })
+
+
 }else{
 alert("请填写完数据")
 }
@@ -433,6 +445,7 @@ alert("请确认")
 }
 }
 
+}
 
 },
 

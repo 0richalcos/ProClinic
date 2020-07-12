@@ -40,6 +40,17 @@ public class RoomDesc {
     public RoomDesc() {
 		// TODO Auto-generated constructor stub
 	}
+    
+	public RoomDesc(int id, Patient patient, User user, Room room, Date allotmentDate, Date dischargeDate) {
+	
+		this.id = id;
+		this.patient = patient;
+		this.user = user;
+		this.room = room;
+		this.allotmentDate = allotmentDate;
+		this.dischargeDate = dischargeDate;
+	}
+
 	public RoomDesc(Patient patient, User user, Room room, Date allotmentDate, Date dischargeDate) {
 		this.patient = patient;
 		this.user = user;

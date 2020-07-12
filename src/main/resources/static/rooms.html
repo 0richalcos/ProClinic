@@ -95,7 +95,7 @@
 										<tr>
 											<th class="no-sort">
 												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="select-all">
+													<input class="custom-control-input"  v-model='checked' v-on:click='checkedAll' type="checkbox"  id="select-all">
 													<label class="custom-control-label" for="select-all"></label>
 												</div>
 											</th>
@@ -112,8 +112,8 @@
 										<tr v-for="(r, index) in roomdescList" :key="index">
 											<td>
 												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="6">
-													<label class="custom-control-label" for="6"></label>
+													<input class="custom-control-input" type="checkbox" id="select-all" v-model="checkList" :value="[r.id]" >
+													<label class="custom-control-label" :for="[r.id]"></label>
 												</div>
 											</td>
 											<td>{{r.room.id}}</td>
@@ -123,43 +123,11 @@
 											<td>{{r.dischargeDate}}</td>
 											<td>{{r.user.username}}</td>
 											<td>
-												<span class="badge badge-danger">{{r.room.status}</span>
+												<!--        -->
+												<span :class="[r.room.status== '已满' ? 'badge  badge-danger ': 'badge badge-success'] "  >{{r.room.status}}</span>
 											</td>
 										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="7">
-													<label class="custom-control-label" for="7"></label>
-												</div>
-											</td>
-											<td>2</td>
-											<td>Ac Room</td>
-											<td>-</td>
-											<td>-</td>
-											<td>-</td>
-											<td>-</td>
-											<td>
-												<span class="badge badge-warning">Not Alloted</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="8">
-													<label class="custom-control-label" for="8"></label>
-												</div>
-											</td>
-											<td>3</td>
-											<td>General</td>
-											<td>Raj kiran</td>
-											<td>10-11-2018</td>
-											<td>12-11-2018</td>
-											<td>Dr Wilsson</td>
-											<td>
-												<span class="badge badge-success">可出诊</span>
-											</td>
-										</tr>
+							
 
 
 									</tbody>
@@ -210,13 +178,26 @@
 		new Vue({
 			el: "#cx",
 			data: {
-				roomdescList: []
+				roomdescList: [],
+				checked: false, //全选框
+                checkList: []
 			},
+			methods:{
+				checkedAll: function() {
+                console.log(this.checkList);
+                console.log(this.checked);
+                
+            }
+			
+
+			},
+
+
 			//加载函数
 			mounted() {
 				axios.get("/room/all").then(res => {
-					console.log(this.roomdescList);
-					console.log(res.data)
+
+			
 					this.roomdescList = res.data;
 
 				})
