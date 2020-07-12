@@ -177,7 +177,12 @@
 
 				})
 
-                
+				axios.get("/room/all").then(res => {
+
+			
+this.roomdescList = res.data;
+
+})
             }
 			
 
