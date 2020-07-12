@@ -9,7 +9,7 @@ public interface PatientService {
 	//添加病人信息
 	void addPatient(Patient patient );
 	//修改病人信息
-	String updatePatient(Patient patient,int id);
-	//删除病人信息
+	void updatePatient(Patient patient,int id);
+	//删除多条病人信息
 	void deletePatient(String[] list);
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,11 @@ public class PatientController {
 		return patientRepository.findAll();
 	}
 	
+	@GetMapping("/patient/{id}")
+	public Patient save(@PathVariable int id) {
+		return patientService.findAllBy(id);
+	}
+	
 	
 	/**增加
 	 * 
@@ -46,12 +52,22 @@ public class PatientController {
 	 return "redirect:/patient";
 	}
 	
-	
+	/**
+	 * 删除多个或一个
+	 * @param list
+	 */
 	@DeleteMapping("/delete")
 	public void delete(@RequestBody String[] list) {
-		for (int i = 0; i < list.length; i++) {
-			System.out.println(list[i]);
-		}
-		patientService.deletePatient(list);;
+		patientService.deletePatient(list);
+	}
+	
+	/**
+	 * 改
+	 * @param patient
+	 * @param id
+	 */
+	@PutMapping("/patient/{id}")
+	public void updete(@RequestBody Patient patient,@PathVariable int id) {
+		patientService.updatePatient(patient, id);
 	}
 }

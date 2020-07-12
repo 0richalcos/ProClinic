@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 	<meta charset="utf-8">
@@ -28,6 +29,7 @@
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/vue.js"></script>
 	<script src="js/axios.js"></script>
+
 </head>
 
 <body>
@@ -55,27 +57,21 @@
 		<!-- Page Content -->
 		<div id="content">
 			<!-- header -->
-			<div id="header"></div>
-			<script>
-				$("#header").load("header.html")
-			</script>
+			<div th:replace="index::header"></div>
 			<!-- header -->
 			<!-- Breadcrumb -->
 			<!-- Page Title -->
 			<div class="container mt-0">
 				<div class="row breadcrumb-bar">
 					<div class="col-md-6">
-						<h3 class="block-title">添加病人信息</h3>
+						<h3 class="block-title">Add 病人</h3>
 					</div>
 					<div class="col-md-6">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item">
-								<a href="index.html">
-									<span class="ti-home"></span>
-								</a>
-							</li>
-							<li class="breadcrumb-item">病人管理</li>
-							<li class="breadcrumb-item active">添加病人信息</li>
+							<li class="breadcrumb-item"><a href="index.html"> <span class="ti-home"></span>
+								</a></li>
+							<li class="breadcrumb-item">病人</li>
+							<li class="breadcrumb-item active">Add 病人</li>
 						</ol>
 					</div>
 				</div>
@@ -94,53 +90,67 @@
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="patient-name">名人姓名</label>
+
+										<label for="patient-name">姓名</label>
 										<input type="text" v-model="name" class="form-control"
 											placeholder="Patient name" id="patient-name">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="dob">Date Of Birth</label>
+
+										<label for="dob">生日</label>
 										<input type="date" v-model="birthday" placeholder="Date of Birth"
 											class="form-control" id="dob">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="age">Age</label>
+
+										<label for="age">年龄</label>
 										<input type="text" v-model="age" placeholder="Age" class="form-control"
 											id="age">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="phone">Phone</label>
+
+										<label for="phone">电话</label>
 										<input type="text" v-model="phone" placeholder="Phone" class="form-control"
 											id="phone">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="email">Email</label>
+
+										<label for="email">邮箱</label>
 										<input type="email" v-model="email" placeholder="email" class="form-control"
 											id="Email">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="gender">Gender</label>
+
+										<label for="gender">性别</label>
 										<select class="form-control" v-model="gender" id="gender">
+
 											<option>Male</option>
 											<option>Female</option>
 											<option>Other</option>
 										</select>
 									</div>
 									<div class="form-group col-md-12">
-										<label for="exampleFormControlTextarea1">Address</label>
-										<textarea v-model="address" placeholder="Address" class="form-control"
-											id="exampleFormControlTextarea1" rows="3"></textarea>
+										<label for="exampleFormControlTextarea1">住址</label>
+
+										<textarea v-model="address" placeholder="Address"
+											class="form-control"></textarea>
 									</div>
 									<div class="form-group col-md-12">
-										<label for="file">File</label>
-										<input type="file" class="form-control" id="file">
+										<label for="file">附件</label> <input type="file" class="form-control"
+											id="file">
 									</div>
 
 									<div class="form-check col-md-12 mb-2">
 										<div class="text-left">
 											<div class="custom-control custom-checkbox">
+
 												<input class="custom-control-input" type="checkbox" id="ex-check-2">
 												<label class="custom-control-label" for="ex-check-2">Please
+
 													Confirm</label>
 											</div>
 										</div>
@@ -192,7 +202,8 @@
 								</button>
 							</div>
 							<div class="alert alert-warning alert-dismissible fade show" role="alert">
-								<strong>Holy guacamole!</strong> You should check in on some of those fields below.
+								<strong>Holy guacamole!</strong> You should check in on some of
+								those fields below.
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
@@ -207,9 +218,17 @@
 			<!--Copy Rights-->
 			<div class="container">
 				<div class="d-sm-flex justify-content-center">
+
 					<span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a
-							href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights
+							href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All
+						rights
 						reserved.</span>
+
+					<span class="text-muted text-center d-block d-sm-inline-block">Copyright
+						© 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>.
+						All rights reserved.
+					</span>
+
 				</div>
 			</div>
 			<!-- /Copy Rights-->
@@ -217,8 +236,7 @@
 		<!-- /Page Content -->
 	</div>
 	<!-- Back to Top -->
-	<a id="back-to-top" href="#" class="back-to-top">
-		<span class="ti-angle-up"></span>
+	<a id="back-to-top" href="#" class="back-to-top"> <span class="ti-angle-up"></span>
 	</a>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->

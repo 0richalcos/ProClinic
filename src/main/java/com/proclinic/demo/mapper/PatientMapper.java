@@ -15,7 +15,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.proclinic.demo.entity.Patient;
-import com.proclinic.demo.entity.UserDesc;
 
 @Mapper
 public interface PatientMapper {
@@ -27,14 +26,25 @@ public interface PatientMapper {
     //查出所有病人信息
     @Select("select * from patient")
     public List<Patient> show();
+    
+    //查询一个病人
+    @Select("select * from patient where id=#{id}")
+	public Patient findById(int id);
 
     //修改一个具体病人信息
-    @Update("")
-	void Doctorup(@Param("patient")Patient patient,@Param("id") int id);
+    @Update("update patient SET "
+    		+ "name=#{patient.name},"
+    		+ "birthday=#{patient.birthday},"
+    		+ "gender=#{patient.gender},"
+    		+ "email=#{patient.email},"
+    		+ "age=#{patient.age},"
+    		+ "address=#{patient.address},"
+    		+ "phone=#{patient.phone} where id=#{id}")
+	public void updatepatient(@Param("patient")Patient patient,@Param("id") int id);
     
     //删除多条病人信息
-    @Delete("delete from patient where id in (#{Integer[] list})")
-    public void delete(String[] list);
+    @Delete("delete from patient where id = #{id}")
+    public void delete(int id);
     
 
 }

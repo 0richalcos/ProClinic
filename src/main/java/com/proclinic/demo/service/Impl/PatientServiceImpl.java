@@ -29,15 +29,17 @@ public class PatientServiceImpl implements PatientService{
 	}
 
 	@Override
-	public String updatePatient(Patient patient, int id) {
+	public void updatePatient(Patient patient, int id) {
 		// TODO 自动生成的方法存根
-		return null;
+		patientMapper.updatepatient(patient, id);
 	}
 
 	@Override
 	public void deletePatient(String[] list) {
 		// TODO 自动生成的方法存根
-		
+		for(String  i:list) {
+			patientMapper.delete(Integer.parseInt(i));;
+		}
 	}
 
 	
