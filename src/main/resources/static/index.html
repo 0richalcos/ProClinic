@@ -103,20 +103,18 @@
 									aria-expanded="false"><span class="ti-wheelchair"></span>
 										病人管理</a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="add-patient.html">添加病人信息</a> <a
-											class="dropdown-item" href="patients.html">查看病人信息</a> <a
-											class="dropdown-item" href="about-patient.html">病人详情</a> <a
-											class="dropdown-item" href="edit-patient.html">编辑病人信息</a>
+										<a class="dropdown-item" href="add-patient.html"
+											sec:authorize="hasRole('ROLE_DOCTOR')">添加病人信息</a> <a
+											class="dropdown-item" href="patients.html">查看病人信息</a>
 									</div></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown"
 									href="#" role="button" aria-haspopup="true"
 									aria-expanded="false"><span class="ti-user"></span> 医生管理</a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="add-doctor.html">添加医生信息</a> <a
-											class="dropdown-item" href="doctors.html">查询医生信息</a> <a
-											class="dropdown-item" href="about-doctor.html">医生信息详情</a> <a
-											class="dropdown-item" href="edit-doctor.html">编辑医生信息</a>
+										<a class="dropdown-item" href="add-doctor.html"
+											sec:authorize="hasRole('ROLE_ADMIN')">添加医生信息</a> <a
+											class="dropdown-item" href="doctors.html">查询医生信息</a>
 									</div></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -124,10 +122,9 @@
 									aria-expanded="false"><span class="ti-pencil-alt"></span>
 										出诊管理</a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="add-appointment.html">添加出诊信息</a>
-										<a class="dropdown-item" href="appointments.html">查询出诊信息</a> <a
-											class="dropdown-item" href="about-appointment.html">出诊信息详情</a>
-										<a class="dropdown-item" href="edit-appointment.html">编辑出诊信息</a>
+										<a class="dropdown-item" href="add-appointment.html"
+											sec:authorize="hasRole('ROLE_ADMIN')">添加出诊信息</a> <a
+											class="dropdown-item" href="appointments.html">查询出诊信息</a>
 									</div></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -135,8 +132,7 @@
 									aria-expanded="false"><span class="ti-money"></span> 支付管理</a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="add-payment.html">添加支付</a> <a
-											class="dropdown-item" href="payments.html">所有支付</a> <a
-											class="dropdown-item" href="about-payment.html">发票</a>
+											class="dropdown-item" href="payments.html">所有支付</a>
 									</div></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -144,8 +140,7 @@
 									aria-expanded="false"><span class="ti-key"></span> 病房分配</a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="add-room.html">添加病房</a> <a
-											class="dropdown-item" href="rooms.html">查询病房</a> <a
-											class="dropdown-item" href="edit-room.html">编辑病房信息</a>
+											class="dropdown-item" href="rooms.html">查询病房</a>
 									</div></li>
 							</ul>
 						</div>
