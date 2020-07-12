@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 10/07/2020 14:23:40
+ Date: 12/07/2020 20:40:26
 */
 
 SET NAMES utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `appointment`  (
   CONSTRAINT `department_appointment` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `patient_appointment_id` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_appointment_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of appointment
@@ -55,14 +55,17 @@ CREATE TABLE `authorities`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_authorities_id`(`user_id`) USING BTREE,
   CONSTRAINT `user_authorities_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of authorities
 -- ----------------------------
 INSERT INTO `authorities` VALUES (1, 1, 'ROLE_ADMIN');
 INSERT INTO `authorities` VALUES (2, 1, 'ROLE_USER');
+INSERT INTO `authorities` VALUES (3, 2, 'ROLE_USER');
 INSERT INTO `authorities` VALUES (4, 5, 'ROLE_USER');
+INSERT INTO `authorities` VALUES (5, 5, 'ROLE_DOCTOR');
+INSERT INTO `authorities` VALUES (6, 1, 'ROLE_DOCTOR');
 
 -- ----------------------------
 -- Table structure for department
@@ -77,6 +80,7 @@ CREATE TABLE `department`  (
 -- ----------------------------
 -- Records of department
 -- ----------------------------
+INSERT INTO `department` VALUES (1, '骨科');
 
 -- ----------------------------
 -- Table structure for patient
@@ -98,6 +102,7 @@ CREATE TABLE `patient`  (
 -- ----------------------------
 -- Records of patient
 -- ----------------------------
+INSERT INTO `patient` VALUES (2, '胡涛', '2020-07-02', 22, '12345678911', '1943097043@qq.com', 'Male', '1231sfsfsfsafdssafafsaf', '等待');
 
 -- ----------------------------
 -- Table structure for payment
@@ -118,7 +123,7 @@ CREATE TABLE `payment`  (
   CONSTRAINT `department_payment_id` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `patient_payment_id` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_payment_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of payment
@@ -139,6 +144,9 @@ CREATE TABLE `room`  (
 -- ----------------------------
 -- Records of room
 -- ----------------------------
+INSERT INTO `room` VALUES (1, '重症监护室', 1, '已满');
+INSERT INTO `room` VALUES (2, '普通病房', 4, '未满');
+INSERT INTO `room` VALUES (3, '普通病房', 8, '未满');
 
 -- ----------------------------
 -- Table structure for room_desc
@@ -158,11 +166,12 @@ CREATE TABLE `room_desc`  (
   CONSTRAINT `patietn_room_id` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `room_room_desc_id` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_room_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of room_desc
 -- ----------------------------
+INSERT INTO `room_desc` VALUES (1, 2, 5, '2020-07-07', '2020-08-07', 1);
 
 -- ----------------------------
 -- Table structure for service
@@ -176,7 +185,7 @@ CREATE TABLE `service`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `payment_service_id`(`payment_id`) USING BTREE,
   CONSTRAINT `payment_service_id` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of service
@@ -193,14 +202,14 @@ CREATE TABLE `user`  (
   `enabled` tinyint(4) NOT NULL DEFAULT 1 COMMENT '是否可用(1：可用；0：不可用)',
   `email` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '邮箱',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'admin', '$2a$10$kO1tB6pccLKdBgJUV52FauWEhv2gfZF49fuaLsC5WBtsCTNnwH7sO', 1, '');
-INSERT INTO `user` VALUES (2, 'user', '$2a$10$kO1tB6pccLKdBgJUV52FauWEhv2gfZF49fuaLsC5WBtsCTNnwH7sO', 1, '');
-INSERT INTO `user` VALUES (5, 'root', '$2a$10$A9MOgmWxarE49KVNFJgpse/ueby/KQ3.iVId73y28VtwJOdv/lGmy', 1, '1943097043@qq.com');
+INSERT INTO `user` VALUES (1, 'admin', '$2a$10$kO1tB6pccLKdBgJUV52FauWEhv2gfZF49fuaLsC5WBtsCTNnwH7sO', 1, '3023883484@qq.com');
+INSERT INTO `user` VALUES (2, 'user', '$2a$10$kO1tB6pccLKdBgJUV52FauWEhv2gfZF49fuaLsC5WBtsCTNnwH7sO', 1, 'xox.zhe@qq.com');
+INSERT INTO `user` VALUES (5, 'doctor', '$2a$10$kO1tB6pccLKdBgJUV52FauWEhv2gfZF49fuaLsC5WBtsCTNnwH7sO', 1, '1943097043@qq.com');
 
 -- ----------------------------
 -- Table structure for user_desc
@@ -224,10 +233,11 @@ CREATE TABLE `user_desc`  (
   INDEX `department_user_desc_id`(`department_id`) USING BTREE,
   CONSTRAINT `department_user_desc_id` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_user_desc_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_desc
 -- ----------------------------
+INSERT INTO `user_desc` VALUES (1, '普通医师', '3', '女', '2020-06-30', 19, '萨法沙发沙发撒大大', '啊飞洒飞洒发生发生', '12345678911', '可出诊', 5, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
