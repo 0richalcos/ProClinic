@@ -134,12 +134,12 @@
 									<div class="form-group col-md-6">
 										<label for="about-doctor">医生简介</label>
 										<textarea placeholder="医生 Details" class="form-control"
-											id="about-doctor" rows="3">{{gaa.details}}</textarea>
+											v-model="gaa.details" id="about-doctor" rows="3">{{gaa.details}}</textarea>
 									</div>
 									<div class="form-group col-md-6">
 										<label for="address">地址</label>
 										<textarea placeholder="Address" class="form-control"
-											id="address" rows="3">{{gaa.address}}</textarea>
+											v-model="gaa.address" id="address" rows="3">{{gaa.address}}</textarea>
 									</div>
 									<div class="form-group col-md-12">
 										<label for="file">File</label> <input type="file"

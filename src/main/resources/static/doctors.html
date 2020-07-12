@@ -134,16 +134,13 @@
 											<td>{{con.id}}</td>
 											<td>{{con.user.username}}</td>
 											<td>{{con.experience}}</td>
-											<td>{{con.department.name}}</td> <<<<<<< HEAD
-											<td><span class="badge badge-success">{{con.status}}</span>
-												=======
+											<td>{{con.department.name}}</td>
 											<td><span v-if="con.status=='可出诊'"
 												class="badge badge-success">{{con.status}}</span> <span
 												v-if="con.status=='休假'" class="badge badge-warning">{{con.status}}</span>
 												<span v-if="con.status=='Not 可出诊'"
-												class="badge badge-danger">{{con.status}}</span> >>>>>>>
-												branch 'master' of
-												https://github.com/0richalcos/ProClinic.git</td>
+												class="badge badge-danger">{{con.status}}</span>
+											</td>
 											<td><a :href="'about-doctor.html?id='+con.id"><button>详情</button></a><a
 												:href="'edit-doctor.html?id='+con.id"><button>修改</button></a></td>
 										</tr>
@@ -197,16 +194,10 @@
 										data: this.list
 									}).then(res => {
 										console.log(res);
-<<<<<<< HEAD
 										this.conllection = res.data;
-									}),
 										this.getAll();
-=======
-										this.conllection=res.data;
-									this.getAll();
 									});
->>>>>>> branch 'master' of https://github.com/0richalcos/ProClinic.git
-								}
+									}
 							},
 							mounted() {
 								this.getAll();
