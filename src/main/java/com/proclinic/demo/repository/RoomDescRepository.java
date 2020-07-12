@@ -9,7 +9,11 @@ import com.proclinic.demo.entity.RoomDesc;
 
 public interface RoomDescRepository extends JpaRepository<RoomDesc, Integer> {
 
-	@Query(nativeQuery = true,value="SELECT  new com.johnfnash.learn.domain.ViewInfo(u,p,r) FROM room_desc r,room r1,USER u,user_desc u1,patient p" + 
-			"WHERE r.`room_id`=r1.`id` AND u.id=u1.`user_id` AND r.`user_id`=u.`id` AND r.`patient_id`=p.`id`")
-	List<RoomDesc> findAll(int id,int pid,String allotmentDate,String dischargeDate,int uid);
+	@Query(nativeQuery = true,value="SELECT name FROM room_desc r,room r1,USER u,user_desc u1,patient p "
++ "WHERE r.`room_id`=r1.`id` AND u.id=u1.`user_id` AND r.`user_id`=u.`id` "
++ "AND r.`patient_id`=p.`id` and r1.id=?1")
+	List<RoomDesc> findAll(int id);
+	@Query(nativeQuery = true,value=" SELECT *FROM room_desc  WHERE room_id=?1 AND patient_id=?2 ")
+	RoomDesc findAlldescid(int id,int pid);
+	
 }

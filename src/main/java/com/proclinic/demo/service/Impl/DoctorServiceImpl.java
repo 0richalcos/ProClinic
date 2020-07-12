@@ -44,7 +44,7 @@ public class DoctorServiceImpl implements DoctorService{
 					return "已有此成员";
 				}
 			}else{
-				return "部门错误，此人非本部门人员";
+				return "部门错误，没有此部门";
 			}
 		}else{
 			return "错误，此人非本医院成员";
@@ -64,7 +64,7 @@ public class DoctorServiceImpl implements DoctorService{
 				doctormapper.Doctorup(userdesc,id);
 				return "修改成功";
 			}else{
-				return "部门错误，此人非本部门人员";
+				return "部门错误，没有此部门";
 			}
 		}else {
 			return "错误，此人非本医院成员";

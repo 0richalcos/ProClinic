@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
+	<title>ProClinic-医院管理系统</title>
 	<!-- Fav  Icon Link -->
 	<link rel="shortcut icon" type="image/png" href="images/fav.png">
 	<!-- Bootstrap core CSS -->
@@ -24,8 +25,9 @@
 	<link rel="stylesheet" href="css/jquery-jvectormap.css">
 	<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
 
-	<script src="js/modernizr.min.js"></script>
-	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript"
+	charset="utf-8"></script>
 </head>
 
 <body>
@@ -39,20 +41,20 @@
 	<!--/Pre Loader -->
 	<!-- Color Changer -->
 	<div class="theme-settings" id="switcher">
-		<span class="theme-click">
-			<span class="ti-settings"></span>
-		</span>
-		<span class="theme-color theme-default theme-active" data-color="green"></span>
-		<span class="theme-color theme-blue" data-color="blue"></span>
-		<span class="theme-color theme-red" data-color="red"></span>
-		<span class="theme-color theme-violet" data-color="violet"></span>
-		<span class="theme-color theme-yellow" data-color="yellow"></span>
+		<span class="theme-click"> <span class="ti-settings"></span>
+		</span> <span class="theme-color theme-default theme-active"
+			data-color="green"></span> <span class="theme-color theme-blue"
+			data-color="blue"></span> <span class="theme-color theme-red"
+			data-color="red"></span> <span class="theme-color theme-violet"
+			data-color="violet"></span> <span class="theme-color theme-yellow"
+			data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
 	<div class="wrapper">
 		<!-- Page Content -->
 		<div id="content">
 			<!-- header -->
+
 							<div id="header"></div>
 							<script>
 								$("#header").load("header.html")
@@ -63,7 +65,7 @@
 				<div class="container mt-0">
 					<div class="row breadcrumb-bar">
 						<div class="col-md-6">
-							<h3 class="block-title">Edit Room Allotment</h3>
+							<h3 class="block-title">编辑房间分配</h3>
 						</div>
 						<div class="col-md-6">
 							<ol class="breadcrumb">
@@ -72,92 +74,121 @@
 										<span class="ti-home"></span>
 									</a>
 								</li>
-								<li class="breadcrumb-item">Room Allotments</li>
-								<li class="breadcrumb-item active">Edit Room Allotment</li>
+								<li class="breadcrumb-item">房间分配
+								</li>
+								<li class="breadcrumb-item active">编辑房间分配</li>
 							</ol>
 						</div>
+
 					</div>
 				</div>
+			</div>
 			<!-- /Page Title -->
 
 			<!-- /Breadcrumb -->
 			<!-- Main Content -->
-			<div class="container">
+			<div class="container" id="update">
 
 				<div class="row">
+					
 					<!-- Widget Item -->
 					<div class="col-md-12">
+
+						
 						<div class="widget-area-2 lochana-box-shadow">
-							<h3 class="widget-title">Edit Room Allotment</h3>
+							
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="room-number">Room Number</label>
-										<input value="10" type="text" class="form-control" placeholder="Room Number" id="room-number">
+
+										<label for="room-number">更改房间号:</label>
+										<input type="text"  v-model="id2" class="form-control" placeholder="房间号" id="room-number">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="room-type">Room Type</label>
-										<select class="form-control" id="room-type">
-											<option>ICU</option>
-											<option selected>General</option>
-											<option>AC Room</option>
+
+										<label for="room-number">房间号:</label>
+										<input type="text" v-on:blur="fjh" v-model="id" class="form-control" placeholder="房间号" id="room-number">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="room-type">房间类型:</label>
+										<input type="text" placeholder="房间类型" v-model="fjtype" class="form-control" id="patient-name" disabled>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="gender">病人姓名:</label>
+										<select class="form-control" id="gender"  v-model="pid" @change="selrid" >
+                                        <option v-for="(p, index) in pnameList" :key="index" :value="[p.id]"  >{{p.name}} </option>
+
 										</select>
 									</div>
 									<div class="form-group col-md-6">
-										<label for="patient-name">名人姓名</label>
-										<input value="Damodar Reddy" type="text" placeholder="名人姓名" class="form-control" id="patient-name">
+
+										<label for="allot-date">入院日期:</label>
+										<input type="date" placeholder="入院日期" class="form-control" v-model="allotmentDate" id="allot-date">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="allot-date">Allotment Date</label>
-										<input value="2018-10-10" type="date" placeholder="Allotment Date" class="form-control" id="allot-date">
+
+										<label for="discharge-date">出院日期:</label>
+										<input type="date" placeholder="出院日期" class="form-control"  v-model="dischargeDate" id="discharge-date">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="discharge-date">Discharge Date</label>
-										<input value="2018-10-16" type="date" placeholder="Discharge Date" class="form-control" id="discharge-date">
+
+										<label for="doctor-name">医生编号:</label>
+										<input type="text" placeholder="医生编号"  @change="ysbh" v-model="uid"  class="form-control" id="doctor-name">
+
 									</div>
 									<div class="form-group col-md-6">
-										<label for="doctor-name">医生 Name</label>
-										<input value="Dr Manoj Kumar" type="text" placeholder="医生 Name" class="form-control" id="doctor-name">
-									</div>																	
+
+										<label for="doctor-name">医生姓名:</label>
+										<input type="text" placeholder="医生姓名"  v-model="uname"  class="form-control" id="doctor-name" disabled>
+									</div>
+												
 									
+									<div class="alert alert-success alert-dismissible fade show" role="alert" v-if="succeed">
+										<strong>成功完成编辑分配!</strong>
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+									</div>
+									<div class="alert alert-warning alert-dismissible fade show" role="alert" v-if="failure" >
+										<strong>编辑分配失败!</strong> 请仔细检查分配信息哦
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+									</div>
+									<!-- /Alerts-->
+						
+
+
+									<div class="form-check col-md-12 mb-2">
+										<div class="text-left">
+											<div class="custom-control custom-checkbox">
+												<input class="custom-control-input" v-model="qr" type="checkbox"  id="ex-check-2">
+												<label class="custom-control-label" for="ex-check-2">请确认</label>
+											</div>
+										</div>
+									</div>
+
+
+
 									<div class="form-group col-md-6 mb-3">
-										<button type="submit" class="btn btn-primary btn-lg">Updated</button>
+										<button type="button" v-on:click="tj" class="btn btn-primary btn-lg">更新</button>
 									</div>
 								</div>
 							</form>
 							<!-- Alerts-->
-							<div class="alert alert-success alert-dismissible fade show" role="alert">
-								<strong>Updated Successfully!</strong> Please check in Allotment list
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
-							</div>
-							<div class="alert alert-warning alert-dismissible fade show" role="alert">
-								<strong>Holy guacamole!</strong> You should check in on some of those fields below.
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
-							</div>
-							<!-- /Alerts-->
 						</div>
 					</div>
 					<!-- /Widget Item -->
 				</div>
-			</div>
-			<!-- /Main Content -->
-			<!--Copy Rights-->
-			<div class="container">
-				<div class="d-sm-flex justify-content-center">
-				  <span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights reserved.</span>
-				</div>
-			</div>
-			<!-- /Copy Rights-->
-		</div>
 		<!-- /Page Content -->
 	</div>
 	<!-- Back to Top -->
-	<a id="back-to-top" href="#" class="back-to-top">
-		<span class="ti-angle-up"></span>
+	<a id="back-to-top" href="#" class="back-to-top"> <span
+		class="ti-angle-up"></span>
 	</a>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->
@@ -165,15 +196,104 @@
 	<!-- Popper Library-->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap Library-->
-    <script src="js/bootstrap.min.js"></script>
-    
-    <!-- Datatable  -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Datatable  -->
 	<script src="datatable/jquery.dataTables.min.js"></script>
 	<script src="datatable/dataTables.bootstrap4.min.js"></script>
-    
+
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/axios.js"></script>
+	<script>
 
+var state=false;
+new Vue({
+el:"#update",
+data:{
+	succeed:false,
+	failure:false,
+	id:"",
+	pid:"",
+	uid:"",
+	pnameList:[],
+	uname:"",
+	allotmentDate:"",
+	dischargeDate:"",
+	qr:"",
+	fjtype:"",
+	id2:"",
+	roomdescid:"",
+	roomdate:[]
+},
+methods:{
+fjh:function(){
+	this.fjtype="";
+axios.get("/room/"+this.id).then(res=>{
+		this.fjtype=res.data;
+})
+axios.get("/room/allpname/"+this.id).then(res=>{
+		this.pnameList=res.data;
+		
+})
+
+
+},
+
+selrid:function(){
+let pid=this.pid[0]
+axios.get("/room/findAlldescid/"+this.id+"/"+pid).then(res=>{
+	this.uid=res.data.user.id;
+	this.roomdescid=res.data.id;
+})
+axios.get("/room/finddate/"+this.id+"/"+pid).then(res=>{
+   this.roomdate=res.data;
+   this.allotmentDate=this.roomdate[0];
+   this.dischargeDate=this.roomdate[1];
+})
+},
+
+
+ysbh:function(){
+	this.uname="";
+axios.get("/room/User/"+this.uid).then(res=>{
+		this.uname=res.data;
+})
+
+},
+
+
+tj:function(){
+if(this.qr==true){
+if(this.id2!=""&& this.pid!="" && this.uid!=""  && this.allotmentDate!="" && this.dischargeDate!=""){
+axios.post("/room/upd",
+"id="+this.id2+"&pid="+this.pid+"&allotmentDate="+this.allotmentDate+"&dischargeDate="+this.dischargeDate+"&uid="+this.uid+"&rid="+this.roomdescid
+).then(res=>{
+let count=res.data;
+if(count==1){
+this.succeed=true;
+}else{
+this.failure=true;	
+}
+})
+}else{
+alert("请填写完数据")
+}
+}else{
+alert("请确认")	
+}
+}
+
+
+},
+
+
+
+})
+
+
+	</script>
 </body>
 
 </html>

@@ -21,7 +21,8 @@ public class RoomDescServiceImpl implements RoomDescService{
 	
 		return roomList;
 	}
-	
+
+
 	
 
 }
