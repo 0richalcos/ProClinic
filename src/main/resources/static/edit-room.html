@@ -3,27 +3,27 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProClinic-医院管理系统</title>
-	<!-- Fav  Icon Link -->
-	<link rel="shortcut icon" type="image/png" href="images/fav.png">
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- themify icons CSS -->
-	<link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Animations CSS -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Main CSS -->
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/green.css" id="style_theme">
-	<link rel="stylesheet" href="css/responsive.css">
-	<!-- morris charts -->
-	<link rel="stylesheet" href="charts/css/morris.css">
-	<!-- jvectormap -->
-	<link rel="stylesheet" href="css/jquery-jvectormap.css">
-	<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ProClinic-医院管理系统</title>
+<!-- Fav  Icon Link -->
+<link rel="shortcut icon" type="image/png" href="images/fav.png">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- themify icons CSS -->
+<link rel="stylesheet" href="css/themify-icons.css">
+<!-- Animations CSS -->
+<link rel="stylesheet" href="css/animate.css">
+<!-- Main CSS -->
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/green.css" id="style_theme">
+<link rel="stylesheet" href="css/responsive.css">
+<!-- morris charts -->
+<link rel="stylesheet" href="charts/css/morris.css">
+<!-- jvectormap -->
+<link rel="stylesheet" href="css/jquery-jvectormap.css">
+<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
 
 <script src="js/modernizr.min.js"></script>
 <script src="js/jquery-3.2.1.min.js" type="text/javascript"
@@ -54,137 +54,145 @@
 		<!-- Page Content -->
 		<div id="content">
 			<!-- header -->
-
-							<div id="header"></div>
-							<script>
-								$("#header").load("header.html")
-							</script>
-							<!-- header -->
-				<!-- Breadcrumb -->
-				<!-- Page Title -->
-				<div class="container mt-0">
-					<div class="row breadcrumb-bar">
-						<div class="col-md-6">
-							<h3 class="block-title">编辑房间分配</h3>
-						</div>
-						<div class="col-md-6">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">
-									<a href="index.html">
-										<span class="ti-home"></span>
-									</a>
-								</li>
-								<li class="breadcrumb-item">房间分配
-								</li>
-								<li class="breadcrumb-item active">编辑房间分配</li>
-							</ol>
-						</div>
-
+			<div th:replace="index::header"></div>
+			<!-- header -->
+			<!-- Breadcrumb -->
+			<!-- Page Title -->
+			<div class="container mt-0">
+				<div class="row breadcrumb-bar">
+					<div class="col-md-6">
+						<h3 class="block-title">编辑房间分配</h3>
 					</div>
+					<div class="col-md-6">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="index.html"> <span
+									class="ti-home"></span>
+							</a></li>
+							<li class="breadcrumb-item">房间分配</li>
+							<li class="breadcrumb-item active">编辑房间分配</li>
+						</ol>
+					</div>
+
 				</div>
 			</div>
-			<!-- /Page Title -->
+		</div>
+		<!-- /Page Title -->
 
-			<!-- /Breadcrumb -->
-			<!-- Main Content -->
-			<div class="container" id="update">
+		<!-- /Breadcrumb -->
+		<!-- Main Content -->
+		<div class="container" id="update">
 
-				<div class="row">
-					
-					<!-- Widget Item -->
-					<div class="col-md-12">
+			<div class="row">
 
-						
-						<div class="widget-area-2 lochana-box-shadow">
-							
-							<form>
-								<div class="form-row">
-									<div class="form-group col-md-6">
-
-										<label for="room-number">更改房间号:</label>
-										<input type="text"  v-model="id2" class="form-control" placeholder="房间号" id="room-number">
-
-									</div>
-									<div class="form-group col-md-6">
-
-										<label for="room-number">房间号:</label>
-										<input type="text" v-on:blur="fjh" v-model="id" class="form-control" placeholder="房间号" id="room-number">
-									</div>
-									<div class="form-group col-md-6">
-										<label for="room-type">房间类型:</label>
-										<input type="text" placeholder="房间类型" v-model="fjtype" class="form-control" id="patient-name" disabled>
-									</div>
-
-									<div class="form-group col-md-6">
-										<label for="gender">病人姓名:</label>
-										<select class="form-control" id="gender"  v-model="pid" @change="selrid" >
-                                        <option v-for="(p, index) in pnameList" :key="index" :value="[p.id]"  >{{p.name}} </option>
-
-										</select>
-									</div>
-									<div class="form-group col-md-6">
-
-										<label for="allot-date">入院日期:</label>
-										<input type="date" placeholder="入院日期" class="form-control" v-model="allotmentDate" id="allot-date">
-
-									</div>
-									<div class="form-group col-md-6">
-
-										<label for="discharge-date">出院日期:</label>
-										<input type="date" placeholder="出院日期" class="form-control"  v-model="dischargeDate" id="discharge-date">
-
-									</div>
-									<div class="form-group col-md-6">
-
-										<label for="doctor-name">医生编号:</label>
-										<input type="text" placeholder="医生编号"  @change="ysbh" v-model="uid"  class="form-control" id="doctor-name">
-
-									</div>
-									<div class="form-group col-md-6">
-
-										<label for="doctor-name">医生姓名:</label>
-										<input type="text" placeholder="医生姓名"  v-model="uname"  class="form-control" id="doctor-name" disabled>
-									</div>
-												
-									
-									<div class="alert alert-success alert-dismissible fade show" role="alert" v-if="succeed">
-										<strong>成功完成编辑分配!</strong>
-										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-											<span aria-hidden="true">×</span>
-										</button>
-									</div>
-									<div class="alert alert-warning alert-dismissible fade show" role="alert" v-if="failure" >
-										<strong>编辑分配失败!</strong> 请仔细检查分配信息哦
-										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-											<span aria-hidden="true">×</span>
-										</button>
-									</div>
-									<!-- /Alerts-->
-						
+				<!-- Widget Item -->
+				<div class="col-md-12">
 
 
-									<div class="form-check col-md-12 mb-2">
-										<div class="text-left">
-											<div class="custom-control custom-checkbox">
-												<input class="custom-control-input" v-model="qr" type="checkbox"  id="ex-check-2">
-												<label class="custom-control-label" for="ex-check-2">请确认</label>
-											</div>
+					<div class="widget-area-2 lochana-box-shadow">
+
+						<form>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+
+									<label for="room-number">更改房间号:</label> <input type="text"
+										v-model="id2" class="form-control" placeholder="房间号"
+										id="room-number">
+
+								</div>
+								<div class="form-group col-md-6">
+
+									<label for="room-number">房间号:</label> <input type="text"
+										v-on:blur="fjh" v-model="id" class="form-control"
+										placeholder="房间号" id="room-number">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="room-type">房间类型:</label> <input type="text"
+										placeholder="房间类型" v-model="fjtype" class="form-control"
+										id="patient-name" disabled>
+								</div>
+
+								<div class="form-group col-md-6">
+									<label for="gender">病人姓名:</label> <select class="form-control"
+										id="gender" v-model="pid" @change="selrid">
+										<option v-for="(p, index) in pnameList" :key="index"
+											:value="[p.id]">{{p.name}}</option>
+
+									</select>
+								</div>
+								<div class="form-group col-md-6">
+
+									<label for="allot-date">入院日期:</label> <input type="date"
+										placeholder="入院日期" class="form-control"
+										v-model="allotmentDate" id="allot-date">
+
+								</div>
+								<div class="form-group col-md-6">
+
+									<label for="discharge-date">出院日期:</label> <input type="date"
+										placeholder="出院日期" class="form-control"
+										v-model="dischargeDate" id="discharge-date">
+
+								</div>
+								<div class="form-group col-md-6">
+
+									<label for="doctor-name">医生编号:</label> <input type="text"
+										placeholder="医生编号" @change="ysbh" v-model="uid"
+										class="form-control" id="doctor-name">
+
+								</div>
+								<div class="form-group col-md-6">
+
+									<label for="doctor-name">医生姓名:</label> <input type="text"
+										placeholder="医生姓名" v-model="uname" class="form-control"
+										id="doctor-name" disabled>
+								</div>
+
+
+								<div class="alert alert-success alert-dismissible fade show"
+									role="alert" v-if="succeed">
+									<strong>成功完成编辑分配!</strong>
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="alert alert-warning alert-dismissible fade show"
+									role="alert" v-if="failure">
+									<strong>编辑分配失败!</strong> 请仔细检查分配信息哦
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<!-- /Alerts-->
+
+
+
+								<div class="form-check col-md-12 mb-2">
+									<div class="text-left">
+										<div class="custom-control custom-checkbox">
+											<input class="custom-control-input" v-model="qr"
+												type="checkbox" id="ex-check-2"> <label
+												class="custom-control-label" for="ex-check-2">请确认</label>
 										</div>
 									</div>
-
-
-
-									<div class="form-group col-md-6 mb-3">
-										<button type="button" v-on:click="tj" class="btn btn-primary btn-lg">更新</button>
-									</div>
 								</div>
-							</form>
-							<!-- Alerts-->
-						</div>
+
+
+
+								<div class="form-group col-md-6 mb-3">
+									<button type="button" v-on:click="tj"
+										class="btn btn-primary btn-lg">更新</button>
+								</div>
+							</div>
+						</form>
+						<!-- Alerts-->
 					</div>
-					<!-- /Widget Item -->
 				</div>
-		<!-- /Page Content -->
+				<!-- /Widget Item -->
+			</div>
+			<!-- /Page Content -->
+		</div>
 	</div>
 	<!-- Back to Top -->
 	<a id="back-to-top" href="#" class="back-to-top"> <span
@@ -273,6 +281,7 @@ axios.post("/room/upd",
 let count=res.data;
 if(count==1){
 this.succeed=true;
+setTimeout(window.location.href='rooms.html',5);
 }else{
 this.failure=true;	
 }
