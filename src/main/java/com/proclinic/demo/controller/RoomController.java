@@ -86,7 +86,6 @@ public class RoomController {
 	user.setId(uid);
 	Date date = new SimpleDateFormat("yyyy-MM-dd").parse(allotmentDate); 
 	Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(dischargeDate); 
-
   RoomDesc d= roomDescRepository.save
  (new RoomDesc(patient,user,room, date, date2));
   if(d!=null) {
