@@ -26,19 +26,22 @@ public class DoctorServiceImpl implements DoctorService{
 	}
 
 	@Override
-	public String adddoctor(UserDesc userdesc) {
+	public String adddoctor(UserDesc userdesc,String str) {
 		User user = doctormapper.Doctorid(userdesc.getUser().getUsername());
+		if(user!=null) {
+		
+		System.out.println(user.getId());
 		Department department = doctormapper.Doctordepartment(userdesc.getDepartment().getName());
+		if(department!=null) {
 		UserDesc doctorname = doctormapper.doctorname(user.getId());
 		System.out.println(user!=null);
 		System.out.println(department!=null);
 		System.out.println(doctorname==null);
-		if(user!=null) {
-			if(department!=null) {
 				if(doctorname==null) {
 				userdesc.setUser(user);
 				userdesc.setDepartment(department);
 				doctormapper.Doctoradd(userdesc);
+				doctormapper.addqx(userdesc.getUser().getId(),str);
 				return "添加成功";
 				}else{
 					return "已有此成员";

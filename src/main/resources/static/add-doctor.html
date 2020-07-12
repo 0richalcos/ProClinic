@@ -85,61 +85,63 @@
 
 				<div class="row">
 					<!-- Widget Item -->
-					<div class="col-md-12">
+					<div class="col-md-12" id="ad">
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">Add 医生</h3>
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="医生-name">医生 Name</label> <input type="text"
-											class="form-control" placeholder="医生 name" id="医生-name">
+											v-model="gaa.user.username" class="form-control" placeholder="医生 name" id="医生-name">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="dob">Date Of Birth</label> <input type="date"
-											placeholder="Date of Birth" class="form-control" id="dob">
+											v-model="gaa.birthday" placeholder="Date of Birth" class="form-control" id="dob">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="specialization">Specialization</label> <input
-											type="text" placeholder="Specialization" class="form-control"
+											v-model="gaa.specialization" type="text" placeholder="Specialization" class="form-control"
 											id="specialization">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="experience">Experience</label> <input type="text"
-											placeholder="Experience" class="form-control" id="experience">
+											v-model="gaa.experience" placeholder="Experience" class="form-control" id="experience">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="age">Age</label> <input type="text"
-											placeholder="Age" class="form-control" id="age">
+											v-model="gaa.age" placeholder="Age" class="form-control" id="age">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="phone">Phone</label> <input type="text"
-											placeholder="Phone" class="form-control" id="phone">
+										 v-model="gaa.phone" placeholder="Phone" class="form-control" id="phone">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="email">Email</label> <input type="email"
-											placeholder="email" class="form-control" id="Email">
+										<label for="email">科室</label> <input type="email"
+											v-model="gaa.department.name"  placeholder="email" class="form-control" id="keshi">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="gender">Gender</label> <select
-											class="form-control" id="gender">
-											<option>Male</option>
-											<option>Female</option>
-											<option>Other</option>
+										<label for="gender">性别</label> <select
+											v-model="gaa.gender" class="form-control" id="gender">
+											<option value="男">男</option>
+											<option value="女">女</option>
 										</select>
 									</div>
 									<div class="form-group col-md-6">
 										<label for="about-doctor">医生 Details</label>
 										<textarea placeholder="医生 Details" class="form-control"
-											id="about-doctor" rows="3"></textarea>
+										 	v-model="gaa.details" id="about-doctor" rows="3"></textarea>
 									</div>
 									<div class="form-group col-md-6">
 										<label for="address">Address</label>
 										<textarea placeholder="Address" class="form-control"
-											id="address" rows="3"></textarea>
+											v-model="gaa.address" id="address" rows="3"></textarea>
 									</div>
-									<div class="form-group col-md-12">
-										<label for="file">File</label> <input type="file"
-											class="form-control" id="file">
+									<div class="form-group col-md-6">
+										<label for="gender">权限</label> <select
+											v-model="quanxian" class="form-control" id="gender">
+											<option value="ROLE_DOCTOR">普通医生</option>
+											<option value="ROLE_ADMIN">管理员</option>
+										</select>
 									</div>
 
 									<div class="form-check col-md-12 mb-2">
@@ -153,7 +155,7 @@
 										</div>
 									</div>
 									<div class="form-group col-md-6 mb-3">
-										<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+										<button type="submit" @click="po()" class="btn btn-primary btn-lg">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -178,6 +180,41 @@
 							<!-- /Alerts-->
 						</div>
 					</div>
+					<script type="text/javascript">
+						let vue=new Vue({
+							el:"#ad",
+							data:{
+								gaa:{
+									id:"",
+									specialization:"",
+									experience:"",
+									gender: "",
+									birthday: "",
+									age: "",
+									details: "",
+									address: "",
+									phone: "",
+									department: {
+											name: ""
+									    },
+									user: {
+									        username: ""
+									    }
+								},
+								quanxian:""
+							},
+							methods:{
+								po(){
+									console.log(this.quanxian);
+									axios.post(`/doctor/${this.quanxian}`,this.gaa).then(res=>{
+										alert(res.data);
+										window.location="doctors.html"; 
+									})
+									
+								}
+							}
+						})
+					</script>
 					<!-- /Widget Item -->
 				</div>
 			</div>
