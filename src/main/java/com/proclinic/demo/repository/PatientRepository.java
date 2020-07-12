@@ -3,12 +3,14 @@ package com.proclinic.demo.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.proclinic.demo.entity.Patient;
-import com.proclinic.demo.entity.RoomDesc;
 
 
+@Repository
 public interface PatientRepository extends JpaRepository<Patient,Integer> {
 
 	@Query(nativeQuery = true,value="SELECT*FROM patient WHERE id IN (SELECT p.`id` FROM room_desc r,room r1,USER u,user_desc u1,patient p "

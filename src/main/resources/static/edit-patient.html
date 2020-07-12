@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 	<meta charset="utf-8">
@@ -26,6 +27,8 @@
 
 	<script src="js/modernizr.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
 </head>
 
 <body>
@@ -39,50 +42,41 @@
 	<!--/Pre Loader -->
 	<!-- Color Changer -->
 	<div class="theme-settings" id="switcher">
-		<span class="theme-click">
-			<span class="ti-settings"></span>
-		</span>
-		<span class="theme-color theme-default theme-active" data-color="green"></span>
-		<span class="theme-color theme-blue" data-color="blue"></span>
-		<span class="theme-color theme-red" data-color="red"></span>
-		<span class="theme-color theme-violet" data-color="violet"></span>
-		<span class="theme-color theme-yellow" data-color="yellow"></span>
+		<span class="theme-click"> <span class="ti-settings"></span>
+		</span> <span class="theme-color theme-default theme-active" data-color="green"></span> <span
+			class="theme-color theme-blue" data-color="blue"></span> <span class="theme-color theme-red"
+			data-color="red"></span> <span class="theme-color theme-violet" data-color="violet"></span> <span
+			class="theme-color theme-yellow" data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
 	<div class="wrapper">
 		<!-- Page Content -->
 		<div id="content">
-				<!-- header -->
-								<div id="header"></div>
-								<script>
-									$("#header").load("header.html")
-								</script>
-								<!-- header -->
-				<!-- Breadcrumb -->
-				<!-- Page Title -->
-				<div class="container mt-0">
-					<div class="row breadcrumb-bar">
-						<div class="col-md-6">
-							<h3 class="block-title">Edit Patient</h3>
-						</div>
-						<div class="col-md-6">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">
-									<a href="index.html">
-										<span class="ti-home"></span>
-									</a>
-								</li>
-								<li class="breadcrumb-item">病人管理</li>
-								<li class="breadcrumb-item active">Edit Patient</li>
-							</ol>
-						</div>
+			<!-- header -->
+			<div th:replace="index::header"></div>
+			<!-- header -->
+			<!-- Breadcrumb -->
+			<!-- Page Title -->
+			<div class="container mt-0">
+				<div class="row breadcrumb-bar">
+					<div class="col-md-6">
+						<h3 class="block-title">Edit Patient</h3>
+					</div>
+					<div class="col-md-6">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="index.html"> <span class="ti-home"></span>
+								</a></li>
+							<li class="breadcrumb-item">病人管理</li>
+							<li class="breadcrumb-item active">Edit Patient</li>
+						</ol>
 					</div>
 				</div>
+			</div>
 			<!-- /Page Title -->
 
 			<!-- /Breadcrumb -->
 			<!-- Main Content -->
-			<div class="container">
+			<div class="container" id="app">
 
 				<div class="row">
 					<!-- Widget Item -->
@@ -92,28 +86,30 @@
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="patient-name">名人姓名</label>
-										<input type="text" value="Daniel Smith" class="form-control" placeholder="Patient name" id="patient-name">
+										<label for="patient-name">名人姓名</label> <input type="text" value="Daniel Smith"
+											v-model="patient.name" class="form-control" placeholder="Patient name"
+											id="patient-name">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="dob">Date Of Birth</label>
-										<input type="date" value="1989-10-10" placeholder="Date of Birth" class="form-control" id="dob">
+										<label for="dob">Date Of Birth</label> <input type="date" value="1989-10-10"
+											v-model="patient.birthday" placeholder="Date of Birth" class="form-control"
+											id="dob">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="age">Age</label>
-										<input type="text" value="30" placeholder="Age" class="form-control" id="age">
+										<label for="age">Age</label> <input v-model="patient.age" type="text" value="30"
+											placeholder="Age" class="form-control" id="age">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="phone">Phone</label>
-										<input type="text" value="12345 67890" placeholder="Phone" class="form-control" id="phone">
+										<label for="phone">Phone</label> <input v-model="patient.phone" type="text"
+											value="12345 67890" placeholder="Phone" class="form-control" id="phone">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="email">Email</label>
-										<input type="email" value="email@email.com" placeholder="email" class="form-control" id="Email">
+										<label for="email">Email</label> <input v-model="patient.email" type="email"
+											value="email@email.com" placeholder="email" class="form-control" id="Email">
 									</div>
 									<div class="form-group col-md-6">
-										<label for="gender">Gender</label>
-										<select class="form-control" id="gender">
+										<label for="gender">Gender</label> <select v-model="patient.gender"
+											class="form-control" id="gender">
 											<option selected>Male</option>
 											<option>Female</option>
 											<option>Other</option>
@@ -121,23 +117,27 @@
 									</div>
 									<div class="form-group col-md-12">
 										<label for="exampleFormControlTextarea1">Address</label>
-										<textarea placeholder="Address" class="form-control" id="exampleFormControlTextarea1" rows="3">Koramangala Banglore, India</textarea>
+										<textarea v-model="patient.address" placeholder="Address" class="form-control"
+											id="exampleFormControlTextarea1"
+											rows="3">Koramangala Banglore, India</textarea>
 									</div>
 									<div class="form-group col-md-12">
-										<label for="file">File</label>
-										<input type="file" class="form-control" id="file">
+										<label for="file">File</label> <input type="file" class="form-control"
+											id="file">
 									</div>
-																		
+
 									<div class="form-check col-md-12 mb-2">
 										<div class="text-left">
 											<div class="custom-control custom-checkbox">
 												<input class="custom-control-input" type="checkbox" id="ex-check-2">
-												<label class="custom-control-label" for="ex-check-2">Please Confirm</label>
+												<label class="custom-control-label" for="ex-check-2">Please
+													Confirm</label>
 											</div>
 										</div>
 									</div>
 									<div class="form-group col-md-6 mb-3">
-										<button type="submit" class="btn btn-primary btn-lg">Update</button>
+										<button @click="putid" type="submit"
+											class="btn btn-primary btn-lg">Update</button>
 									</div>
 								</div>
 							</form>
@@ -149,7 +149,8 @@
 								</button>
 							</div>
 							<div class="alert alert-warning alert-dismissible fade show" role="alert">
-								<strong>Holy guacamole!</strong> You should check in on some of those fields below.
+								<strong>Holy guacamole!</strong> You should check in on some of
+								those fields below.
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
@@ -164,7 +165,10 @@
 			<!--Copy Rights-->
 			<div class="container">
 				<div class="d-sm-flex justify-content-center">
-				  <span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights reserved.</span>
+					<span class="text-muted text-center d-block d-sm-inline-block">Copyright
+						© 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>.
+						All rights reserved.
+					</span>
 				</div>
 			</div>
 			<!-- /Copy Rights-->
@@ -172,21 +176,62 @@
 		<!-- /Page Content -->
 	</div>
 	<!-- Back to Top -->
-	<a id="back-to-top" href="#" class="back-to-top">
-		<span class="ti-angle-up"></span>
+	<a id="back-to-top" href="#" class="back-to-top"> <span class="ti-angle-up"></span>
 	</a>
+
+	<script>
+		let vue = new Vue({
+			el: "#app",
+			data: {
+				patient: {
+					id: "",
+					name: "",
+					birthday: "",
+					gender: "",
+					age: "",
+					address: "",
+					phone: "",
+					email: ""
+				}
+			},
+			methods: {
+				getid(id) {
+					axios.get(`/patient/${id}`).then(res => {
+						this.patient.id = res.data.id;
+						this.patient.name = res.data.name;
+						this.patient.gender = res.data.gender;
+						this.patient.birthday = res.data.birthday;
+						this.patient.age = res.data.age;
+						this.patient.address = res.data.address;
+						this.patient.phone = res.data.phone;
+						this.patient.email = res.data.email;
+					})
+				},
+				putid() {
+					axios.put(`/patient/${this.patient.id}`, this.patient).then(res => {
+						window.location = "patients.html";
+					})
+
+				}
+			},
+			mounted() {
+				this.getid(window.location.search.split('=')[1]);
+				console.log(window.location.search.split('=')[1])
+			}
+		})
+	</script>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<!-- Popper Library-->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap Library-->
-    <script src="js/bootstrap.min.js"></script>
-    
-    <!-- Datatable  -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Datatable  -->
 	<script src="datatable/jquery.dataTables.min.js"></script>
 	<script src="datatable/dataTables.bootstrap4.min.js"></script>
-    
+
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
 

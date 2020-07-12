@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
-	<!-- Fav  Icon Link -->
-	<link rel="shortcut icon" type="image/png" href="images/fav.png">
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- themify icons CSS -->
-	<link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Animations CSS -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Main CSS -->
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/green.css" id="style_theme">
-	<link rel="stylesheet" href="css/responsive.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
+<!-- Fav  Icon Link -->
+<link rel="shortcut icon" type="image/png" href="images/fav.png">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- themify icons CSS -->
+<link rel="stylesheet" href="css/themify-icons.css">
+<!-- Animations CSS -->
+<link rel="stylesheet" href="css/animate.css">
+<!-- Main CSS -->
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/green.css" id="style_theme">
+<link rel="stylesheet" href="css/responsive.css">
 
-	<script src="js/modernizr.min.js"></script>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/" type="text/javascript" charset="utf-8"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
@@ -35,25 +34,21 @@
 	<!--/Pre Loader -->
 	<!-- Color Changer -->
 	<div class="theme-settings" id="switcher">
-		<span class="theme-click">
-			<span class="ti-settings"></span>
-		</span>
-		<span class="theme-color theme-default theme-active" data-color="green"></span>
-		<span class="theme-color theme-blue" data-color="blue"></span>
-		<span class="theme-color theme-red" data-color="red"></span>
-		<span class="theme-color theme-violet" data-color="violet"></span>
-		<span class="theme-color theme-yellow" data-color="yellow"></span>
+		<span class="theme-click"> <span class="ti-settings"></span>
+		</span> <span class="theme-color theme-default theme-active"
+			data-color="green"></span> <span class="theme-color theme-blue"
+			data-color="blue"></span> <span class="theme-color theme-red"
+			data-color="red"></span> <span class="theme-color theme-violet"
+			data-color="violet"></span> <span class="theme-color theme-yellow"
+			data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
 	<div class="wrapper">
 		<!-- Page Content -->
 		<div id="content">
 			<!-- header -->
-				<div id="header"></div>
-				<script>
-					$("#header").load("header.html")
-				</script>
-				<!-- header -->
+			<div th:replace="index::header"></div>
+			<!-- header -->
 			<!-- Breadcrumb -->
 			<!-- Page Title -->
 			<div class="container mt-0">
@@ -63,11 +58,9 @@
 					</div>
 					<div class="col-md-6">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item">
-								<a href="index.html">
-									<span class="ti-home"></span>
-								</a>
-							</li>
+							<li class="breadcrumb-item"><a href="index.html"> <span
+									class="ti-home"></span>
+							</a></li>
 							<li class="breadcrumb-item active">404 Page</li>
 						</ol>
 					</div>
@@ -76,7 +69,7 @@
 			<!-- /Page Title -->
 			<!-- /Breadcrumb -->
 			<!-- Main Content -->
-			<div class="container">				
+			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="widget-area-2 lochana-box-shadow min-h200">
@@ -94,15 +87,18 @@
 			<!--Copy Rights-->
 			<div class="container">
 				<div class="d-sm-flex justify-content-center">
-				  <span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>. All rights reserved.</span>
+					<span class="text-muted text-center d-block d-sm-inline-block">Copyright
+						© 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>.
+						All rights reserved.
+					</span>
 				</div>
 			</div>
 			<!-- /Copy Rights-->
 		</div>
 	</div>
 	<!-- Back to Top -->
-	<a id="back-to-top" href="#" class="back-to-top">
-		<span class="ti-angle-up"></span>
+	<a id="back-to-top" href="#" class="back-to-top"> <span
+		class="ti-angle-up"></span>
 	</a>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->

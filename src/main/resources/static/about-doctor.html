@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,10 +55,7 @@
 		<!-- Page Content -->
 		<div id="content">
 			<!-- header -->
-			<div id="header"></div>
-			<script>
-				$("#header").load("header.html")
-			</script>
+			<div th:replace="index::header"></div>
 			<!-- header -->
 			<!-- Breadcrumb -->
 			<!-- Page Title -->
@@ -69,7 +66,7 @@
 					</div>
 					<div class="col-md-6">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index.html"> <span
+							<li class="breadcrumb-item"><a href="index.html"> <span>
 									class="ti-home"></span>
 							</a></li>
 							<li class="breadcrumb-item">医生s</li>
@@ -95,7 +92,7 @@
 										<img class="card-img-top" src="images/doctor.jpeg"
 											alt="Card image">
 										<div class="card-body">
-											<h4 class="card-title">Dr Daniel Smith</h4>
+											<h4 class="card-title">{{gaa.user.username}}</h4>
 											<p class="card-text">Some quick example text to build on
 												the card title and make up the bulk of the card's content.</p>
 											<button type="button" class="btn btn-success mb-2">
@@ -113,31 +110,31 @@
 											<tbody>
 												<tr>
 													<td><strong>Specialization</strong></td>
-													<td>General Physician</td>
+													<td>{{gaa.specialization}}</td>
 												</tr>
 												<tr>
 													<td><strong>Experience</strong></td>
-													<td>14 Years</td>
+													<td>{{gaa.experience}}</td>
 												</tr>
 												<tr>
 													<td><strong>Gender</strong></td>
-													<td>Male</td>
+													<td>{{gaa.gender}}</td>
 												</tr>
 												<tr>
 													<td><strong>Address</strong></td>
-													<td>Koramangala Banglore, India</td>
+													<td>{{gaa.address}}</td>
 												</tr>
 												<tr>
 													<td><strong>Phone</strong></td>
-													<td>+91 11111 11111</td>
+													<td>{{gaa.phone}}</td>
 												</tr>
 												<tr>
 													<td><strong>Date Of Birth</strong></td>
-													<td>26-10-1989</td>
+													<td>{{gaa.birthday}}</td>
 												</tr>
 												<tr>
-													<td><strong>Email</strong></td>
-													<td>your@email.com</td>
+													<td><strong>Keshi</strong></td>
+													<td>{{gaa.department.name}}</td>
 												</tr>
 											</tbody>
 										</table>

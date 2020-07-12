@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,8 +25,9 @@
 	<link rel="stylesheet" href="css/jquery-jvectormap.css">
 	<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
 
-	<script src="js/modernizr.min.js"></script>
-	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript"
+	charset="utf-8"></script>
 </head>
 
 <body>
@@ -39,20 +41,20 @@
 	<!--/Pre Loader -->
 	<!-- Color Changer -->
 	<div class="theme-settings" id="switcher">
-		<span class="theme-click">
-			<span class="ti-settings"></span>
-		</span>
-		<span class="theme-color theme-default theme-active" data-color="green"></span>
-		<span class="theme-color theme-blue" data-color="blue"></span>
-		<span class="theme-color theme-red" data-color="red"></span>
-		<span class="theme-color theme-violet" data-color="violet"></span>
-		<span class="theme-color theme-yellow" data-color="yellow"></span>
+		<span class="theme-click"> <span class="ti-settings"></span>
+		</span> <span class="theme-color theme-default theme-active"
+			data-color="green"></span> <span class="theme-color theme-blue"
+			data-color="blue"></span> <span class="theme-color theme-red"
+			data-color="red"></span> <span class="theme-color theme-violet"
+			data-color="violet"></span> <span class="theme-color theme-yellow"
+			data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
 	<div class="wrapper">
 		<!-- Page Content -->
 		<div id="content">
 			<!-- header -->
+
 							<div id="header"></div>
 							<script>
 								$("#header").load("header.html")
@@ -77,8 +79,10 @@
 								<li class="breadcrumb-item active">编辑房间分配</li>
 							</ol>
 						</div>
+
 					</div>
 				</div>
+			</div>
 			<!-- /Page Title -->
 
 			<!-- /Breadcrumb -->
@@ -96,10 +100,13 @@
 							<form>
 								<div class="form-row">
 									<div class="form-group col-md-6">
+
 										<label for="room-number">更改房间号:</label>
 										<input type="text"  v-model="id2" class="form-control" placeholder="房间号" id="room-number">
+
 									</div>
 									<div class="form-group col-md-6">
+
 										<label for="room-number">房间号:</label>
 										<input type="text" v-on:blur="fjh" v-model="id" class="form-control" placeholder="房间号" id="room-number">
 									</div>
@@ -112,21 +119,29 @@
 										<label for="gender">病人姓名:</label>
 										<select class="form-control" id="gender"  v-model="pid" @change="selrid" >
                                         <option v-for="(p, index) in pnameList" :key="index" :value="[p.id]"  >{{p.name}} </option>
+
 										</select>
 									</div>
 									<div class="form-group col-md-6">
+
 										<label for="allot-date">入院日期:</label>
 										<input type="date" placeholder="入院日期" class="form-control" v-model="allotmentDate" id="allot-date">
+
 									</div>
 									<div class="form-group col-md-6">
+
 										<label for="discharge-date">出院日期:</label>
 										<input type="date" placeholder="出院日期" class="form-control"  v-model="dischargeDate" id="discharge-date">
+
 									</div>
 									<div class="form-group col-md-6">
+
 										<label for="doctor-name">医生编号:</label>
 										<input type="text" placeholder="医生编号"  @change="ysbh" v-model="uid"  class="form-control" id="doctor-name">
+
 									</div>
 									<div class="form-group col-md-6">
+
 										<label for="doctor-name">医生姓名:</label>
 										<input type="text" placeholder="医生姓名"  v-model="uname"  class="form-control" id="doctor-name" disabled>
 									</div>
@@ -156,6 +171,9 @@
 											</div>
 										</div>
 									</div>
+
+
+
 									<div class="form-group col-md-6 mb-3">
 										<button type="button" v-on:click="tj" class="btn btn-primary btn-lg">更新</button>
 									</div>
@@ -169,8 +187,8 @@
 		<!-- /Page Content -->
 	</div>
 	<!-- Back to Top -->
-	<a id="back-to-top" href="#" class="back-to-top">
-		<span class="ti-angle-up"></span>
+	<a id="back-to-top" href="#" class="back-to-top"> <span
+		class="ti-angle-up"></span>
 	</a>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->
@@ -178,12 +196,12 @@
 	<!-- Popper Library-->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap Library-->
-    <script src="js/bootstrap.min.js"></script>
-    
-    <!-- Datatable  -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Datatable  -->
 	<script src="datatable/jquery.dataTables.min.js"></script>
 	<script src="datatable/dataTables.bootstrap4.min.js"></script>
-    
+
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
 	<script src="js/vue.min.js"></script>
