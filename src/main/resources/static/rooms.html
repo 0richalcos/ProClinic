@@ -2,30 +2,31 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProClinic-医院管理系统</title>
-	<!-- Fav  Icon Link -->
-	<link rel="shortcut icon" type="image/png" href="images/fav.png">
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- themify icons CSS -->
-	<link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Animations CSS -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Main CSS -->
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/green.css" id="style_theme">
-	<link rel="stylesheet" href="css/responsive.css">
-	<!-- morris charts -->
-	<link rel="stylesheet" href="charts/css/morris.css">
-	<!-- jvectormap -->
-	<link rel="stylesheet" href="css/jquery-jvectormap.css">
-	<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ProClinic-医院管理系统</title>
+<!-- Fav  Icon Link -->
+<link rel="shortcut icon" type="image/png" href="images/fav.png">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- themify icons CSS -->
+<link rel="stylesheet" href="css/themify-icons.css">
+<!-- Animations CSS -->
+<link rel="stylesheet" href="css/animate.css">
+<!-- Main CSS -->
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/green.css" id="style_theme">
+<link rel="stylesheet" href="css/responsive.css">
+<!-- morris charts -->
+<link rel="stylesheet" href="charts/css/morris.css">
+<!-- jvectormap -->
+<link rel="stylesheet" href="css/jquery-jvectormap.css">
+<link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
 
-	<script src="js/modernizr.min.js"></script>
-	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript"
+	charset="utf-8"></script>
 </head>
 
 <body>
@@ -39,14 +40,13 @@
 	<!--/Pre Loader -->
 	<!-- Color Changer -->
 	<div class="theme-settings" id="switcher">
-		<span class="theme-click">
-			<span class="ti-settings"></span>
-		</span>
-		<span class="theme-color theme-default theme-active" data-color="green"></span>
-		<span class="theme-color theme-blue" data-color="blue"></span>
-		<span class="theme-color theme-red" data-color="red"></span>
-		<span class="theme-color theme-violet" data-color="violet"></span>
-		<span class="theme-color theme-yellow" data-color="yellow"></span>
+		<span class="theme-click"> <span class="ti-settings"></span>
+		</span> <span class="theme-color theme-default theme-active"
+			data-color="green"></span> <span class="theme-color theme-blue"
+			data-color="blue"></span> <span class="theme-color theme-red"
+			data-color="red"></span> <span class="theme-color theme-violet"
+			data-color="violet"></span> <span class="theme-color theme-yellow"
+			data-color="yellow"></span>
 	</div>
 	<!-- /Color Changer -->
 	<div class="wrapper">
@@ -59,16 +59,12 @@
 			<!-- Page Title -->
 			<div class="container mt-0">
 				<div class="row breadcrumb-bar">
-					<div class="col-md-6">
-
-					</div>
+					<div class="col-md-6"></div>
 					<div class="col-md-6">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item">
-								<a href="index.html">
-									<span class="ti-home"></span>
-								</a>
-							</li>
+							<li class="breadcrumb-item"><a href="index.html"> <span
+									class="ti-home"></span>
+							</a></li>
 							<li class="breadcrumb-item">分配</li>
 							<li class="breadcrumb-item active">所有分配</li>
 						</ol>
@@ -90,7 +86,7 @@
 								<table id="tableId" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											
+
 											<th>房间号</th>
 											<th>房间类型</th>
 											<th>病人姓名</th>
@@ -103,7 +99,7 @@
 									</thead>
 									<tbody>
 										<tr v-for="(r, index) in roomdescList" :key="index">
-											
+
 											<td>{{r.room.id}}</td>
 											<td>{{r.room.type}}</td>
 											<td>{{r.patient.name}}</td>
@@ -111,13 +107,15 @@
 											<td>{{r.dischargeDate}}</td>
 											<td>{{r.user.username}}</td>
 											<td>
-												<!--        -->
-												<span :class="[r.room.status== '已满' ? 'badge  badge-danger ': 'badge badge-success'] "  >{{r.room.status}}</span>
+												<!--        --> <span
+												:class="[r.room.status== '已满' ? 'badge  badge-danger ': 'badge badge-success'] ">{{r.room.status}}</span>
 											</td>
-											<td><button type="button" class="btn btn-danger mt-3 mb-0" @click="del(r.id)" ><span class="ti-trash"></span>
-												删除</button></td>
+											<td><button type="button"
+													class="btn btn-danger mt-3 mb-0" @click="del(r.id)">
+													<span class="ti-trash"></span> 删除
+												</button></td>
 										</tr>
-							
+
 
 
 									</tbody>
@@ -126,7 +124,7 @@
 								<!--Export links-->
 
 								<!-- /Export links-->
-								
+
 
 							</div>
 						</div>
@@ -142,8 +140,8 @@
 		<!-- /Page Content -->
 	</div>
 	<!-- Back to Top -->
-	<a id="back-to-top" href="#" class="back-to-top">
-		<span class="ti-angle-up"></span>
+	<a id="back-to-top" href="#" class="back-to-top"> <span
+		class="ti-angle-up"></span>
 	</a>
 	<!-- /Back to Top -->
 	<!-- Jquery Library-->
