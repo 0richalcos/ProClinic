@@ -98,6 +98,7 @@
 											<th>住院时间</th>
 											<th>医生姓名</th>
 											<th>状态</th>
+											<th>操作</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -113,6 +114,8 @@
 												<!--        -->
 												<span :class="[r.room.status== '已满' ? 'badge  badge-danger ': 'badge badge-success'] "  >{{r.room.status}}</span>
 											</td>
+											<td><button type="button" class="btn btn-danger mt-3 mb-0" @click="del(r.id)" ><span class="ti-trash"></span>
+												删除</button></td>
 										</tr>
 							
 
@@ -123,8 +126,7 @@
 								<!--Export links-->
 
 								<!-- /Export links-->
-								<button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span>
-									删除</button>
+								
 
 							</div>
 						</div>
@@ -166,13 +168,15 @@
 			el: "#cx",
 			data: {
 				roomdescList: [],
-				checked: false, //全选框
-                checkList: []
+			
+                
 			},
 			methods:{
-				checkedAll: function() {
-                console.log(this.checkList);
-                console.log(this.checked);
+				del: function(id) {
+                axios.delete("/room/del/"+id).then(res=>{
+
+				})
+
                 
             }
 			

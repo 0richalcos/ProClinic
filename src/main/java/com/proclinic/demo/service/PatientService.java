@@ -15,5 +15,6 @@ public interface PatientService {
 	void updatePatient(Patient patient,int id);
 	//删除多条病人信息
 	void deletePatient(String[] list);
+	List<Patient> finallpname(int id);
 
 }
