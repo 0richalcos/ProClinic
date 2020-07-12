@@ -90,7 +90,7 @@
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">出诊 List</h3>
 							<div class="table-responsive mb-3">
-								<table id="tableId" class="table table-bordered table-striped">
+								<table id="app" class="table table-bordered table-striped">
 									<thead>
 										<tr>
 											<th class="no-sort">
@@ -101,205 +101,29 @@
 											</th>
 											<th>Appointment ID</th>
 											<th>Patient ID</th>
-											<th>Token Number</th>
 											<th>医生 Name</th>
 											<th>Problem</th>
-											<th>状态</th>
+											<th>操作</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
+										<tr v-for="(s, index) in AppointmentList" :key="index">
 											<td>
 												<div class="custom-control custom-checkbox">
 													<input class="custom-control-input" type="checkbox" id="1">
 													<label class="custom-control-label" for="1"></label>
 												</div>
 											</td>
-											<td>AP872</td>
-											<td>P12Y</td>
-											<td>58</td>
-											<td>Dr Manoj</td>
-											<td>Small knee fracture</td>
+											<td>{{s.id}}</td>
+											<td>{{s.patient.id}}</td>
+											<td>{{s.user.username}}</td>
+											<td>{{s.problem}}</td>
 											<td>
-												<span class="badge badge-success">Active</span>
+												<button type="button"@click="update(s.id)" class="btn btn-primary btn-lg">编辑</button>
+												<button type="button"@click="del(s.id)" class="btn btn-primary btn-lg">删除</button>
 											</td>
                                         </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="2">
-													<label class="custom-control-label" for="2"></label>
-												</div>
-											</td>
-											<td>AP8W72</td>
-											<td>P42Y</td>
-											<td>5</td>
-											<td>Dr Daniel</td>
-											<td>Viral Fever</td>
-											<td>
-												<span class="badge badge-success">Active</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="3">
-													<label class="custom-control-label" for="3"></label>
-												</div>
-											</td>
-											<td>AP873</td>
-											<td>P12G</td>
-											<td>8</td>
-											<td>Dr Manoj</td>
-											<td>-</td>
-											<td>
-												<span class="badge badge-warning">Pending</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="4">
-													<label class="custom-control-label" for="4"></label>
-												</div>
-											</td>
-											<td>APY72</td>
-											<td>P1DY</td>
-											<td>18</td>
-											<td>Dr Susan</td>
-											<td>Chest pain</td>
-											<td>
-												<span class="badge badge-success">Active</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="5">
-													<label class="custom-control-label" for="5"></label>
-												</div>
-											</td>
-											<td>AP872</td>
-											<td>P12Y</td>
-											<td>58</td>
-											<td>Dr Manoj</td>
-											<td>Small knee fracture</td>
-											<td>
-												<span class="badge badge-success">Active</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="6">
-													<label class="custom-control-label" for="6"></label>
-												</div>
-											</td>
-											<td>AP8W72</td>
-											<td>P42Y</td>
-											<td>5</td>
-											<td>Dr Daniel</td>
-											<td>Viral Fever</td>
-											<td>
-												<span class="badge badge-success">Active</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="7">
-													<label class="custom-control-label" for="7"></label>
-												</div>
-											</td>
-											<td>AP873</td>
-											<td>P12G</td>
-											<td>8</td>
-											<td>Dr Manoj</td>
-											<td>-</td>
-											<td>
-												<span class="badge badge-warning">Pending</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="8">
-													<label class="custom-control-label" for="8"></label>
-												</div>
-											</td>
-											<td>APY72</td>
-											<td>P1DY</td>
-											<td>18</td>
-											<td>Dr Susan</td>
-											<td>Chest pain</td>
-											<td>
-												<span class="badge badge-success">Active</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="9">
-													<label class="custom-control-label" for="9"></label>
-												</div>
-											</td>
-											<td>AP872</td>
-											<td>P12Y</td>
-											<td>58</td>
-											<td>Dr Manoj</td>
-											<td>Small knee fracture</td>
-											<td>
-												<span class="badge badge-success">Active</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="10">
-													<label class="custom-control-label" for="10"></label>
-												</div>
-											</td>
-											<td>AP8W72</td>
-											<td>P42Y</td>
-											<td>5</td>
-											<td>Dr Daniel</td>
-											<td>Viral Fever</td>
-											<td>
-												<span class="badge badge-success">Active</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="11">
-													<label class="custom-control-label" for="11"></label>
-												</div>
-											</td>
-											<td>AP873</td>
-											<td>P12G</td>
-											<td>8</td>
-											<td>Dr Manoj</td>
-											<td>-</td>
-											<td>
-												<span class="badge badge-warning">Pending</span>
-											</td>
-                                        </tr>
-                                        <tr>
-											<td>
-												<div class="custom-control custom-checkbox">
-													<input class="custom-control-input" type="checkbox" id="12">
-													<label class="custom-control-label" for="12"></label>
-												</div>
-											</td>
-											<td>APY72</td>
-											<td>P1DY</td>
-											<td>18</td>
-											<td>Dr Susan</td>
-											<td>Chest pain</td>
-											<td>
-												<span class="badge badge-success">Active</span>
-											</td>
-										</tr>
+                                        
 									</tbody>
                                 </table>
                                 
@@ -359,6 +183,47 @@
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
 	<script src="js/custom-datatables.js"></script>
+
+	<script src="js/vue.min.js"></script>
+	<script src="js/axios.js"></script>
+
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				AppointmentList: [],
+			},
+			methods: {
+
+				update: function (id) {
+					localStorage.setItem("id", id);
+					location.href="edit-appointment.html";
+				},
+				del: function (id) {
+					// DELETE /api/staff/123
+					 axios.delete(`/appointment/app3/${id}`)
+					 	.then(res => {
+					 		console.log(res);
+					 		//
+					 		location.href="appointments.html";
+
+							
+				})
+
+				
+				
+			}},
+			created() {
+				// GET /api/staff
+				axios.get('/appointment/app1')
+					.then(res => {
+						console.log(res);
+						this.AppointmentList = res.data;
+						
+					})
+			},
+		});
+	</script>
 </body>
 
 </html>

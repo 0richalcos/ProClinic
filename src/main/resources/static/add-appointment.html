@@ -84,12 +84,12 @@
 			<!-- Main Content -->
 			<div class="container">
 
-				<div class="row">
+				<div class="row" >
 					<!-- Widget Item -->
 					<div class="col-md-12">
 						<div class="widget-area-2 lochana-box-shadow">
 							<h3 class="widget-title">Add Appointment</h3>
-							<form>
+							<form id="appointment">
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="patient-name">Patient ID</label>
@@ -98,7 +98,7 @@
 									<div class="form-group col-md-6">
 										<label for="department">Department</label>
 										<select class="form-control" id="department">
-											<option>Neuro</option>
+											<option value="1">Neuro</option>
 											<option>皮肤科</option>
 											<option>General</option>
 										</select>
@@ -109,7 +109,7 @@
 									</div>
 									<div class="form-group col-md-6">
 										<label for="doctor-name">医生 Name</label>
-										<input type="text" placeholder="医生 Name" class="form-control" id="doctor-name">
+										<input type="text" disabled="disabled" placeholder="医生 Name" class="form-control" id="doctor-name">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="appointment-date">Appointment Date</label>
@@ -143,7 +143,7 @@
 										</div>
 									</div>
 									<div class="form-group col-md-6 mb-3">
-										<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+										<button type="button"@click="add()" class="btn btn-primary btn-lg">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -195,7 +195,56 @@
     
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
+    <script src="js/vue.min.js"></script>
+	<script src="js/axios.js"></script>
+<script>
 
+new Vue({
+el:'#appointment',
+data:{
+	
+},
+methods:{
+add(){
+	console.log("dsf");
+	var params={
+			Patient:{
+				id:$("#patient-id").val()
+			},
+		
+			user:{
+				id:$("#doctor-id").val()
+			},
+			appointmentDate:$("#appointment-date").val(),
+			timeSlot:$("#time-slot").val(),
+			problem:$("#pro-blem").val(),
+	}
+axios.post(`/appointment/addappointment`,params).then(res=>{
+		var zt=res.data;
+		console.log(zt);
+		if(zt!=null){
+			alert("添加成功");
+		}else{
+			alert("添加失败");
+		}
+})
+
+}
+
+},
+created(){
+	console.log("dfad");
+}
+
+
+
+
+
+
+})
+
+
+	</script>
 </body>
 
 </html>

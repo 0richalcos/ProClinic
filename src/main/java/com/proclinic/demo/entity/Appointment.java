@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "appointment")
+@Table
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,11 +45,24 @@ public class Appointment {
 
     @Column(name = "status", length = 10)
     private String status;
-
+    
     public Appointment() {
-    }
+	}
 
-    public int getId() {
+	public Appointment(int id, User user, Patient patient, Department department, Date appointmentDate, String timeSlot,
+			String problem, BigDecimal charges, String status) {
+		this.id = id;
+		this.user = user;
+		this.patient = patient;
+		this.department = department;
+		this.appointmentDate = appointmentDate;
+		this.timeSlot = timeSlot;
+		this.problem = problem;
+		this.charges = charges;
+		this.status = status;
+	}
+
+	public int getId() {
 	return id;
     }
 

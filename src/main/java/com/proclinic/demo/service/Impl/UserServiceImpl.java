@@ -1,11 +1,15 @@
 package com.proclinic.demo.service.Impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proclinic.demo.entity.Authorities;
+import com.proclinic.demo.entity.Department;
 import com.proclinic.demo.entity.User;
 import com.proclinic.demo.repository.AuthoritiesRepository;
+import com.proclinic.demo.repository.DepartmentRepository;
 import com.proclinic.demo.repository.UserRepository;
 import com.proclinic.demo.service.UserService;
 
@@ -17,6 +21,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     AuthoritiesRepository authoritiesRepository;
+    @Autowired
+    DepartmentRepository depart;
 
     @Override
     public String register(User user) {
@@ -35,8 +41,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String selname(int id) {
 	User user =userRepository.findUserByid(id);
-	String name=user.getUsername();
-		return name;
+		return user.getUsername();
+	}
+
+
+	@Override//查询所有科室的方法
+	public List<Department> selde(int id) {
+		return depart.findAll();
 	}
 
 }
