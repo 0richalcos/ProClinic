@@ -110,4 +110,13 @@ public class HomeController {
 	return "rooms";
     }
 
+    @RequestMapping({ "/changePWD.html" })
+    public String chagnePWD() {
+	return "changePWD";
+    }
+
+    @RequestMapping({ "/forget.html" })
+    public String forget() {
+	return "forget";
+    }
 }

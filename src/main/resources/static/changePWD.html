@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>ProClinic-医院管理系统Bootstrap4前端框架</title>
+		<!-- Fav  Icon Link -->
+		<link rel="shortcut icon" type="image/png" href="images/fav.png">
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- themify icons CSS -->
+		<link rel="stylesheet" href="css/themify-icons.css">
+		<!-- Animations CSS -->
+		<link rel="stylesheet" href="css/animate.css">
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="css/green.css" id="style_theme">
+		<link rel="stylesheet" href="css/responsive.css">
+
+		<script src="js/modernizr.min.js"></script>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!-- Pre Loader -->
+		<div class="loading">
+			<div class="spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
+			</div>
+		</div>
+		<!--/Pre Loader -->
+		<!-- Color Changer -->
+		<div class="theme-settings" id="switcher">
+			<span class="theme-click"> <span class="ti-settings"></span>
+			</span> <span class="theme-color theme-default theme-active" data-color="green"></span> <span class="theme-color theme-blue"
+			 data-color="blue"></span> <span class="theme-color theme-red" data-color="red"></span> <span class="theme-color theme-violet"
+			 data-color="violet"></span> <span class="theme-color theme-yellow" data-color="yellow"></span>
+		</div>
+		<!-- /Color Changer -->
+		<div class="wrapper">
+			<!-- Page Content -->
+			<div id="content">
+				<!-- header -->
+				<div th:replace="index::header"></div>
+				<!-- header -->
+				<!-- Breadcrumb -->
+				<!-- Page Title -->
+				<div class="container mt-0">
+					<div class="row breadcrumb-bar">
+						<div class="col-md-6">
+							<h3 class="block-title">修改密码</h3>
+						</div>
+						<div class="col-md-6">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="index.html"> <span class="ti-home"></span>
+									</a></li>
+								<li class="breadcrumb-item">修改密码</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+
+				<!-- /Breadcrumb -->
+				<!-- Main Content -->
+				<div class="container" id="app">
+					<!-- Main Content -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="widget-area-2 lochana-box-shadow min-h200">
+								<h3 class="widget-title">修改密码</h3>
+								<div class="row">
+									<div class="col-sm-6 auth-box">
+										<div class="alert alert-danger" role="alert" v-if="flag!=undefined">{{flag}}</div>
+										<!-- Form -->
+										<form class="widget-form">
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<input v-model="password" type="password" placeholder="Password" name="password" class="form-control"
+													 data-validation="strength" data-validation-strength="2" data-validation-has-keyup-event="true">
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<input v-model="repassword" @blur="checkPassword" type="password" placeholder="Confirm Password" class="form-control"
+													 data-validation="strength" data-validation-strength="2" data-validation-has-keyup-event="true">
+												</div>
+											</div>
+											<!-- Button -->
+											<div class="button-btn-block mb-5">
+												<button type="button" @click="change" class="btn btn-primary btn-lg btn-block">确认修改</button>
+											</div>
+											<!-- /Button -->
+										</form>
+										<!-- /Form -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<script type="text/javascript">
+					new Vue({
+						el: "#app",
+						data: {
+							flag: undefined,
+							password: undefined,
+							repassword: undefined
+						},
+						methods: {
+							checkPassword: function() {
+								if (this.password != this.repassword) {
+									this.flag = "两次密码不一致";
+								} else {
+									this.flag = undefined;
+								}
+							},
+							change: function() {
+								if (this.password == this.repassword) {
+									axios.post(`/change`, {
+											password: this.password
+									}).then(res => {
+									if (res.data == "OK") {
+										confirm("修改成功，前往登录页面")
+										window.location = "/logout";
+									} else {
+
+									}
+								})
+							}
+						}
+					}
+					})
+				</script>
+
+				<!-- /Main Content -->
+				<!--Copy Rights-->
+				<div class="container">
+					<div class="d-sm-flex justify-content-center">
+						<span class="text-muted text-center d-block d-sm-inline-block">Copyright
+							© 2018 <a href="http://www.bootstrapmb.com/" target="_blank">konnectcode</a>.
+							All rights reserved.
+						</span>
+					</div>
+				</div>
+				<!-- /Copy Rights-->
+			</div>
+			<!-- /Page Content -->
+		</div>
+		<!-- Back to Top -->
+		<a id="back-to-top" href="#" class="back-to-top"> <span class="ti-angle-up"></span>
+		</a>
+		<!-- /Back to Top -->
+		<!-- Jquery Library-->
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<!-- Popper Library-->
+		<script src="js/popper.min.js"></script>
+		<!-- Bootstrap Library-->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Custom Script-->
+		<script src="js/custom.js"></script>
+	</body>
+
+</html>
